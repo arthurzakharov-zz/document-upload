@@ -22,7 +22,7 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
-  "ignorePatterns": ["build/**/*.js"],
+  "ignorePatterns": ["build/**/*.js", "src/svg/*.tsx", "svgo.config.js"],
   "rules": {
     "quotes": [
       "error",
