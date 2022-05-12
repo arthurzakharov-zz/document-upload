@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .check {
+      fill: white;
+      fill-opacity: 0;
+      stroke-color: inherit;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="check" stroke="red" cx="12" cy="12" r="10"/>
+    <polyline class="check" stroke="red" points="6 13 9 16 16 9"/>
+  </g>
+</svg>

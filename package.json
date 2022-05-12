@@ -6,6 +6,8 @@
     "start": "npm run svgr && react-scripts start",
     "build": "npm run svgr && react-scripts build",
     "test": "react-scripts test --watchAll=false",
+    "test:snapshot": "react-scripts test --watchAll=false --updateSnapshot",
+    "test:coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
     "svgr": "svgr --typescript --no-dimensions --no-index -d src/svg src/assets/svg",
     "lint": "eslint .",
