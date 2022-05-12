@@ -5,7 +5,7 @@ import "./header.css";
 
 function Header() {
   return (
-    <header className="header">
+    <div className="header">
       <SvgLogo className="header__logo" />
       <div className="header__info">
         <a href="tel:030220662388" className="header__link">
@@ -17,7 +17,7 @@ function Header() {
           <span className="header__schedule">Mo-Fr von 8:00 - 20:00</span>
         </div>
       </div>
-    </header>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Screenshot 1`] = `
-<header
+<div
   class="header"
 >
   <svg
@@ -84,5 +84,5 @@ exports[`Header Screenshot 1`] = `
       </span>
     </div>
   </div>
-</header>
+</div>
 `;

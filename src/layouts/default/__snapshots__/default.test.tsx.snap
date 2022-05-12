@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DefaultLayout Snapshot 1`] = `
+<div
+  class="default-layout"
+>
+  <div
+    class="default-layout__content"
+  >
+    <header
+      data-testid="default-layout-header"
+    >
+      <span>
+        Header
+      </span>
+    </header>
+    <main
+      data-testid="default-layout-main"
+    >
+      <span>
+        Main
+      </span>
+    </main>
+    <footer
+      data-testid="default-layout-footer"
+    >
+      <span>
+        Footer
+      </span>
+    </footer>
+  </div>
+</div>
+`;
