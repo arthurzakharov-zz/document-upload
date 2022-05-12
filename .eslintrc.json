@@ -41,6 +41,8 @@
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
     "no-shadow": "off",
-    "no-console": "error"
+    "no-console": "error",
+    "no-restricted-exports": "off",
+    "testing-library/no-node-access": "off"
   }
 }
