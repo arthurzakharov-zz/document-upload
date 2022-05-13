@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Info Snapshot 1`] = `
+<div
+  class="info"
+>
+  <h1
+    class="info__title"
+  >
+    Dokumentenübermittlung
+  </h1>
+  <div
+    class="info__info"
+  >
+    <div
+      class="info__label"
+      data-testid="info-number"
+    >
+      <b>
+        Referenznummer: 
+      </b>
+      SBE22.0121-24046542
+    </div>
+    <div
+      class="info__label"
+      data-testid="info-name"
+    >
+      <b>
+        Name: 
+      </b>
+      Luca Zamai
+    </div>
+  </div>
+  <p
+    class="info__description"
+  >
+    Klicken Sie auf die orangenen Buttons, um die jeweiligen Dateien zu übermitteln.
+  </p>
+</div>
+`;

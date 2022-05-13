@@ -44,6 +44,8 @@
     "no-console": "error",
     "no-restricted-exports": "off",
     "testing-library/no-node-access": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off"
   }
 }

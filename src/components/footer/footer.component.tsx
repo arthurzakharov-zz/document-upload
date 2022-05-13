@@ -6,6 +6,7 @@ function Footer() {
   const [links, setLinks] = useState<string[]>([]);
 
   useEffect(() => {
+    // TODO: later will be replaced with some Redux or Context call
     setLinks(["Allgemeine Informationen", "Datenschutz", "Impressum"]);
   }, []);
 

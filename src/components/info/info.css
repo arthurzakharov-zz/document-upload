@@ -1,0 +1,32 @@
+.info {
+  background-color: var(--white-1);
+}
+
+.info__title {
+  padding: 18px 20px;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 43px;
+  color: var(--green-1);
+}
+
+.info__info {
+  padding: 16px 20px;
+  background-color: var(--grey-1);
+}
+
+.info__label {
+  font-weight: 300;
+  color: var(--green-1);
+}
+
+.info__label b {
+  font-weight: 600;
+}
+
+.info__description {
+  padding: 24px 20px 26px 20px;
+  font-weight: 300;
+  color: var(--grey-2);
+}

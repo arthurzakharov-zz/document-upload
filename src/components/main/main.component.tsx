@@ -1,9 +1,10 @@
 import "./main.css";
+import Info from "../info";
 
 function Main() {
   return (
     <div className="main">
-      <div>MAIN</div>
+      <Info />
     </div>
   );
 }
