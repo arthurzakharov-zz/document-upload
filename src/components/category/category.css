@@ -40,6 +40,9 @@
 }
 
 .category__button {
+  margin-left: -3px;
+  padding-left: 3px;
+  padding-right: 3px;
   cursor: pointer;
   display: flex;
   align-items: center;
