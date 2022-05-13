@@ -1,9 +1,34 @@
+import { Fragment, useEffect, useState } from "react";
+import { companyName } from "./footer.utils";
 import "./footer.css";
 
 function Footer() {
+  const [links, setLinks] = useState<string[]>([]);
+
+  useEffect(() => {
+    setLinks(["Allgemeine Informationen", "Datenschutz", "Impressum"]);
+  }, []);
+
   return (
     <div className="footer">
-      <div>FOOTER</div>
+      <hr className="footer__line" />
+      <span className="footer__company">{companyName("schuldenanalyse-kostenlos.de")}</span>
+      <ul className="footer__list">
+        {links.map((link: string, index: number) => (
+          <Fragment key={link}>
+            <li>
+              <button type="button" className="footer__button">
+                {link}
+              </button>
+            </li>
+            {index < links.length - 1 && (
+              <li>
+                <div className="footer__separator" />
+              </li>
+            )}
+          </Fragment>
+        ))}
+      </ul>
     </div>
   );
 }

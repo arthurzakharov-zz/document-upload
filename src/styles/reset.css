@@ -12,6 +12,13 @@ body {
   color: var(--grey-2);
 }
 
+button {
+  font-family: inherit;
+  color: inherit;
+  background-color: transparent;
+  border: none;
+}
+
 ol,
 ul {
   list-style: none;

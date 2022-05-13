@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Screenshot 1`] = `
+<div
+  class="footer"
+>
+  <hr
+    class="footer__line"
+  />
+  <span
+    class="footer__company"
+  >
+    © 2022 schuldenanalyse-kostenlos.de
+  </span>
+  <ul
+    class="footer__list"
+  >
+    <li>
+      <button
+        class="footer__button"
+        type="button"
+      >
+        Allgemeine Informationen
+      </button>
+    </li>
+    <li>
+      <div
+        class="footer__separator"
+      />
+    </li>
+    <li>
+      <button
+        class="footer__button"
+        type="button"
+      >
+        Datenschutz
+      </button>
+    </li>
+    <li>
+      <div
+        class="footer__separator"
+      />
+    </li>
+    <li>
+      <button
+        class="footer__button"
+        type="button"
+      >
+        Impressum
+      </button>
+    </li>
+  </ul>
+</div>
+`;
