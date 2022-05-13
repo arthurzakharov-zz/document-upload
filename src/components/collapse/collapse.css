@@ -1,0 +1,51 @@
+.collapse {
+  will-change: height;
+  overflow: hidden;
+  transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: 300ms;
+}
+
+.collapse__content {
+  border: 1px solid transparent;
+}
+
+.collapse__content--visible {
+  opacity: 0;
+  animation-name: opacityIn;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
+  animation-delay: 600ms;
+}
+
+.collapse__content--hidden {
+  opacity: 1;
+  animation-name: opacityOut;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-fill-mode: forwards;
+  animation-duration: 300ms;
+  animation-delay: 0ms;
+}
+
+@keyframes opacityIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+    border: none;
+  }
+}
+
+@keyframes opacityOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
