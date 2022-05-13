@@ -15,7 +15,9 @@ exports[`Footer Screenshot 1`] = `
   <ul
     class="footer__list"
   >
-    <li>
+    <li
+      class="footer__item"
+    >
       <button
         class="footer__button"
         type="button"
@@ -23,12 +25,16 @@ exports[`Footer Screenshot 1`] = `
         Allgemeine Informationen
       </button>
     </li>
-    <li>
+    <li
+      class="footer__item"
+    >
       <div
         class="footer__separator"
       />
     </li>
-    <li>
+    <li
+      class="footer__item"
+    >
       <button
         class="footer__button"
         type="button"
@@ -36,12 +42,16 @@ exports[`Footer Screenshot 1`] = `
         Datenschutz
       </button>
     </li>
-    <li>
+    <li
+      class="footer__item"
+    >
       <div
         class="footer__separator"
       />
     </li>
-    <li>
+    <li
+      class="footer__item"
+    >
       <button
         class="footer__button"
         type="button"

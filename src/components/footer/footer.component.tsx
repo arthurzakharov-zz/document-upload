@@ -17,13 +17,13 @@ function Footer() {
       <ul className="footer__list">
         {links.map((link: string, index: number) => (
           <Fragment key={link}>
-            <li>
+            <li className="footer__item">
               <button type="button" className="footer__button">
                 {link}
               </button>
             </li>
             {index < links.length - 1 && (
-              <li>
+              <li className="footer__item">
                 <div className="footer__separator" />
               </li>
             )}

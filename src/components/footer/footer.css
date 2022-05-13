@@ -29,6 +29,10 @@
   align-items: center;
 }
 
+.footer__item:nth-of-type(even) {
+  display: none;
+}
+
 .footer__separator {
   margin: 0 6px;
   width: 1px;
@@ -61,5 +65,9 @@
 
   .footer__list {
     flex-direction: row;
+  }
+
+  .footer__item:nth-of-type(even) {
+    display: block;
   }
 }
