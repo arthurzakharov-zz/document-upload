@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import UploadButton from "../upload-button";
-import "./category.css";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
+import UploadButton from "../upload-button";
+import "./category.css";
+import File from "../file";
 
 export interface CategoryProps {
   label: string;
@@ -12,11 +13,11 @@ function Category(props: CategoryProps) {
   const { label } = props;
 
   const [loaded, setLoaded] = useState<boolean>(false);
-  const [count, setCount] = useState<number>(0);
+  const [files, setFiles] = useState<string[]>([]);
 
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
-    setCount(0);
+    setFiles(["Gläubigerschreiben #1", "Forderung Finanzamt"]);
   }, []);
 
   const clickHandler = () => {
@@ -34,9 +35,16 @@ function Category(props: CategoryProps) {
           </div>
         </div>
         <div className="category__right">
-          <div className="category__count">{count}</div>
+          <div className="category__count">{files.length}</div>
           <UploadButton loaded={loaded} onClick={clickHandler} />
         </div>
+      </div>
+      <div className="category__files">
+        {files.map((file: string) => (
+          <div key={file} className="category__file">
+            <File name={file} />
+          </div>
+        ))}
       </div>
     </div>
   );

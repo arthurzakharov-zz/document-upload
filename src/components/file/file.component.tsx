@@ -5,7 +5,7 @@ import "./file.css";
 
 export interface FileProps {
   name: string;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 function File(props: FileProps) {
@@ -18,9 +18,11 @@ function File(props: FileProps) {
           {name}
         </span>
       </div>
-      <button data-testid="file-button" type="button" className="file__button" onClick={onClick}>
-        <SvgTrash className="file__delete" />
-      </button>
+      {onClick && (
+        <button data-testid="file-button" type="button" className="file__button" onClick={onClick}>
+          <SvgTrash className="file__delete" />
+        </button>
+      )}
     </div>
   );
 }

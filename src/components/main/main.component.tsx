@@ -20,9 +20,11 @@ function Main() {
   return (
     <div className="main">
       <Info />
-      {categories.map((category) => (
-        <Category key={category} label={category} />
-      ))}
+      <div>
+        {categories.map((category) => (
+          <Category key={category} label={category} />
+        ))}
+      </div>
     </div>
   );
 }
