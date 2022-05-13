@@ -4,7 +4,7 @@ import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
 import File from "../file";
 import UploadButton from "../upload-button";
-import { category } from "./category.utils";
+import { category, categoryArrow } from "./category.utils";
 import "./category.css";
 
 export interface CategoryProps {
@@ -36,7 +36,7 @@ function Category(props: CategoryProps) {
       <div className="category__content">
         <div className="category__left">
           <button type="button" className="category__button" onClick={openFiles}>
-            <SvgArrow className="category__arrow" />
+            <SvgArrow className={categoryArrow(opened)} />
             <h6 className="category__label">{label}</h6>
           </button>
           <div className="category__question">
