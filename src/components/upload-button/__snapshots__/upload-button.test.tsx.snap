@@ -10,12 +10,12 @@ exports[`UploadButton Snapshot is in loaded state 1`] = `
     class="upload-button__check"
     data-testid="upload-button-check"
     fill="none"
+    stroke="#2ecc71"
     viewBox="0 0 15 15"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
       d="m2 7 4.213 7 6.62-12"
-      stroke="#2ecc71"
       stroke-linecap="square"
       stroke-linejoin="bevel"
       stroke-width="2"
