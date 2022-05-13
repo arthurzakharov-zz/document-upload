@@ -3,7 +3,7 @@
   <defs>
     <style>
       .check {
-      fill: white;
+      fill: transparent;
       fill-opacity: 0;
       stroke-color: inherit;
       stroke-linecap: round;
@@ -13,7 +13,7 @@
     </style>
   </defs>
   <g>
-    <circle class="check" stroke="red" cx="12" cy="12" r="10"/>
-    <polyline class="check" stroke="red" points="6 13 9 16 16 9"/>
+    <circle class="check" cx="12" cy="12" r="10"/>
+    <polyline class="check" points="6 13 9 16 16 9"/>
   </g>
 </svg>

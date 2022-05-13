@@ -11,7 +11,7 @@ const SvgCircleCheck = (props: SVGProps<SVGSVGElement>) => (
       </style>
     </defs>
     <circle className="check" cx={12} cy={12} r={10} />
-    <path className="check" d="m6 13 3 3 7-8" />
+    <path className="check" d="m6 13 3 3 7-7" />
   </svg>
 );
 

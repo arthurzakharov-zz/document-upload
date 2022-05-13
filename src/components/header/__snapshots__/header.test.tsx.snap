@@ -74,7 +74,7 @@ exports[`Header Screenshot 1`] = `
         />
         <path
           class="check"
-          d="m6 13 3 3 7-8"
+          d="m6 13 3 3 7-7"
         />
       </svg>
       <span
