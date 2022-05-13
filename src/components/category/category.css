@@ -20,6 +20,8 @@
 }
 
 .category--opened + .category > .category__content {
+  transition: border-top-color 300ms ease-in;
+  transition-delay: 300ms;
   border-top-color: transparent;
 }
 
