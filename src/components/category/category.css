@@ -19,6 +19,10 @@
   margin-bottom: 34px;
 }
 
+.category--opened + .category > .category__content {
+  border-top-color: transparent;
+}
+
 .category__content {
   margin: 0 20px;
   border-top: 1px solid var(--grey-6);
@@ -26,6 +30,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.category__button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .category__label {

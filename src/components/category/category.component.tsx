@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
-import UploadButton from "../upload-button";
-import "./category.css";
+import Collapse from "../collapse";
 import File from "../file";
+import UploadButton from "../upload-button";
+import { category } from "./category.utils";
+import "./category.css";
 
 export interface CategoryProps {
   label: string;
@@ -12,6 +14,7 @@ export interface CategoryProps {
 function Category(props: CategoryProps) {
   const { label } = props;
 
+  const [opened, setOpened] = useState<boolean>(false);
   const [loaded, setLoaded] = useState<boolean>(false);
   const [files, setFiles] = useState<string[]>([]);
 
@@ -24,12 +27,18 @@ function Category(props: CategoryProps) {
     setLoaded(!loaded);
   };
 
+  const openFiles = () => {
+    setOpened(!opened);
+  };
+
   return (
-    <div className="category">
+    <div className={category(opened)}>
       <div className="category__content">
         <div className="category__left">
-          <SvgArrow className="category__arrow" />
-          <h6 className="category__label">{label}</h6>
+          <button type="button" className="category__button" onClick={openFiles}>
+            <SvgArrow className="category__arrow" />
+            <h6 className="category__label">{label}</h6>
+          </button>
           <div className="category__question">
             <SvgQuestion className="category__symbol" />
           </div>
@@ -39,13 +48,15 @@ function Category(props: CategoryProps) {
           <UploadButton loaded={loaded} onClick={clickHandler} />
         </div>
       </div>
-      <div className="category__files">
-        {files.map((file: string) => (
-          <div key={file} className="category__file">
-            <File name={file} />
-          </div>
-        ))}
-      </div>
+      <Collapse isOpen={opened}>
+        <div className="category__files">
+          {files.map((file: string) => (
+            <div key={file} className="category__file">
+              <File name={file} />
+            </div>
+          ))}
+        </div>
+      </Collapse>
     </div>
   );
 }
