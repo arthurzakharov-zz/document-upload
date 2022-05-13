@@ -20,7 +20,7 @@ function Main() {
   return (
     <div className="main">
       <Info />
-      <div>
+      <div className="main__categories">
         {categories.map((category) => (
           <Category key={category} label={category} />
         ))}
