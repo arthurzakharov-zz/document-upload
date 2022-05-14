@@ -16,6 +16,9 @@
 }
 
 .header__link {
+  margin-right: -3px;
+  padding-right: 3px;
+  padding-left: 3px;
   display: flex;
   align-items: center;
   text-decoration: none;

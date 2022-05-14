@@ -34,13 +34,15 @@
 }
 
 .footer__separator {
-  margin: 0 6px;
+  margin: 0 2px;
   width: 1px;
   height: 14px;
   background-color: var(--grey-3);
 }
 
 .footer__button {
+  padding-left: 3px;
+  padding-right: 3px;
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
