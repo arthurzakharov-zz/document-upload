@@ -4,7 +4,7 @@ import "./collapse.css";
 
 export interface CollapseProps {
   isOpen: boolean;
-  children: ReactElement;
+  children: ReactElement | ReactElement[];
 }
 
 function Collapse(props: CollapseProps) {
@@ -23,13 +23,13 @@ function Collapse(props: CollapseProps) {
   useEffect(() => {
     if (ref.current) {
       const childrenArray = Array.from(ref.current.childNodes);
-      const height = childrenArray.reduce((sum, node) => sum + getHeight(node), 0) - 2;
+      const height = childrenArray.reduce((sum: number, node: ChildNode) => sum + getHeight(node), 0) - 2;
       setContentHeight(height);
     }
   }, [isOpen]);
 
   return (
-    <div ref={ref} className="collapse" style={{ ...stylesCollapse(isOpen, contentHeight) }}>
+    <div data-testid="collapse" ref={ref} className="collapse" style={{ ...stylesCollapse(isOpen, contentHeight) }}>
       <div className={collapseContent(isOpen)}>{children}</div>
     </div>
   );
