@@ -38,7 +38,7 @@ function Modal(props: ModalProps) {
 
   const overlayPress = (e: KeyboardEvent<HTMLDivElement>) => {
     e.preventDefault();
-    if (e.key === "Enter") {
+    if (e.target === overlayRef.current && e.key === "Enter") {
       closeModal();
     }
   };
