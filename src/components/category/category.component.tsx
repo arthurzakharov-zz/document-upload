@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
@@ -6,6 +7,7 @@ import File from "../file";
 import UploadButton from "../upload-button";
 import { category, categoryArrow } from "./category.utils";
 import "./category.css";
+import { openModal } from "../../store/modal/modal.actions";
 
 export interface CategoryProps {
   label: string;
@@ -15,8 +17,9 @@ function Category(props: CategoryProps) {
   const { label } = props;
 
   const [opened, setOpened] = useState<boolean>(false);
-  const [loaded, setLoaded] = useState<boolean>(false);
   const [files, setFiles] = useState<string[]>([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
@@ -24,7 +27,7 @@ function Category(props: CategoryProps) {
   }, []);
 
   const clickHandler = () => {
-    setLoaded(!loaded);
+    dispatch(openModal("load-single"));
   };
 
   const openFiles = () => {
@@ -45,7 +48,7 @@ function Category(props: CategoryProps) {
         </div>
         <div className="category__right">
           <div className="category__count">{files.length}</div>
-          <UploadButton loaded={loaded} onClick={clickHandler} />
+          <UploadButton loaded={false} onClick={clickHandler} />
         </div>
       </div>
       <Collapse isOpen={opened}>

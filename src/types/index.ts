@@ -5,7 +5,7 @@ export interface Action {
 
 export type Reducer<T> = (state: T, action: Action) => T;
 
-export type ModalId = "general_info" | "privacy" | "impressum";
+export type ModalId = "general_info" | "privacy" | "impressum" | "load-single";
 
 export type FooterLink = {
   label: string;

@@ -31,7 +31,7 @@ function Modal(props: ModalProps) {
         }
       }, 300);
     }
-  }, [isOpened]);
+  }, [isOpened, setLocked]);
 
   const overlayClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -47,7 +47,7 @@ function Modal(props: ModalProps) {
     }
   };
 
-  return (
+  return Main ? (
     <div
       ref={overlayRef}
       tabIndex={0}
@@ -57,10 +57,12 @@ function Modal(props: ModalProps) {
       onClick={overlayClick}
     >
       <div className={modalBody(isOpened)}>
-        <div className="modal__main">{Main && <Main />}</div>
+        <div className="modal__main">
+          <Main />
+        </div>
       </div>
     </div>
-  );
+  ) : null;
 }
 
 export default Modal;

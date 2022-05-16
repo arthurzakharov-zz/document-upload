@@ -1,6 +1,7 @@
 import { ElementType } from "react";
 import GeneralInfoModal from "../../modals/general-info";
 import ImpressumModal from "../../modals/impressum";
+import LoadSingleModal from "../../modals/load-single";
 import PrivacyModal from "../../modals/privacy";
 import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
 import { Action, ModalId, Reducer } from "../../types";
@@ -21,6 +22,8 @@ const main = (id: ModalId) => {
       return GeneralInfoModal;
     case "impressum":
       return ImpressumModal;
+    case "load-single":
+      return LoadSingleModal;
     case "privacy":
       return PrivacyModal;
     default:
