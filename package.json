@@ -2,6 +2,7 @@
   "name": "document-upload",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://arthurzakharov.github.io/document-upload-front-end/",
   "scripts": {
     "start": "npm run svgr && react-scripts start",
     "build": "npm run svgr && react-scripts build",
@@ -11,7 +12,9 @@
     "eject": "react-scripts eject",
     "svgr": "svgr --typescript --no-dimensions --no-index -d src/svg src/assets/svg",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +79,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "gh-pages": "^4.0.0",
     "husky": "^8.0.0",
     "prettier": "^2.6.2",
     "redux-mock-store": "^1.5.4"
