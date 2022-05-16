@@ -46,6 +46,7 @@
     "testing-library/no-node-access": "off",
     "import/prefer-default-export": "off",
     "react/require-default-props": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 }

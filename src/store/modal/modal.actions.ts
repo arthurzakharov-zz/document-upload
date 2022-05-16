@@ -1,11 +1,15 @@
-import { MODAL_VISIBILITY } from "./modal.types";
+import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
+import { ModalId } from "../../types";
 
-export const openModal = () => ({
-  type: MODAL_VISIBILITY,
-  payload: true,
+export const openModal = (type: ModalId) => ({
+  type: MODAL_OPEN,
+  payload: type,
 });
 
-export const closeModal = () => ({
-  type: MODAL_VISIBILITY,
-  payload: false,
+export const modalClose = () => ({
+  type: MODAL_CLOSE,
+});
+
+export const clearMain = () => ({
+  type: CLEAR_MAIN,
 });

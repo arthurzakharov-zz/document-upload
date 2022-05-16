@@ -1,6 +1,7 @@
 import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
-import { useDispatch } from "react-redux";
-import { closeModal } from "../../store/modal/modal.actions";
+import { useSelector } from "react-redux";
+import useCloseModal from "../../hooks/useCloseModal";
+import { selectModalMain } from "../../store/modal/modal.selectors";
 import { modal, modalBody } from "./modal.utils";
 import "./modal.css";
 
@@ -13,12 +14,15 @@ function Modal(props: ModalProps) {
 
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const dispatch = useDispatch();
+  const Main = useSelector(selectModalMain);
+
+  const closeModal = useCloseModal();
 
   useEffect(() => {
     if (isOpened) {
       setTimeout(() => {
         if (overlayRef.current) {
+          // @ts-ignore
           overlayRef.current.focus();
         }
       }, 300);
@@ -27,13 +31,15 @@ function Modal(props: ModalProps) {
 
   const overlayClick = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    dispatch(closeModal());
+    if (e.target === overlayRef.current) {
+      closeModal();
+    }
   };
 
   const overlayPress = (e: KeyboardEvent<HTMLDivElement>) => {
     e.preventDefault();
     if (e.key === "Enter") {
-      dispatch(closeModal());
+      closeModal();
     }
   };
 
@@ -43,10 +49,10 @@ function Modal(props: ModalProps) {
       tabIndex={0}
       role="button"
       className={modal(isOpened)}
-      onKeyDown={overlayPress}
+      onKeyUp={overlayPress}
       onClick={overlayClick}
     >
-      <div className={modalBody(isOpened)}>MODAL</div>
+      <div className={modalBody(isOpened)}>{Main && <Main />}</div>
     </div>
   );
 }

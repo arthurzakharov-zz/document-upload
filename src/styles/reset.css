@@ -20,6 +20,10 @@ button {
   border: none;
 }
 
+a:focus {
+  outline: 2px solid red;
+}
+
 ol,
 ul {
   list-style: none;

@@ -37,9 +37,9 @@
   z-index: 1;
   left: 50%;
   max-height: 90%;
-  width: calc(100% - 30px);
-  min-width: 300px;
-  max-width: 740px;
+  width: 100%;
+  max-width: 560px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
