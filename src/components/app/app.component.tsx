@@ -1,10 +1,19 @@
+import { useSelector } from "react-redux";
+import { selectModalIsOpened } from "../../store/modal/modal.selectors";
 import DefaultLayout from "../../layouts/default/default.layout";
+import Footer from "../footer";
 import Header from "../header";
 import Main from "../main";
-import Footer from "../footer";
+import Modal from "../modal";
 
 function App() {
-  return <DefaultLayout header={Header} main={Main} footer={Footer} />;
+  const isOpened = useSelector(selectModalIsOpened);
+  return (
+    <>
+      <DefaultLayout header={Header} main={Main} footer={Footer} />
+      <Modal isOpened={isOpened} />
+    </>
+  );
 }
 
 export default App;

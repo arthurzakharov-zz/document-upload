@@ -1,9 +1,13 @@
 import { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { openModal } from "../../store/modal/modal.actions";
 import { companyName } from "./footer.utils";
 import "./footer.css";
 
 function Footer() {
   const [links, setLinks] = useState<string[]>([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
@@ -18,7 +22,7 @@ function Footer() {
         {links.map((link: string, index: number) => (
           <Fragment key={link}>
             <li className="footer__item">
-              <button type="button" className="footer__button">
+              <button type="button" className="footer__button" onClick={() => dispatch(openModal())}>
                 {link}
               </button>
             </li>
