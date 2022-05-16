@@ -1,4 +1,10 @@
-import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
+import {
+  MODAL_OPEN,
+  MODAL_CLOSE,
+  CLEAR_MAIN,
+  TOGGLE_MODAL_BUTTON_VISIBILITY,
+  SET_BUTTON_CLICK_HANDLER,
+} from "./modal.types";
 import { ModalId } from "../../types";
 
 export const openModal = (type: ModalId) => ({
@@ -12,4 +18,14 @@ export const modalClose = () => ({
 
 export const clearMain = () => ({
   type: CLEAR_MAIN,
+});
+
+export const setModalIsButtonVisible = (isVisible: boolean) => ({
+  type: TOGGLE_MODAL_BUTTON_VISIBILITY,
+  payload: isVisible,
+});
+
+export const setModalButtonClickHandler = (handler: () => void) => ({
+  type: SET_BUTTON_CLICK_HANDLER,
+  payload: handler,
 });

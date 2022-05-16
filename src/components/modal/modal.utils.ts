@@ -6,8 +6,13 @@ export const modal = (isOpened: boolean): string =>
     "modal--closed": !isOpened,
   });
 
-export const modalBody = (isOpened: boolean): string =>
-  cn("modal__body", {
-    "modal__body--opened": isOpened,
-    "modal__body--closed": !isOpened,
+export const modalWrap = (isOpened: boolean): string =>
+  cn("modal__wrap", {
+    "modal__wrap--opened": isOpened,
+    "modal__wrap--closed": !isOpened,
+  });
+
+export const modalButton = (isVisible: boolean): string =>
+  cn("modal__button", {
+    "modal__button--visible": isVisible,
   });

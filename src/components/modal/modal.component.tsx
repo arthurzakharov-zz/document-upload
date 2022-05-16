@@ -1,9 +1,14 @@
 import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
 import { useSelector } from "react-redux";
+import {
+  selectModalButtonClickHandler,
+  selectModalIsButtonVisible,
+  selectModalMain,
+} from "../../store/modal/modal.selectors";
 import useCloseModal from "../../hooks/useCloseModal";
 import useLockedBody from "../../hooks/useLockedBody";
-import { selectModalMain } from "../../store/modal/modal.selectors";
-import { modal, modalBody } from "./modal.utils";
+import Button from "../button";
+import { modal, modalButton, modalWrap } from "./modal.utils";
 import "./modal.css";
 
 export interface ModalProps {
@@ -16,6 +21,8 @@ function Modal(props: ModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const Main = useSelector(selectModalMain);
+  const isButtonVisible = useSelector(selectModalIsButtonVisible);
+  const buttonClickHandler = useSelector(selectModalButtonClickHandler);
 
   const closeModal = useCloseModal();
 
@@ -56,9 +63,14 @@ function Modal(props: ModalProps) {
       onKeyUp={overlayPress}
       onClick={overlayClick}
     >
-      <div className={modalBody(isOpened)}>
-        <div className="modal__main">
-          <Main />
+      <div className={modalWrap(isOpened)}>
+        <div className="modal__body">
+          <div className="modal__main">
+            <Main />
+          </div>
+        </div>
+        <div className={modalButton(isButtonVisible)}>
+          <Button text="Schreiben #1 übermitteln" onClick={buttonClickHandler} />
         </div>
       </div>
     </div>
