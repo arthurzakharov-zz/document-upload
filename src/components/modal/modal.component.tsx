@@ -1,6 +1,7 @@
 import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
 import { useSelector } from "react-redux";
 import useCloseModal from "../../hooks/useCloseModal";
+import useLockedBody from "../../hooks/useLockedBody";
 import { selectModalMain } from "../../store/modal/modal.selectors";
 import { modal, modalBody } from "./modal.utils";
 import "./modal.css";
@@ -18,7 +19,10 @@ function Modal(props: ModalProps) {
 
   const closeModal = useCloseModal();
 
+  const { setLocked } = useLockedBody();
+
   useEffect(() => {
+    setLocked(isOpened);
     if (isOpened) {
       setTimeout(() => {
         if (overlayRef.current) {
@@ -52,7 +56,9 @@ function Modal(props: ModalProps) {
       onKeyUp={overlayPress}
       onClick={overlayClick}
     >
-      <div className={modalBody(isOpened)}>{Main && <Main />}</div>
+      <div className={modalBody(isOpened)}>
+        <div className="modal__main">{Main && <Main />}</div>
+      </div>
     </div>
   );
 }
