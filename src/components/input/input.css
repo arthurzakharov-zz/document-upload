@@ -1,0 +1,21 @@
+.input {
+  width: 100%;
+  border: 2px solid var(--grey-9);
+  border-radius: 2px;
+  background-color: var(--white-1);
+}
+
+.input__field {
+  border: none;
+  padding: 10px 17px 10px 13px;
+  width: 100%;
+  display: inline-block;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--black-2);
+}
+
+.input__field::placeholder {
+  color: var(--black-3);
+}

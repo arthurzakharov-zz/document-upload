@@ -1,4 +1,4 @@
-.load-single {
+.load {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -7,14 +7,15 @@
   overflow: hidden;
 }
 
-.load-single__content {
+.load__content {
+  max-width: 560px;
   padding: 16px 4px;
   overflow: auto;
   border-radius: 5px;
   background-color: var(--white-1);
 }
 
-.load-single__main {
+.load__main {
   padding: 4px 16px;
   display: flex;
   flex-direction: column;
@@ -22,17 +23,18 @@
   justify-content: flex-start;
 }
 
-.load-single__head {
+.load__head {
   margin-bottom: 20px;
   font-family: 'Titillium Web', sans-serif;
   font-weight: 400;
   font-size: 28px;
-  line-height: 24px;
+  line-height: 32px;
   text-align: center;
   color: var(--green-1);
+  word-break: break-all;
 }
 
-.load-single__info {
+.load__info {
   margin-bottom: 0;
   font-size: 14px;
   line-height: 1.4;
@@ -40,30 +42,30 @@
   color: var(--green-1);
 }
 
-.load-single__files {
+.load__files {
   margin: 10px 0;
   width: 100%;
   transition: margin 300ms cubic-bezier(0.4, 0, 0.2, 1);
   transition-delay: 0ms;
 }
 
-.load-single__files--open {
+.load__files--open {
   margin: 20px 0;
   transition-delay: 300ms;
 }
 
-.load-single__file {
+.load__file {
   margin-bottom: 10px;
   border-radius: 5px;
   padding: 10px;
   background-color: var(--grey-1);
 }
 
-.load-single__file--last {
+.load__file--last {
   margin-bottom: 0;
 }
 
-.load-single__button {
+.load__button {
   cursor: pointer;
   padding: 3px;
   display: flex;
@@ -71,18 +73,18 @@
   align-items: center;
 }
 
-.load-single__button-icon {
+.load__button-icon {
   height: 28px;
   fill: var(--orange-1);
 }
 
-.load-single__button-text {
+.load__button-text {
   margin-top: 5px;
   text-align: center;
   color: var(--orange-1);
 }
 
-.load-single__manual {
+.load__manual {
   margin-top: 20px;
   font-size: 14px;
   line-height: 1.4;
@@ -90,13 +92,38 @@
   color: var(--green-5);
 }
 
-.load-single__save {
+.load__save {
   opacity: 0;
   padding-top: 10px;
   width: 100%;
+  max-width: 560px;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.load-single__save--visible {
+.load__save--visible {
   opacity: 1;
+}
+
+.load__line {
+  border: none;
+  margin: 20px 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--grey-6);
+}
+
+.load__rename {
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--green-1);
+}
+
+.load__tip {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 22px;
+  color: var(--black-1);
 }

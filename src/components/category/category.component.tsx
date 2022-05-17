@@ -6,15 +6,18 @@ import Collapse from "../collapse";
 import File from "../file";
 import UploadButton from "../upload-button";
 import { category, categoryArrow } from "./category.utils";
-import "./category.css";
 import { openModal } from "../../store/modal/modal.actions";
+import { LoadModalProps } from "../../modals/load/load.modal";
+import "./category.css";
 
 export interface CategoryProps {
   label: string;
+  multi: boolean;
 }
 
 function Category(props: CategoryProps) {
-  const { label } = props;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { label, multi } = props;
 
   const [opened, setOpened] = useState<boolean>(false);
   const [files, setFiles] = useState<string[]>([]);
@@ -27,7 +30,7 @@ function Category(props: CategoryProps) {
   }, []);
 
   const clickHandler = () => {
-    dispatch(openModal("load-single"));
+    dispatch(openModal("load", { multi, label } as LoadModalProps));
   };
 
   const openFiles = () => {

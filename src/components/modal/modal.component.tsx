@@ -1,6 +1,6 @@
 import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
 import { useSelector } from "react-redux";
-import { selectModalMain } from "../../store/modal/modal.selectors";
+import { selectModalMain, selectModalMainProps } from "../../store/modal/modal.selectors";
 import useCloseModal from "../../hooks/useCloseModal";
 import useLockedBody from "../../hooks/useLockedBody";
 import { modal, modalBody } from "./modal.utils";
@@ -16,6 +16,8 @@ function Modal(props: ModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const Main = useSelector(selectModalMain);
+
+  const mainProps = useSelector(selectModalMainProps);
 
   const closeModal = useCloseModal();
 
@@ -57,7 +59,7 @@ function Modal(props: ModalProps) {
       onClick={overlayClick}
     >
       <div className={modalBody(isOpened)}>
-        <Main />
+        <Main {...mainProps} />
       </div>
     </div>
   ) : null;

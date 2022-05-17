@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 import GeneralInfoModal from "../../modals/general-info";
 import ImpressumModal from "../../modals/impressum";
-import LoadSingleModal from "../../modals/load-single";
+import LoadModal from "../../modals/load";
 import PrivacyModal from "../../modals/privacy";
 import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
 import { Action, ModalId, Reducer } from "../../types";
@@ -9,21 +9,23 @@ import { Action, ModalId, Reducer } from "../../types";
 export interface ModalReducer {
   isOpen: boolean;
   main: ElementType | null;
+  mainProps: Object;
 }
 
 const INITIAL_STATE: ModalReducer = {
   isOpen: false,
   main: null,
+  mainProps: {},
 };
 
-const main = (id: ModalId) => {
+const main = (id: ModalId): ElementType | null => {
   switch (id) {
     case "general_info":
       return GeneralInfoModal;
     case "impressum":
       return ImpressumModal;
-    case "load-single":
-      return LoadSingleModal;
+    case "load":
+      return LoadModal;
     case "privacy":
       return PrivacyModal;
     default:
@@ -38,7 +40,8 @@ const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE
       return {
         ...state,
         isOpen: true,
-        main: main(action.payload),
+        main: main(action.payload.type),
+        mainProps: action.payload.props,
       };
     case MODAL_CLOSE:
       return {

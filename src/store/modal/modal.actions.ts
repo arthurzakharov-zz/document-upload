@@ -1,9 +1,12 @@
 import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
 import { ModalId } from "../../types";
 
-export const openModal = (type: ModalId) => ({
+export const openModal = (type: ModalId, props?: Object) => ({
   type: MODAL_OPEN,
-  payload: type,
+  payload: {
+    type,
+    props,
+  },
 });
 
 export const modalClose = () => ({

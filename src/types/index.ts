@@ -5,9 +5,18 @@ export interface Action {
 
 export type Reducer<T> = (state: T, action: Action) => T;
 
-export type ModalId = "general_info" | "privacy" | "impressum" | "load-single";
+export type ModalId = "general_info" | "privacy" | "impressum" | "load";
 
 export type FooterLink = {
   label: string;
   id: ModalId;
+};
+
+export type DocumentCategory = {
+  label: string;
+  multi: boolean;
+};
+
+export type ModalProps = {
+  props: Object;
 };
