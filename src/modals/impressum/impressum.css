@@ -1,0 +1,15 @@
+.impressum {
+  border-radius: 8px;
+  padding: 16px 4px;
+  background-color: var(--white-1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.impressum__content {
+  padding: 4px 16px;
+  overflow: auto;
+}

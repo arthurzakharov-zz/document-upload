@@ -1,27 +1,13 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { setModalButtonClickHandler, setModalIsButtonVisible } from "../../store/modal/modal.actions";
+import { useState } from "react";
 import SvgUpload from "../../svg/Upload";
 import Collapse from "../../components/collapse";
 import File from "../../components/file";
 import { loadSingleFiles } from "./load-single.utils";
 import "./load-single.css";
-import useCloseModal from "../../hooks/useCloseModal";
 
 function LoadSingleModal() {
   const [files, setFiles] = useState<string[]>([]);
   const [fileToClose, setFileToClose] = useState<string>();
-
-  const dispatch = useDispatch();
-  const closeModal = useCloseModal();
-
-  useEffect(() => {
-    dispatch(setModalButtonClickHandler(closeModal));
-  }, []);
-
-  useEffect(() => {
-    dispatch(setModalIsButtonVisible(files.length > 0));
-  }, [files]);
 
   const onFileClick = (file: string) => {
     setFileToClose(file);

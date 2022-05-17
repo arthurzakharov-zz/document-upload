@@ -3,26 +3,16 @@ import GeneralInfoModal from "../../modals/general-info";
 import ImpressumModal from "../../modals/impressum";
 import LoadSingleModal from "../../modals/load-single";
 import PrivacyModal from "../../modals/privacy";
-import {
-  MODAL_OPEN,
-  MODAL_CLOSE,
-  CLEAR_MAIN,
-  TOGGLE_MODAL_BUTTON_VISIBILITY,
-  SET_BUTTON_CLICK_HANDLER,
-} from "./modal.types";
+import { MODAL_OPEN, MODAL_CLOSE, CLEAR_MAIN } from "./modal.types";
 import { Action, ModalId, Reducer } from "../../types";
 
 export interface ModalReducer {
   isOpen: boolean;
-  isButtonVisible: boolean;
-  buttonClickHandler: () => void;
   main: ElementType | null;
 }
 
 const INITIAL_STATE: ModalReducer = {
   isOpen: false,
-  isButtonVisible: false,
-  buttonClickHandler: () => {},
   main: null,
 };
 
@@ -58,19 +48,7 @@ const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE
     case CLEAR_MAIN:
       return {
         ...state,
-        isButtonVisible: false,
-        buttonClickHandler: () => {},
         main: null,
-      };
-    case TOGGLE_MODAL_BUTTON_VISIBILITY:
-      return {
-        ...state,
-        isButtonVisible: action.payload,
-      };
-    case SET_BUTTON_CLICK_HANDLER:
-      return {
-        ...state,
-        buttonClickHandler: action.payload,
       };
     default: {
       return {

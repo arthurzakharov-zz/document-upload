@@ -5,11 +5,12 @@
   width: 100vw;
   height: 100vh;
   display: block;
-  background-color: var(--grey-5);
+  visibility: visible;
+  background-color: var(--grey-8);
 }
 
 .modal--opened {
-  animation-name: modalOverlayFadeIn;
+  animation-name: modalFadeIn;
   transition-delay: 0ms;
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -18,7 +19,7 @@
 }
 
 .modal--closed {
-  animation-name: modalOverlayFadeOut;
+  animation-name: modalFadeOut;
   transition-delay: 300ms;
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -26,13 +27,20 @@
   animation-delay: 600ms;
 }
 
-.modal__wrap {
+.modal__body {
   position: absolute;
   z-index: 1;
   left: 50%;
+  max-height: 85%;
+  width: calc(100% - 40px);
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-.modal__wrap--opened {
+.modal__body--opened {
   top: 0;
   transform: translate(-50%, -100%);
   animation-name: modalBodySlideIn;
@@ -42,7 +50,7 @@
   animation-fill-mode: forwards;
 }
 
-.modal__wrap--closed {
+.modal__body--closed {
   top: 50%;
   transform: translate(-50%, -50%);
   animation: modalBodySlideOut;
@@ -52,48 +60,7 @@
   animation-fill-mode: forwards;
 }
 
-.modal__body {
-  max-height: 75vh;
-  width: calc(100vw - 40px);
-  max-width: 560px;
-  border-radius: 8px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  background-color: white;
-}
-
-.modal__main {
-  padding: 6px;
-  overflow-y: auto;
-}
-
-.modal__button {
-  padding-top: 10px;
-}
-
-.modal__button--opened {
-  animation-name: modalOverlayFadeIn;
-  transition-delay: 0ms;
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  animation-fill-mode: forwards;
-  animation-delay: 0ms;
-}
-
-.modal__button--closed {
-  animation-name: modalOverlayFadeOut;
-  transition-delay: 300ms;
-  animation-duration: 300ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  animation-fill-mode: forwards;
-  animation-delay: 0ms;
-}
-
-@keyframes modalOverlayFadeIn {
+@keyframes modalFadeIn {
   from {
     opacity: 0;
     visibility: hidden;
@@ -106,12 +73,14 @@
   }
 }
 
-@keyframes modalOverlayFadeOut {
+@keyframes modalFadeOut {
   from {
+    opacity: 1;
     visibility: visible;
     display: block;
   }
   to {
+    opacity: 0;
     visibility: hidden;
     display: none;
   }
@@ -138,5 +107,3 @@
     transform: translate(-50%, -100%);
   }
 }
-
-
