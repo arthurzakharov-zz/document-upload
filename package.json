@@ -2,7 +2,7 @@
   "name": "document-upload",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://arthurzakharov.github.io/document-upload-front-end/",
+  "homepage": "https://arthurzakharov.github.io/document-upload/",
   "scripts": {
     "start": "npm run svgr && react-scripts start",
     "build": "npm run svgr && react-scripts build",
