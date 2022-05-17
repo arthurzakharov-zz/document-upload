@@ -48,12 +48,12 @@
 }
 
 .header__time {
-  display: flex;
+  display: none;
   align-items: center;
 }
 
 .header__schedule {
-  display: none;
+  display: inline;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 12px;
@@ -67,8 +67,10 @@
   .header__logo {
     height: 42px;
   }
-  .header__number,
-  .header__schedule {
+  .header__time {
+    display: flex;
+  }
+  .header__number {
     display: inline;
   }
 }
