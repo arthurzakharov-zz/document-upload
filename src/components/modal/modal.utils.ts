@@ -14,5 +14,6 @@ export const modalWrap = (isOpened: boolean): string =>
 
 export const modalButton = (isVisible: boolean): string =>
   cn("modal__button", {
-    "modal__button--visible": isVisible,
+    "modal__button--opened": isVisible,
+    "modal__button--closed": !isVisible,
   });

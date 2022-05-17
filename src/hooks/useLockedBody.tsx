@@ -36,13 +36,13 @@ const useLockedBody: UseLockedBody = (initialLocked: boolean = false, documentId
         document.body.style.paddingRight = originalPaddingRight;
       }
     };
-  }, [locked, documentId]);
+  }, [locked]);
 
   useEffect(() => {
     if (locked !== initialLocked) {
       setLocked(initialLocked);
     }
-  }, [initialLocked, locked]);
+  }, [initialLocked]);
 
   return { locked, setLocked };
 };

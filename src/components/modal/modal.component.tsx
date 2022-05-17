@@ -1,4 +1,4 @@
-import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
+import { useEffect, useRef, KeyboardEvent, MouseEvent, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   selectModalButtonClickHandler,
@@ -18,6 +18,8 @@ export interface ModalProps {
 function Modal(props: ModalProps) {
   const { isOpened } = props;
 
+  const [buttonVisible, setButtonVisible] = useState<boolean>(false);
+
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const Main = useSelector(selectModalMain);
@@ -27,6 +29,16 @@ function Modal(props: ModalProps) {
   const closeModal = useCloseModal();
 
   const { setLocked } = useLockedBody();
+
+  useEffect(() => {
+    if (isButtonVisible) {
+      setButtonVisible(isButtonVisible);
+    } else {
+      setTimeout(() => {
+        setButtonVisible(isButtonVisible);
+      }, 700);
+    }
+  }, [isButtonVisible]);
 
   useEffect(() => {
     setLocked(isOpened);
@@ -69,9 +81,11 @@ function Modal(props: ModalProps) {
             <Main />
           </div>
         </div>
-        <div className={modalButton(isButtonVisible)}>
-          <Button text="Schreiben #1 übermitteln" onClick={buttonClickHandler} />
-        </div>
+        {buttonVisible && (
+          <div className={modalButton(isButtonVisible)}>
+            <Button text="Schreiben #1 übermitteln" onClick={buttonClickHandler} />
+          </div>
+        )}
       </div>
     </div>
   ) : null;

@@ -25,10 +25,11 @@ function LoadSingleModal() {
 
   const onFileClick = (file: string) => {
     setFileToClose(file);
-    // TODO: Think about concept how to solve delete button blick on some cases. Maybe some kind of memo
-    setTimeout(() => {
-      setFiles(files.filter((f: string) => f !== file));
-    }, 600);
+    if (files.length)
+      // TODO: Think about concept how to solve delete button blick on some cases. Maybe some kind of memo
+      setTimeout(() => {
+        setFiles(files.filter((f: string) => f !== file));
+      }, 600);
   };
 
   return (
