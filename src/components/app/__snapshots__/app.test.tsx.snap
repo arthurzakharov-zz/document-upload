@@ -149,33 +149,11 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__left"
               >
-                <button
-                  class="category__button"
-                  type="button"
+                <h6
+                  class="category__label"
                 >
-                  <svg
-                    class="category__arrow"
-                    fill="none"
-                    stroke="#0C6658"
-                    viewBox="0 0 8 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m1 .5 5.96 5.958"
-                      stroke-width="1.4"
-                    />
-                    <path
-                      d="m1 11.5 5.96-5.958"
-                      stroke-opacity="0.5"
-                      stroke-width="1.4"
-                    />
-                  </svg>
-                  <h6
-                    class="category__label"
-                  >
-                    Personalausweis
-                  </h6>
-                </button>
+                  Personalausweis
+                </h6>
                 <div
                   class="category__question"
                 >
@@ -194,11 +172,6 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__right"
               >
-                <div
-                  class="category__count"
-                >
-                  2
-                </div>
                 <button
                   class="upload-button"
                   data-testid="upload-button"
@@ -318,33 +291,11 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__left"
               >
-                <button
-                  class="category__button"
-                  type="button"
+                <h6
+                  class="category__label"
                 >
-                  <svg
-                    class="category__arrow"
-                    fill="none"
-                    stroke="#0C6658"
-                    viewBox="0 0 8 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m1 .5 5.96 5.958"
-                      stroke-width="1.4"
-                    />
-                    <path
-                      d="m1 11.5 5.96-5.958"
-                      stroke-opacity="0.5"
-                      stroke-width="1.4"
-                    />
-                  </svg>
-                  <h6
-                    class="category__label"
-                  >
-                    Gläubigerunterlagen
-                  </h6>
-                </button>
+                  Gläubigerunterlagen
+                </h6>
                 <div
                   class="category__question"
                 >
@@ -363,11 +314,6 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__right"
               >
-                <div
-                  class="category__count"
-                >
-                  2
-                </div>
                 <button
                   class="upload-button"
                   data-testid="upload-button"
@@ -548,21 +494,14 @@ exports[`App Snapshot 1`] = `
                     Hochladen
                   </span>
                   <svg
-                    class="upload-button__upload"
-                    data-testid="upload-button-upload"
+                    class="upload-button__plus"
+                    data-testid="upload-button-plus"
                     fill="#fff"
-                    viewBox="0 0 14 14"
+                    viewBox="0 0 14 15"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      clip-rule="evenodd"
-                      d="M1.767 9.564v2.639h10.46c.036-.845.006-1.77.016-2.64.568 0 1.169.01 1.746 0v2.988c0 .716-.002 1.22-.577 1.38-.398.112-1.08.03-1.594.03H2.07c-1.036 0-1.914.163-2.035-.742-.071-.531-.015-1.177-.015-1.805V9.609c-.001-.021-.003-.043.015-.045h1.73Z"
-                      fill-rule="evenodd"
-                    />
-                    <path
-                      clip-rule="evenodd"
-                      d="M11.484 6.47a180.214 180.214 0 0 0-3.507-3.473v7.477H6.23V3.012c-.075-.032-.147.101-.213.167-1.077 1.075-2.21 2.21-3.31 3.276-.285-.308-1.213-1.177-1.214-1.214-.002-.028 3.124-3.105 4.54-4.519.35-.351.837-.985 1.517-.576.225.135.434.403.653.621 1.473 1.472 3.048 3.03 4.494 4.49-.421.388-.78.838-1.214 1.213Z"
-                      fill-rule="evenodd"
+                      d="M7.933 6.098H14v1.867H7.933v6.066H6.067V7.965L0 7.99V6.098l6.067-.026V.032h1.866v6.066Z"
                     />
                   </svg>
                 </button>
@@ -656,33 +595,11 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__left"
               >
-                <button
-                  class="category__button"
-                  type="button"
+                <h6
+                  class="category__label"
                 >
-                  <svg
-                    class="category__arrow"
-                    fill="none"
-                    stroke="#0C6658"
-                    viewBox="0 0 8 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m1 .5 5.96 5.958"
-                      stroke-width="1.4"
-                    />
-                    <path
-                      d="m1 11.5 5.96-5.958"
-                      stroke-opacity="0.5"
-                      stroke-width="1.4"
-                    />
-                  </svg>
-                  <h6
-                    class="category__label"
-                  >
-                    Arbeitsvertrag
-                  </h6>
-                </button>
+                  Arbeitsvertrag
+                </h6>
                 <div
                   class="category__question"
                 >
@@ -701,11 +618,6 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__right"
               >
-                <div
-                  class="category__count"
-                >
-                  2
-                </div>
                 <button
                   class="upload-button"
                   data-testid="upload-button"
@@ -825,33 +737,11 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__left"
               >
-                <button
-                  class="category__button"
-                  type="button"
+                <h6
+                  class="category__label"
                 >
-                  <svg
-                    class="category__arrow"
-                    fill="none"
-                    stroke="#0C6658"
-                    viewBox="0 0 8 12"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="m1 .5 5.96 5.958"
-                      stroke-width="1.4"
-                    />
-                    <path
-                      d="m1 11.5 5.96-5.958"
-                      stroke-opacity="0.5"
-                      stroke-width="1.4"
-                    />
-                  </svg>
-                  <h6
-                    class="category__label"
-                  >
-                    Schufa-Auskunft
-                  </h6>
-                </button>
+                  Schufa-Auskunft
+                </h6>
                 <div
                   class="category__question"
                 >
@@ -870,11 +760,6 @@ exports[`App Snapshot 1`] = `
               <div
                 class="category__right"
               >
-                <div
-                  class="category__count"
-                >
-                  2
-                </div>
                 <button
                   class="upload-button"
                   data-testid="upload-button"
@@ -1055,21 +940,14 @@ exports[`App Snapshot 1`] = `
                     Hochladen
                   </span>
                   <svg
-                    class="upload-button__upload"
-                    data-testid="upload-button-upload"
+                    class="upload-button__plus"
+                    data-testid="upload-button-plus"
                     fill="#fff"
-                    viewBox="0 0 14 14"
+                    viewBox="0 0 14 15"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      clip-rule="evenodd"
-                      d="M1.767 9.564v2.639h10.46c.036-.845.006-1.77.016-2.64.568 0 1.169.01 1.746 0v2.988c0 .716-.002 1.22-.577 1.38-.398.112-1.08.03-1.594.03H2.07c-1.036 0-1.914.163-2.035-.742-.071-.531-.015-1.177-.015-1.805V9.609c-.001-.021-.003-.043.015-.045h1.73Z"
-                      fill-rule="evenodd"
-                    />
-                    <path
-                      clip-rule="evenodd"
-                      d="M11.484 6.47a180.214 180.214 0 0 0-3.507-3.473v7.477H6.23V3.012c-.075-.032-.147.101-.213.167-1.077 1.075-2.21 2.21-3.31 3.276-.285-.308-1.213-1.177-1.214-1.214-.002-.028 3.124-3.105 4.54-4.519.35-.351.837-.985 1.517-.576.225.135.434.403.653.621 1.473 1.472 3.048 3.03 4.494 4.49-.421.388-.78.838-1.214 1.213Z"
-                      fill-rule="evenodd"
+                      d="M7.933 6.098H14v1.867H7.933v6.066H6.067V7.965L0 7.99V6.098l6.067-.026V.032h1.866v6.066Z"
                     />
                   </svg>
                 </button>

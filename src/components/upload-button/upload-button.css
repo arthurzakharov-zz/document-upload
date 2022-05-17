@@ -19,6 +19,11 @@
   stroke: var(--green-2);
 }
 
+.upload-button__plus {
+  height: 13px;
+  fill: var(--white-1);
+}
+
 .upload-button__upload {
   height: 14px;
   fill: var(--white-1);

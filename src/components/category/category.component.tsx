@@ -41,17 +41,21 @@ function Category(props: CategoryProps) {
     <div className={category(opened)}>
       <div className="category__content">
         <div className="category__left">
-          <button type="button" className="category__button" onClick={openFiles}>
-            <SvgArrow className={categoryArrow(opened)} />
+          {multi ? (
+            <button type="button" className="category__button" onClick={openFiles}>
+              <SvgArrow className={categoryArrow(opened)} />
+              <h6 className="category__label">{label}</h6>
+            </button>
+          ) : (
             <h6 className="category__label">{label}</h6>
-          </button>
+          )}
           <div className="category__question">
             <SvgQuestion className="category__symbol" />
           </div>
         </div>
         <div className="category__right">
-          <div className="category__count">{files.length}</div>
-          <UploadButton loaded={false} onClick={clickHandler} />
+          {multi ? <div className="category__count">{files.length}</div> : null}
+          <UploadButton loaded={false} plus={multi} onClick={clickHandler} />
         </div>
       </div>
       <Collapse isOpen={opened}>
