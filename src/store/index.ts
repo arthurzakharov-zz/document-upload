@@ -4,7 +4,8 @@ import { createLogger } from "redux-logger";
 import reducer from "./root.reducer";
 
 const logger = createLogger({
-  level: "log",
+  level: "info",
+  duration: true,
 });
 
 export default createStore(reducer, applyMiddleware(...[thunk, logger]));

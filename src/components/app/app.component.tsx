@@ -14,6 +14,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // TODO: what makes it render 2 times?
     dispatch(initFiles());
   }, []);
 
