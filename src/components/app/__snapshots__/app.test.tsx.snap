@@ -204,12 +204,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"
@@ -346,12 +346,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"
@@ -508,12 +508,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"
@@ -650,12 +650,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"
@@ -792,12 +792,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"
@@ -954,12 +954,12 @@ exports[`App Snapshot 1`] = `
               </div>
             </div>
             <div
-              class="collapse"
-              data-testid="collapse"
-              style="height: 0px;"
+              aria-hidden="true"
+              class="rah-static rah-static--height-zero"
+              style="height: 0px; overflow: hidden;"
             >
               <div
-                class="collapse__content collapse__content--hidden"
+                style="transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1) 150ms; opacity: 0; display: none;"
               >
                 <div
                   class="category__files"

@@ -1,9 +1,9 @@
 import { MouseEvent } from "react";
 import SvgCheck from "../../svg/Check";
+import SvgPlus from "../../svg/Plus";
 import SvgUpload from "../../svg/Upload";
 import { uploadButton } from "./upload-button.utils";
 import "./upload-button.css";
-import SvgPlus from "../../svg/Plus";
 
 export interface UploadButtonProps {
   loaded: boolean;

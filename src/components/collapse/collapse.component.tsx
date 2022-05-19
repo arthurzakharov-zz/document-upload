@@ -1,37 +1,30 @@
-import { useState, useEffect, useRef, ReactElement } from "react";
-import { collapseContent, stylesCollapse } from "./collapse.utils";
-import "./collapse.css";
+import { useState, useEffect, PropsWithChildren } from "react";
+import AnimateHeight from "react-animate-height";
 
 export interface CollapseProps {
   isOpen: boolean;
-  children: ReactElement | ReactElement[];
+  duration?: number;
 }
 
-function Collapse(props: CollapseProps) {
-  const { isOpen, children } = props;
+function Collapse(props: PropsWithChildren<CollapseProps>) {
+  const { isOpen, children, duration = 300 } = props;
 
-  const [contentHeight, setContentHeight] = useState<number>(0);
-
-  const ref = useRef<HTMLDivElement>(null);
-
-  const getHeight = (el: ChildNode) => {
-    const component = el as HTMLElement;
-    const { height } = component.getBoundingClientRect();
-    return height;
-  };
+  const [height, setHeight] = useState<string | number>(0);
 
   useEffect(() => {
-    if (ref.current) {
-      const childrenArray = Array.from(ref.current.childNodes);
-      const height = childrenArray.reduce((sum: number, node: ChildNode) => sum + getHeight(node), 0) - 2;
-      setContentHeight(height);
-    }
+    setHeight(isOpen ? "auto" : 0);
   }, [isOpen]);
 
   return (
-    <div data-testid="collapse" ref={ref} className="collapse" style={{ ...stylesCollapse(isOpen, contentHeight) }}>
-      <div className={collapseContent(isOpen)}>{children}</div>
-    </div>
+    <AnimateHeight
+      duration={duration}
+      delay={duration / 2}
+      animateOpacity
+      easing="cubic-bezier(0.4, 0, 0.2, 1)"
+      height={height}
+    >
+      {children}
+    </AnimateHeight>
   );
 }
 

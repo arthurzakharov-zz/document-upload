@@ -1,12 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { modalClose } from "../../store/modal/modal.actions";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";
 import Collapse from "../../components/collapse";
 import File from "../../components/file";
-import useCloseModal from "../../hooks/useCloseModal";
+import Input from "../../components/input";
 import { buttonName, documentLabel, loadFiles, loadSave } from "./load.utils";
 import "./load.css";
-import Input from "../../components/input";
 
 export interface LoadModalProps {
   multi: boolean;
@@ -20,10 +21,10 @@ function LoadModal(props: LoadModalProps) {
   const [fileToClose, setFileToClose] = useState<string>();
   const [title, setTitle] = useState<string>(label);
 
-  const closeModal = useCloseModal();
+  const dispatch = useDispatch();
 
   const saveFiles = () => {
-    closeModal();
+    dispatch(modalClose());
   };
 
   const onFileClick = (file: string) => {

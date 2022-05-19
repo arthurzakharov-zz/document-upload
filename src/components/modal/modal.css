@@ -15,9 +15,13 @@
   opacity: 0;
 }
 
+/* 600ms */
+
 .modal-enter-active {
   opacity: 1;
-  transition: opacity var(--modal-fade);
+  transition: opacity calc(var(--modal-fade) * 1.5);
+  transition-delay: calc(var(--modal-fade) / 2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-exit {
@@ -26,8 +30,9 @@
 
 .modal-exit-active {
   opacity: 0;
-  transition: opacity var(--modal-fade);
-  transition-delay: calc(var(--modal-fade) * 1.5);
+  transition: opacity calc(var(--modal-fade) * 1.5);
+  transition-delay: calc(var(--modal-fade) * 2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal__body {
@@ -45,18 +50,24 @@
   top: -100%;
 }
 
+/* 450ms */
+
 .modal-enter-done .modal__body {
   top: 0;
   transition: top var(--modal-fade);
   transition-delay: calc(var(--modal-fade) / 2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-exit .modal__body {
   top: 0;
 }
 
+/* 450ms */
+
 .modal-exit-active .modal__body {
   top: -100%;
   transition: top var(--modal-fade);
-  transition-delay: 0ms;
+  transition-delay: calc(var(--modal-fade) / 2);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
