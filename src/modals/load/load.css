@@ -45,13 +45,6 @@
 .load__files {
   margin: 10px 0;
   width: 100%;
-  transition: margin 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-delay: 0ms;
-}
-
-.load__files--open {
-  margin: 20px 0;
-  transition-delay: 300ms;
 }
 
 .load__file {
@@ -59,10 +52,6 @@
   border-radius: 5px;
   padding: 10px;
   background-color: var(--grey-1);
-}
-
-.load__file--last {
-  margin-bottom: 0;
 }
 
 .load__button {
@@ -93,15 +82,11 @@
 }
 
 .load__save {
-  opacity: 0;
+  --load-save-fade: 300ms;
   padding-top: 10px;
   width: 100%;
   max-width: 560px;
   transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.load__save--visible {
-  opacity: 1;
 }
 
 .load__line {

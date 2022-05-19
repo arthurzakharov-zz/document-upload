@@ -16,7 +16,6 @@ export interface CategoryProps {
 }
 
 function Category(props: CategoryProps) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { label, multi } = props;
 
   const [opened, setOpened] = useState<boolean>(false);
@@ -58,7 +57,7 @@ function Category(props: CategoryProps) {
           <UploadButton loaded={false} plus={multi} onClick={clickHandler} />
         </div>
       </div>
-      <Collapse isOpen={opened}>
+      <Collapse opened={opened}>
         <div className="category__files">
           {files.map((file: string) => (
             <div key={file} className="category__file">

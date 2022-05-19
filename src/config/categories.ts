@@ -7,7 +7,7 @@ const categories: DocumentCategory[] = [
   },
   {
     label: "Gläubigerunterlagen",
-    multi: false,
+    multi: true,
   },
   {
     label: "Einkommensnachweis",
@@ -15,7 +15,7 @@ const categories: DocumentCategory[] = [
   },
   {
     label: "Arbeitsvertrag",
-    multi: false,
+    multi: true,
   },
   {
     label: "Schufa-Auskunft",

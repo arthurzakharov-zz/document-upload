@@ -15,8 +15,6 @@
   opacity: 0;
 }
 
-/* 600ms */
-
 .modal-enter-active {
   opacity: 1;
   transition: opacity calc(var(--modal-fade) * 1.5);
@@ -50,8 +48,6 @@
   top: -100%;
 }
 
-/* 450ms */
-
 .modal-enter-done .modal__body {
   top: 0;
   transition: top var(--modal-fade);
@@ -62,8 +58,6 @@
 .modal-exit .modal__body {
   top: 0;
 }
-
-/* 450ms */
 
 .modal-exit-active .modal__body {
   top: -100%;

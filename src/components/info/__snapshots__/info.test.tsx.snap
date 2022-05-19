@@ -17,7 +17,7 @@ exports[`Info Snapshot 1`] = `
       data-testid="info-number"
     >
       <b>
-        Referenznummer: 
+        Aktenzeichen: 
       </b>
       SBE22.0121-24046542
     </div>

@@ -16,7 +16,7 @@ function Info() {
       <h1 className="info__title">Dokumentenübermittlung</h1>
       <div className="info__info">
         <div data-testid="info-number" className="info__label">
-          <b>Referenznummer: </b>
+          <b>Aktenzeichen: </b>
           {number}
         </div>
         <div data-testid="info-name" className="info__label">

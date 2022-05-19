@@ -6,7 +6,7 @@ import Button from "../../components/button";
 import Collapse from "../../components/collapse";
 import File from "../../components/file";
 import Input from "../../components/input";
-import { buttonName, documentLabel, loadFiles, loadSave } from "./load.utils";
+import { buttonName, documentLabel } from "./load.utils";
 import "./load.css";
 
 export interface LoadModalProps {
@@ -29,11 +29,9 @@ function LoadModal(props: LoadModalProps) {
 
   const onFileClick = (file: string) => {
     setFileToClose(file);
-    if (files.length)
-      // TODO: Think about concept how to solve delete button blick on some cases. Maybe some kind of memo
-      setTimeout(() => {
-        setFiles(files.filter((f: string) => f !== file));
-      }, 450);
+    setTimeout(() => {
+      setFiles(files.filter((f: string) => f !== file));
+    }, 450);
   };
 
   const onFileNameChange = (name: string, value: string) => {
@@ -46,10 +44,13 @@ function LoadModal(props: LoadModalProps) {
         <div className="load__main">
           <h6 className="load__head">{documentLabel(title, 2)}</h6>
           <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres Personalausweises/Reisepasses aus.</div>
-          <div className={loadFiles(files.length > 0)}>
-            {files.map((file: string) => (
-              <Collapse key={file} isOpen={fileToClose !== file}>
-                <div className="load__file">
+          <div className="load__files">
+            {files.map((file: string, index: number) => (
+              <Collapse key={file} opened={fileToClose !== file} duration={300}>
+                <div
+                  className="load__file"
+                  style={{ marginTop: index === 0 ? 10 : 0, marginBottom: files.length - 1 >= index ? 10 : 0 }}
+                >
                   <File name={file} onClick={() => onFileClick(file)} />
                 </div>
               </Collapse>
@@ -81,8 +82,10 @@ function LoadModal(props: LoadModalProps) {
           ) : null}
         </div>
       </div>
-      <div className={loadSave(files.length > 0)}>
-        <Button text={buttonName(title, 2)} onClick={saveFiles} />
+      <div className="load__save">
+        <Collapse opened={files.length > 0}>
+          <Button text={buttonName(title, 2)} onClick={saveFiles} />
+        </Collapse>
       </div>
     </div>
   );
