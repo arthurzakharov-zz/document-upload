@@ -1,9 +1,10 @@
+import { ImageListType } from "react-images-uploading";
 import { Action, DocumentCategory, Reducer } from "../../types";
-import { INIT_FILES } from "./file.types";
+import { ADD_FILES_TO_CATEGORY, INIT_FILES } from "./file.types";
 import categories from "../../config/categories";
 
 export interface FileReducer {
-  [key: string]: string[];
+  [key: string]: ImageListType;
 }
 
 const INITIAL_STATE: FileReducer = {};
@@ -15,6 +16,11 @@ const fileReducer: Reducer<FileReducer> = (state: FileReducer = INITIAL_STATE, a
       return categories.reduce((obj: FileReducer, category: DocumentCategory) => {
         return { ...obj, [category.label]: [] };
       }, {});
+    case ADD_FILES_TO_CATEGORY:
+      return {
+        ...state,
+        [action.payload.category]: action.payload.files,
+      };
     default: {
       return {
         ...state,

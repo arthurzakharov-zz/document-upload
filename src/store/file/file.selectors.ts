@@ -4,5 +4,5 @@ import { FileReducer } from "./file.reducer";
 
 export const selectFile = (state: RootReducer) => state.file;
 
-export const selectFileCategoryByName = (name: string) =>
-  createSelector([selectFile], (file: FileReducer) => file[name]);
+export const selectFileCategoryByName = (label: string) =>
+  createSelector([selectFile], (file: FileReducer) => file[label]);

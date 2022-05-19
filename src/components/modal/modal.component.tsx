@@ -22,14 +22,12 @@ function Modal() {
   }, [isOpened, setLocked]);
 
   const overlayClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
     if (e.target === ref.current) {
       dispatch(modalClose());
     }
   };
 
   const overlayPress = (e: KeyboardEvent<HTMLDivElement>) => {
-    e.preventDefault();
     if (e.target === ref.current && e.key === "Enter") {
       dispatch(modalClose());
     }

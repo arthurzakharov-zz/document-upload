@@ -1,11 +1,10 @@
-import { MouseEvent } from "react";
 import SvgTrash from "../../svg/Trash";
 import SvgFile from "../../svg/File";
 import "./file.css";
 
 export interface FileProps {
   name: string;
-  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  onClick?: () => void;
 }
 
 function File(props: FileProps) {

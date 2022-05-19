@@ -1,8 +1,9 @@
-/* eslint-disable */
 import { useState } from "react";
-import ImageUploading, { ImageListType } from "react-images-uploading";
-import { useDispatch } from "react-redux";
+import ImageUploading, { ImageListType, ImageType } from "react-images-uploading";
+import { useDispatch, useSelector } from "react-redux";
 import { modalClose } from "../../store/modal/modal.actions";
+import { addFilesToCategory } from "../../store/file/file.actions";
+import { selectFileCategoryByName } from "../../store/file/file.selectors";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";
 import Collapse from "../../components/collapse";
@@ -19,10 +20,10 @@ export interface LoadModalProps {
 function LoadModal(props: LoadModalProps) {
   const { multi, label } = props;
 
-  const [files, setFiles] = useState<string[]>([]);
-  const [fileToClose, setFileToClose] = useState<string>();
+  const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
-  const [images, setImages] = useState<ImageListType>([]);
+
+  const categoryFiles = useSelector(selectFileCategoryByName(label));
 
   const dispatch = useDispatch();
 
@@ -30,10 +31,11 @@ function LoadModal(props: LoadModalProps) {
     dispatch(modalClose());
   };
 
-  const onFileClick = (file: string) => {
-    setFileToClose(file);
+  const onFileClick = (imageType: ImageType, index: number, onImageRemove: (index: number) => void) => {
+    setFileToClose(imageType.file!.name);
     setTimeout(() => {
-      setFiles(files.filter((f: string) => f !== file));
+      onImageRemove(index);
+      setFileToClose("");
     }, 450);
   };
 
@@ -41,35 +43,36 @@ function LoadModal(props: LoadModalProps) {
     setTitle(value);
   };
 
-  const onChange = (imageList: ImageListType, addUpdateIndex: number[] | undefined) => {
-    // data for submit
-    console.log(imageList, addUpdateIndex);
-    setImages(imageList as never[]);
+  const onChange = (files: ImageListType) => {
+    dispatch(addFilesToCategory(label, files));
   };
 
   return (
     <div className="load">
       <div className="load__content">
-        <ImageUploading multiple maxNumber={5} value={images} onChange={onChange}>
-          {({ onImageUpload }) => (
+        <ImageUploading multiple maxNumber={5} value={categoryFiles} onChange={onChange}>
+          {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
               <h6 className="load__head">{documentLabel(title, 2)}</h6>
               <div className="load__info">
                 Wählen Sie hier nur Dateien/Photos Ihres Personalausweises/Reisepasses aus.
               </div>
               <div className="load__files">
-                {files.map((file: string, index: number) => (
-                  <Collapse key={file} opened={fileToClose !== file} duration={300}>
+                {categoryFiles.map((imageType: ImageType, index: number) => (
+                  <Collapse key={imageType.file!.name} opened={fileToClose !== imageType.file!.name} duration={300}>
                     <div
                       className="load__file"
-                      style={{ marginTop: index === 0 ? 10 : 0, marginBottom: files.length - 1 >= index ? 10 : 0 }}
+                      style={{
+                        marginTop: index === 0 ? 10 : 0,
+                        marginBottom: categoryFiles.length - 1 >= index ? 10 : 0,
+                      }}
                     >
-                      <File name={file} onClick={() => onFileClick(file)} />
+                      <File name={imageType.file!.name} onClick={() => onFileClick(imageType, index, onImageRemove)} />
                     </div>
                   </Collapse>
                 ))}
               </div>
-              <button className="load__button" onClick={onImageUpload}>
+              <button type="button" className="load__button" onClick={onImageUpload}>
                 <SvgUpload className="load__button-icon" />
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
@@ -94,7 +97,7 @@ function LoadModal(props: LoadModalProps) {
         </ImageUploading>
       </div>
       <div className="load__save">
-        <Collapse opened={files.length > 0}>
+        <Collapse opened={categoryFiles.length > 0}>
           <Button text={buttonName(title, 2)} onClick={saveFiles} />
         </Collapse>
       </div>

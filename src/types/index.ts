@@ -16,7 +16,3 @@ export type DocumentCategory = {
   label: string;
   multi: boolean;
 };
-
-export type ModalProps = {
-  props: Object;
-};
