@@ -1,3 +1,4 @@
-export const documentLabel = (name: string, count: number): string => `${name} #${count}`;
+export const documentLabel = (name: string, count?: number): string => (count ? `${name} #${count}` : name);
 
-export const buttonName = (name: string, count: number): string => `${name} #${count} übermitteln`;
+export const buttonName = (name: string, count?: number): string =>
+  count ? `${name} #${count} übermitteln` : `${name} übermitteln`;

@@ -5,4 +5,4 @@ import { FileReducer } from "./file.reducer";
 export const selectFile = (state: RootReducer) => state.file;
 
 export const selectFileCategoryByName = (label: string) =>
-  createSelector([selectFile], (file: FileReducer) => file[label]);
+  createSelector([selectFile], (file: FileReducer) => (file ? file[label] : []));

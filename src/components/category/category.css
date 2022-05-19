@@ -112,7 +112,6 @@
 }
 
 .category__files {
-  height: 100px;
   padding: 21px 40px;
   background-color: var(--grey-7);
 }

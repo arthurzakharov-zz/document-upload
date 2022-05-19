@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { ImageListType, ImageType } from "react-images-uploading";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFileCategoryByName } from "../../store/file/file.selectors";
+import { openModal } from "../../store/modal/modal.actions";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
 import File from "../file";
 import UploadButton from "../upload-button";
 import { category, categoryArrow } from "./category.utils";
-import { openModal } from "../../store/modal/modal.actions";
 import { LoadModalProps } from "../../modals/load/load.modal";
 import "./category.css";
 
@@ -19,30 +21,32 @@ function Category(props: CategoryProps) {
   const { label, multi } = props;
 
   const [opened, setOpened] = useState<boolean>(false);
-  const [files, setFiles] = useState<string[]>([]);
+
+  const files = useSelector(selectFileCategoryByName(label));
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // TODO: later will be replaced with some Redux or Context call
-    setFiles(["Gläubigerschreiben #1", "Forderung Finanzamt"]);
-  }, []);
 
   const clickHandler = () => {
     dispatch(openModal("load", { multi, label } as LoadModalProps));
   };
 
-  const openFiles = () => {
-    setOpened(!opened);
+  const countFiles = (imageList: ImageListType): number => {
+    return imageList ? imageList.length : 0;
   };
 
-  return (
+  const openFiles = () => {
+    if (multi && countFiles(files)) {
+      setOpened(!opened);
+    }
+  };
+
+  return files ? (
     <div className={category(opened)}>
       <div className="category__content">
         <div className="category__left">
-          {multi ? (
+          {multi && files.length > 0 ? (
             <button type="button" className="category__button" onClick={openFiles}>
-              <SvgArrow className={categoryArrow(opened)} />
+              {files.length > 0 && <SvgArrow className={categoryArrow(opened)} />}
               <h6 className="category__label">{label}</h6>
             </button>
           ) : (
@@ -53,21 +57,21 @@ function Category(props: CategoryProps) {
           </div>
         </div>
         <div className="category__right">
-          {multi ? <div className="category__count">{files.length}</div> : null}
-          <UploadButton loaded={false} plus={multi} onClick={clickHandler} />
+          {multi && files.length > 0 ? <div className="category__count">{files.length}</div> : null}
+          <UploadButton loaded={!!files.length} plus={multi} onClick={clickHandler} />
         </div>
       </div>
       <Collapse opened={opened}>
         <div className="category__files">
-          {files.map((file: string) => (
-            <div key={file} className="category__file">
-              <File name={file} />
+          {files.map((image: ImageType) => (
+            <div key={image.file!.name} className="category__file">
+              <File name={image.file!.name} />
             </div>
           ))}
         </div>
       </Collapse>
     </div>
-  );
+  ) : null;
 }
 
 export default Category;

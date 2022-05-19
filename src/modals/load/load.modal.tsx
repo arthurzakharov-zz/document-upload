@@ -23,7 +23,7 @@ function LoadModal(props: LoadModalProps) {
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
 
-  const categoryFiles = useSelector(selectFileCategoryByName(label));
+  const files = useSelector(selectFileCategoryByName(label));
 
   const dispatch = useDispatch();
 
@@ -31,8 +31,8 @@ function LoadModal(props: LoadModalProps) {
     dispatch(modalClose());
   };
 
-  const onFileClick = (imageType: ImageType, index: number, onImageRemove: (index: number) => void) => {
-    setFileToClose(imageType.file!.name);
+  const onFileClick = (image: ImageType, index: number, onImageRemove: (index: number) => void) => {
+    setFileToClose(image.file!.name);
     setTimeout(() => {
       onImageRemove(index);
       setFileToClose("");
@@ -43,31 +43,31 @@ function LoadModal(props: LoadModalProps) {
     setTitle(value);
   };
 
-  const onChange = (files: ImageListType) => {
-    dispatch(addFilesToCategory(label, files));
+  const onChange = (images: ImageListType) => {
+    dispatch(addFilesToCategory(label, images));
   };
 
   return (
     <div className="load">
       <div className="load__content">
-        <ImageUploading multiple maxNumber={5} value={categoryFiles} onChange={onChange}>
+        <ImageUploading multiple maxNumber={5} value={files} onChange={onChange}>
           {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
-              <h6 className="load__head">{documentLabel(title, 2)}</h6>
+              <h6 className="load__head">{documentLabel(title, multi ? 2 : undefined)}</h6>
               <div className="load__info">
                 Wählen Sie hier nur Dateien/Photos Ihres Personalausweises/Reisepasses aus.
               </div>
               <div className="load__files">
-                {categoryFiles.map((imageType: ImageType, index: number) => (
-                  <Collapse key={imageType.file!.name} opened={fileToClose !== imageType.file!.name} duration={300}>
+                {files.map((image: ImageType, index: number) => (
+                  <Collapse key={image.file!.name} opened={fileToClose !== image.file!.name} duration={300}>
                     <div
                       className="load__file"
                       style={{
                         marginTop: index === 0 ? 10 : 0,
-                        marginBottom: categoryFiles.length - 1 >= index ? 10 : 0,
+                        marginBottom: files.length - 1 >= index ? 10 : 0,
                       }}
                     >
-                      <File name={imageType.file!.name} onClick={() => onFileClick(imageType, index, onImageRemove)} />
+                      <File name={image.file!.name} onClick={() => onFileClick(image, index, onImageRemove)} />
                     </div>
                   </Collapse>
                 ))}
@@ -97,8 +97,8 @@ function LoadModal(props: LoadModalProps) {
         </ImageUploading>
       </div>
       <div className="load__save">
-        <Collapse opened={categoryFiles.length > 0}>
-          <Button text={buttonName(title, 2)} onClick={saveFiles} />
+        <Collapse opened={files.length > 0}>
+          <Button text={buttonName(title, multi ? 2 : undefined)} onClick={saveFiles} />
         </Collapse>
       </div>
     </div>
