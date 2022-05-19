@@ -1,4 +1,5 @@
 .modal {
+  --modal-fade: 300ms;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,7 +11,27 @@
   justify-content: center;
 }
 
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity var(--modal-fade);
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity var(--modal-fade);
+  transition-delay: calc(var(--modal-fade) * 1.5);
+}
+
 .modal__body {
+  position: relative;
   max-height: 85%;
   width: calc(100% - 40px);
   max-width: 560px;
@@ -18,4 +39,24 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+}
+
+.modal-enter .modal__body {
+  top: -100%;
+}
+
+.modal-enter-done .modal__body {
+  top: 0;
+  transition: top var(--modal-fade);
+  transition-delay: calc(var(--modal-fade) / 2);
+}
+
+.modal-exit .modal__body {
+  top: 0;
+}
+
+.modal-exit-active .modal__body {
+  top: -100%;
+  transition: top var(--modal-fade);
+  transition-delay: 0ms;
 }
