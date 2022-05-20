@@ -3,6 +3,8 @@ import ImageUploading, { ImageListType, ImageType } from "react-images-uploading
 import { useDispatch, useSelector } from "react-redux";
 import { modalClose } from "../../store/modal/modal.actions";
 import { addFilesToCategory } from "../../store/image/image.actions";
+import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
+import { get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";
 import Collapse from "../../components/collapse";
@@ -10,7 +12,6 @@ import File from "../../components/file";
 import Input from "../../components/input";
 import { buttonName, documentLabel } from "./load.utils";
 import "./load.css";
-import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
 
 export interface LoadModalProps {
   multi: boolean;
@@ -34,7 +35,7 @@ function LoadModal(props: LoadModalProps) {
   };
 
   const onFileClick = (image: ImageType, index: number, onImageRemove: (index: number) => void) => {
-    setFileToClose(image.file!.name);
+    setFileToClose(get(image, "file", "name"));
     setTimeout(() => {
       onImageRemove(index);
       setFileToClose("");
@@ -52,16 +53,30 @@ function LoadModal(props: LoadModalProps) {
   return (
     <div className="load">
       <div className="load__content">
-        <ImageUploading multiple maxNumber={5} value={images} onChange={onChange}>
+        <ImageUploading
+          multiple
+          maxNumber={5}
+          maxFileSize={10 * 10 ** 6}
+          acceptType={["pdf", "jpg", "jpeg", "png", "heic"]}
+          value={images}
+          onChange={onChange}
+        >
           {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
               <h6 className="load__head">{documentLabel(title, multi ? recordsQuantity + 1 : undefined)}</h6>
-              <div className="load__info">
-                Wählen Sie hier nur Dateien/Photos Ihres Personalausweises/Reisepasses aus.
-              </div>
+              <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres {label} aus.</div>
               <div className="load__files">
                 {images.map((image: ImageType, index: number) => (
-                  <Collapse key={image.file!.name} opened={fileToClose !== image.file!.name} duration={300}>
+                  <Collapse
+                    key={get(image, "file", "name").concat(
+                      "_",
+                      get(image, "file", "lastModified"),
+                      "_",
+                      get(image, "file", "size"),
+                    )}
+                    opened={fileToClose !== get(image, "file", "name")}
+                    duration={300}
+                  >
                     <div
                       className="load__file"
                       style={{
@@ -69,7 +84,10 @@ function LoadModal(props: LoadModalProps) {
                         marginBottom: images.length - 1 >= index ? 10 : 0,
                       }}
                     >
-                      <File name={image.file!.name} onClick={() => onFileClick(image, index, onImageRemove)} />
+                      <File
+                        name={get(image, "file", "name")}
+                        onClick={() => onFileClick(image, index, onImageRemove)}
+                      />
                     </div>
                   </Collapse>
                 ))}
@@ -79,7 +97,7 @@ function LoadModal(props: LoadModalProps) {
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
               <p className="load__manual">
-                Maximale Dateigröße pro Datei: 6MB. Unterstützte Dateitypen: PDF, JPG, JPEG, GIF, PNG.
+                Maximale Dateigröße pro Datei: 10MB. Unterstützte Dateitypen: PDF, JPG,JPEG, PNG, HEIC.
               </p>
               {multi ? (
                 <>

@@ -1,9 +1,10 @@
-import { useEffect, useRef, KeyboardEvent, MouseEvent } from "react";
+import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useDispatch, useSelector } from "react-redux";
 import { clearMain, modalClose } from "../../store/modal/modal.actions";
 import { selectModalIsOpened, selectModalMain, selectModalMainProps } from "../../store/modal/modal.selectors";
 import useLockedBody from "../../hooks/useLockedBody";
+import SvgClose from "../../svg/Close";
 import "./modal.css";
 
 function Modal() {
@@ -21,16 +22,8 @@ function Modal() {
     setLocked(isOpened);
   }, [isOpened, setLocked]);
 
-  const overlayClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (e.target === ref.current) {
-      dispatch(modalClose());
-    }
-  };
-
-  const overlayPress = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.target === ref.current && e.key === "Enter") {
-      dispatch(modalClose());
-    }
+  const close = () => {
+    dispatch(modalClose());
   };
 
   const onEntered = () => {
@@ -53,8 +46,13 @@ function Modal() {
       onExited={onExited}
       unmountOnExit
     >
-      <div ref={ref} tabIndex={0} role="button" className="modal" onKeyUp={overlayPress} onClick={overlayClick}>
-        <div className="modal__body">{Main && <Main {...mainProps} />}</div>
+      <div ref={ref} tabIndex={0} role="button" className="modal">
+        <div className="modal__body">
+          <button type="button" className="modal__close" onClick={close}>
+            <SvgClose className="modal__icon" />
+          </button>
+          {Main && <Main {...mainProps} />}
+        </div>
       </div>
     </CSSTransition>
   );

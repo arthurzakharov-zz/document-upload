@@ -7,3 +7,7 @@ export const isObjectEmpty = (obj: Object): boolean => {
   }
   return JSON.stringify(obj) === JSON.stringify({});
 };
+
+export const get = (obj: any, ...path: string[]): any => {
+  return obj && path.reduce((result, p) => (result == null ? undefined : result[p]), obj);
+};

@@ -65,3 +65,18 @@
   transition-delay: calc(var(--modal-fade) / 2);
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.modal__close {
+  position: absolute;
+  z-index: 1;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+}
+
+.modal__icon {
+  height: 10px;
+  fill: var(--green-1);
+}
