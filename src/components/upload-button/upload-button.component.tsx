@@ -13,8 +13,21 @@ export interface UploadButtonProps {
 
 function UploadButton(props: UploadButtonProps) {
   const { loaded, plus, onClick } = props;
+
+  const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!loaded) {
+      onClick(e);
+    }
+  };
+
   return (
-    <button data-testid="upload-button" type="button" className={uploadButton(loaded)} onClick={onClick}>
+    <button
+      data-testid="upload-button"
+      type="button"
+      className={uploadButton(loaded)}
+      tabIndex={loaded ? -1 : 0}
+      onClick={onClickHandler}
+    >
       {loaded ? (
         <SvgCheck data-testid="upload-button-check" className="upload-button__check" />
       ) : (

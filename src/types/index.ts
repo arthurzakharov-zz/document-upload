@@ -1,3 +1,5 @@
+import { ImageListType } from "react-images-uploading";
+
 export interface Action {
   type: string;
   payload?: any;
@@ -15,4 +17,9 @@ export type FooterLink = {
 export type DocumentCategory = {
   label: string;
   multi: boolean;
+};
+
+export type ImageRecord = {
+  name: string;
+  images: ImageListType;
 };

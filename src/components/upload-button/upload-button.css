@@ -11,6 +11,7 @@
 }
 
 .upload-button--loaded {
+  cursor: not-allowed;
   background-color: var(--white-1);
 }
 

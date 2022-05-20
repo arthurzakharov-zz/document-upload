@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { initFiles } from "../../store/file/file.actions";
+import { initFiles } from "../../store/image/image.actions";
 import DefaultLayout from "../../layouts/default/default.layout";
 import Footer from "../footer";
 import Header from "../header";

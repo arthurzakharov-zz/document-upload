@@ -4,6 +4,7 @@ exports[`UploadButton Snapshot is in loaded state 1`] = `
 <button
   class="upload-button upload-button--loaded"
   data-testid="upload-button"
+  tabindex="-1"
   type="button"
 >
   <svg
@@ -28,6 +29,7 @@ exports[`UploadButton Snapshot is in not loaded state 1`] = `
 <button
   class="upload-button"
   data-testid="upload-button"
+  tabindex="0"
   type="button"
 >
   <span

@@ -1,15 +1,15 @@
 import { combineReducers } from "redux";
-import fileReducer, { FileReducer } from "./file/file.reducer";
+import imageReducer, { ImageReducer } from "./image/image.reducer";
 import modalReducer, { ModalReducer } from "./modal/modal.reducer";
 
 export interface RootReducer {
   modal: ModalReducer;
-  file: FileReducer;
+  image: ImageReducer;
 }
 
 const rootReducer = combineReducers({
   modal: modalReducer,
-  file: fileReducer,
+  image: imageReducer,
 });
 
 export default rootReducer;
