@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ImageUploading, { ImageListType, ImageType } from "react-images-uploading";
 import { useDispatch, useSelector } from "react-redux";
-import { modalClose } from "../../store/modal/modal.actions";
 import { addFilesToCategory } from "../../store/image/image.actions";
 import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
+import { modalClose } from "../../store/modal/modal.actions";
+import { setIsLoading } from "../../store/ui/ui.actions";
 import { get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";
@@ -11,6 +12,7 @@ import Collapse from "../../components/collapse";
 import File from "../../components/file";
 import Input from "../../components/input";
 import { buttonName, documentLabel } from "./load.utils";
+import { mockHttp } from "../../mock";
 import "./load.css";
 
 export interface LoadModalProps {
@@ -29,9 +31,12 @@ function LoadModal(props: LoadModalProps) {
 
   const dispatch = useDispatch();
 
-  const saveFiles = () => {
-    dispatch(addFilesToCategory(label, title, images));
+  const saveFiles = async () => {
+    dispatch(setIsLoading(true));
     dispatch(modalClose());
+    await mockHttp(true);
+    dispatch(addFilesToCategory(label, title, images));
+    dispatch(setIsLoading(false));
   };
 
   const onFileClick = (image: ImageType, index: number, onImageRemove: (index: number) => void) => {
