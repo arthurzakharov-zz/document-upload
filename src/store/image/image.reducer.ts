@@ -13,7 +13,7 @@ const imageSetName = (name: string, imageSet: ImageRecord[]): string => {
 };
 
 /* eslint @typescript-eslint/default-param-last: "off" */
-const fileReducer: Reducer<ImageReducer> = (state: ImageReducer = INITIAL_STATE, action: Action) => {
+const fileReducer: Reducer<ImageReducer> = (state: ImageReducer = INITIAL_STATE, action: Action): ImageReducer => {
   switch (action.type) {
     case INIT_IMAGES:
       return categories.reduce((obj: ImageReducer, category: DocumentCategory) => {

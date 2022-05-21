@@ -6,6 +6,7 @@ import Footer from "../footer";
 import Header from "../header";
 import Main from "../main";
 import Modal from "../modal";
+import Loading from "../loading";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
     <>
       <DefaultLayout header={Header} main={Main} footer={Footer} />
       <Modal />
+      <Loading />
     </>
   );
 }

@@ -34,7 +34,7 @@ const main = (id: ModalId): ElementType | null => {
 };
 
 /* eslint @typescript-eslint/default-param-last: "off" */
-const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE, action: Action) => {
+const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE, action: Action): ModalReducer => {
   switch (action.type) {
     case MODAL_OPEN:
       return {
