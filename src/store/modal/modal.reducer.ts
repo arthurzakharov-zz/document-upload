@@ -1,4 +1,5 @@
 import { ElementType } from "react";
+import ErrorModal from "../../modals/error";
 import GeneralInfoModal from "../../modals/general-info";
 import ImpressumModal from "../../modals/impressum";
 import LoadModal from "../../modals/load";
@@ -20,6 +21,8 @@ const INITIAL_STATE: ModalReducer = {
 
 const main = (id: ModalId): ElementType | null => {
   switch (id) {
+    case "error":
+      return ErrorModal;
     case "general_info":
       return GeneralInfoModal;
     case "impressum":

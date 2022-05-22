@@ -1,5 +1,6 @@
 :root {
   --orange-1: #ff8d02;
+  --red-1: #ff0000;
   --green-1: #0c6658;
   --green-2: #2ecc71;
   --green-3: #cbd7d5;
@@ -17,6 +18,7 @@
   --black-1: #000000a8;
   --black-2: #000000;
   --black-3: #00000066;
+  --black-4: #0a2942;
   --white-1: #ffffff;
   --blue-1: #0096ff;
 }

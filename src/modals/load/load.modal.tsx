@@ -3,7 +3,7 @@ import ImageUploading, { ImageListType, ImageType } from "react-images-uploading
 import { useDispatch, useSelector } from "react-redux";
 import { addFilesToCategory } from "../../store/image/image.actions";
 import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
-import { modalClose } from "../../store/modal/modal.actions";
+import { modalClose, openModal } from "../../store/modal/modal.actions";
 import { setIsLoading } from "../../store/ui/ui.actions";
 import { get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
@@ -32,11 +32,18 @@ function LoadModal(props: LoadModalProps) {
   const dispatch = useDispatch();
 
   const saveFiles = async () => {
-    dispatch(setIsLoading(true));
-    dispatch(modalClose());
-    await mockHttp(true);
-    dispatch(addFilesToCategory(label, title, images));
-    dispatch(setIsLoading(false));
+    try {
+      dispatch(setIsLoading(true));
+      dispatch(modalClose());
+      const x = await mockHttp(label !== "Gläubigerunterlagen");
+      // eslint-disable-next-line no-console
+      console.log("x", x);
+      dispatch(addFilesToCategory(label, title, images));
+    } catch (e) {
+      dispatch(openModal("error"));
+    } finally {
+      dispatch(setIsLoading(false));
+    }
   };
 
   const onFileClick = (image: ImageType, index: number, onImageRemove: (index: number) => void) => {
