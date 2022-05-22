@@ -40,7 +40,7 @@ function LoadModal(props: LoadModalProps) {
       console.log("x", x);
       dispatch(addFilesToCategory(label, title, images));
     } catch (e) {
-      dispatch(openModal("error"));
+      dispatch(openModal("error", false));
     } finally {
       dispatch(setIsLoading(false));
     }

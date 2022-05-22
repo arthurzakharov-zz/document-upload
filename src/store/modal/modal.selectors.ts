@@ -6,6 +6,11 @@ export const selectModal = (state: RootReducer) => state.modal;
 
 export const selectModalIsOpened = createSelector([selectModal], (modal: ModalReducer) => modal.isOpen);
 
+export const selectModalIsWithCloseButton = createSelector(
+  [selectModal],
+  (modal: ModalReducer) => modal.withCloseButton,
+);
+
 export const selectModalMain = createSelector([selectModal], (modal: ModalReducer) => modal.main);
 
 export const selectModalMainProps = createSelector([selectModal], (modal: ModalReducer) => modal.mainProps);

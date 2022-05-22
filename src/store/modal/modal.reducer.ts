@@ -9,12 +9,14 @@ import { Action, ModalId, Reducer } from "../../types";
 
 export interface ModalReducer {
   isOpen: boolean;
+  withCloseButton: boolean;
   main: ElementType | null;
   mainProps: Object;
 }
 
 const INITIAL_STATE: ModalReducer = {
   isOpen: false,
+  withCloseButton: false,
   main: null,
   mainProps: {},
 };
@@ -43,6 +45,7 @@ const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE
       return {
         ...state,
         isOpen: true,
+        withCloseButton: action.payload.withCloseButton,
         main: main(action.payload.type),
         mainProps: action.payload.props,
       };
@@ -54,6 +57,7 @@ const modalReducer: Reducer<ModalReducer> = (state: ModalReducer = INITIAL_STATE
     case CLEAR_MAIN:
       return {
         ...state,
+        withCloseButton: false,
         main: null,
       };
     default: {

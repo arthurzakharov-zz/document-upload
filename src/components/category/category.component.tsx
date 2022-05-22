@@ -26,7 +26,7 @@ function Category(props: CategoryProps) {
   const dispatch = useDispatch();
 
   const clickHandler = () => {
-    dispatch(openModal("load", { multi, label }));
+    dispatch(openModal("load", true, { multi, label }));
   };
 
   const toggleDetailedView = () => {
