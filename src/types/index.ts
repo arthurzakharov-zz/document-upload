@@ -19,7 +19,7 @@ export type DocumentCategory = {
   placeholder: string;
   fileSizeLimitInMb: number;
   fileFormats: string[];
-  multi: boolean;
+  multiple: boolean;
 };
 
 export type ImageRecord = {

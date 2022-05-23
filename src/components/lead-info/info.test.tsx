@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Info from "./info.component";
+import Info from "./lead-info.component";
 
 describe("Info", () => {
   test("Snapshot", () => {

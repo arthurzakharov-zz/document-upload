@@ -17,7 +17,7 @@ export interface CategoryProps {
 
 function Category(props: CategoryProps) {
   const { documentCategory } = props;
-  const { label, multi } = documentCategory;
+  const { label, multiple } = documentCategory;
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -33,7 +33,7 @@ function Category(props: CategoryProps) {
     setOpened(!opened);
   };
 
-  const inMultiModeHasImages = (): boolean => multi && images.length > 0;
+  const inMultiModeHasImages = (): boolean => multiple && images.length > 0;
 
   return (
     <div className={category(opened)}>
@@ -42,7 +42,7 @@ function Category(props: CategoryProps) {
           {inMultiModeHasImages() ? (
             <button type="button" className="category__button" onClick={toggleDetailedView}>
               <SvgArrow className={categoryArrow(opened)} />
-              <h6 className="category__label">{label}</h6>
+              <div className="category__label">{label}</div>
             </button>
           ) : (
             <h6 className="category__label">{label}</h6>
@@ -53,7 +53,7 @@ function Category(props: CategoryProps) {
         </div>
         <div className="category__right">
           {inMultiModeHasImages() ? <div className="category__count">{images.length}</div> : null}
-          <UploadButton loaded={!multi && !!images.length} plus={multi} onClick={clickHandler} />
+          <UploadButton loaded={!multiple && !!images.length} multiple={multiple} onClick={clickHandler} />
         </div>
       </div>
       <Collapse opened={opened}>

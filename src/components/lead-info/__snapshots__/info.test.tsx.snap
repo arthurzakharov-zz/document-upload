@@ -2,37 +2,37 @@
 
 exports[`Info Snapshot 1`] = `
 <div
-  class="info"
+  class="lead-info"
 >
   <h1
-    class="info__title"
+    class="lead-info__title"
   >
     Dokumentenübermittlung
   </h1>
   <div
-    class="info__info"
+    class="lead-info__content"
   >
     <div
-      class="info__label"
+      class="lead-info__label"
       data-testid="info-number"
     >
-      <b>
+      <strong>
         Aktenzeichen: 
-      </b>
+      </strong>
       SBE22.0121-24046542
     </div>
     <div
-      class="info__label"
+      class="lead-info__label"
       data-testid="info-name"
     >
-      <b>
+      <strong>
         Name: 
-      </b>
+      </strong>
       Luca Zamai
     </div>
   </div>
   <p
-    class="info__description"
+    class="lead-info__description"
   >
     Klicken Sie auf die orangenen Buttons, um die jeweiligen Dateien zu übermitteln.
   </p>

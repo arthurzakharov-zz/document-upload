@@ -16,28 +16,28 @@ describe("UploadButton", () => {
   });
   test("Snapshot is in not loaded state", () => {
     const mockFn = jest.fn();
-    const { container } = render(<UploadButton loaded={false} plus onClick={mockFn} />);
+    const { container } = render(<UploadButton loaded={false} multiple onClick={mockFn} />);
     expect(container.firstChild).toMatchSnapshot();
   });
   test("Snapshot is in loaded state", () => {
     const mockFn = jest.fn();
-    const { container } = render(<UploadButton loaded plus onClick={mockFn} />);
+    const { container } = render(<UploadButton loaded multiple onClick={mockFn} />);
     expect(container.firstChild).toMatchSnapshot();
   });
   test("In not loaded state upload icon and text are displayed", () => {
     const mockFn = jest.fn();
-    render(<UploadButton loaded={false} plus={false} onClick={mockFn} />);
+    render(<UploadButton loaded={false} multiple={false} onClick={mockFn} />);
     expect(screen.getByTestId(UPLOAD_BUTTON)).toHaveTextContent("Hochladen");
     expect(screen.getByTestId(UPLOAD_BUTTON_UPLOAD)).toBeInTheDocument();
   });
   test("In loaded state check icon is diplayed", () => {
     const mockFn = jest.fn();
-    render(<UploadButton loaded plus onClick={mockFn} />);
+    render(<UploadButton loaded multiple onClick={mockFn} />);
     expect(screen.getByTestId(UPLOAD_BUTTON_CHECK)).toBeInTheDocument();
   });
   test("Focus on button and press enter", () => {
     const mockFn = jest.fn();
-    render(<UploadButton loaded={false} plus onClick={mockFn} />);
+    render(<UploadButton loaded={false} multiple onClick={mockFn} />);
     expect(screen.getByTestId(UPLOAD_BUTTON)).not.toHaveFocus();
     userEvent.tab();
     expect(screen.getByTestId(UPLOAD_BUTTON)).toHaveFocus();
@@ -47,7 +47,7 @@ describe("UploadButton", () => {
   });
   test("Click on button", () => {
     const mockFn = jest.fn();
-    render(<UploadButton loaded={false} plus onClick={mockFn} />);
+    render(<UploadButton loaded={false} multiple onClick={mockFn} />);
     userEvent.click(screen.getByTestId(UPLOAD_BUTTON));
     expect(mockFn).toBeCalledTimes(1);
   });

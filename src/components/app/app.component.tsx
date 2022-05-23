@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { initFiles } from "../../store/image/image.actions";
 import { setIsLoading } from "../../store/ui/ui.actions";
 import DefaultLayout from "../../layouts/default/default.layout";
+import DocumentUpload from "../document-upload";
 import Footer from "../footer";
 import Header from "../header";
-import Main from "../main";
 import Modal from "../modal";
 import Loading from "../loading";
 import { mockHttp } from "../../mock";
@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <DefaultLayout header={Header} main={Main} footer={Footer} />
+      <DefaultLayout header={Header} main={DocumentUpload} footer={Footer} />
       <Modal />
       <Loading />
     </>

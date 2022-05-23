@@ -7,12 +7,12 @@ import "./upload-button.css";
 
 export interface UploadButtonProps {
   loaded: boolean;
-  plus: boolean;
+  multiple: boolean;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 function UploadButton(props: UploadButtonProps) {
-  const { loaded, plus, onClick } = props;
+  const { loaded, multiple, onClick } = props;
 
   const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
     if (!loaded) {
@@ -33,7 +33,7 @@ function UploadButton(props: UploadButtonProps) {
       ) : (
         <>
           <span className="upload-button__text">Hochladen</span>
-          {plus ? (
+          {multiple ? (
             <SvgPlus data-testid="upload-button-plus" className="upload-button__plus" />
           ) : (
             <SvgUpload data-testid="upload-button-upload" className="upload-button__upload" />

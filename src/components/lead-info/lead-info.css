@@ -1,8 +1,8 @@
-.info {
+.lead-info {
   background-color: var(--white-1);
 }
 
-.info__title {
+.lead-info__title {
   padding: 18px 20px;
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
@@ -11,21 +11,21 @@
   color: var(--green-1);
 }
 
-.info__info {
+.lead-info__content {
   padding: 16px 20px;
   background-color: var(--grey-1);
 }
 
-.info__label {
+.lead-info__label {
   font-weight: 300;
   color: var(--green-1);
 }
 
-.info__label b {
+.lead-info__label strong {
   font-weight: 600;
 }
 
-.info__description {
+.lead-info__description {
   padding: 24px 20px 26px 20px;
   font-weight: 300;
   color: var(--grey-2);

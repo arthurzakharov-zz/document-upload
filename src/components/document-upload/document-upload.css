@@ -1,8 +1,8 @@
-.main {
+.document-upload {
   box-shadow: 0 4px 10px var(--grey-5);
   background-color: var(--white-1);
 }
 
-.main__categories {
+.document-upload__categories {
   padding-bottom: 34px;
 }

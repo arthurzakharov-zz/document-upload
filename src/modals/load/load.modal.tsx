@@ -22,7 +22,7 @@ export interface LoadModalProps {
 
 function LoadModal(props: LoadModalProps) {
   const { documentCategory } = props;
-  const { label, placeholder, fileSizeLimitInMb, fileFormats, multi } = documentCategory;
+  const { label, placeholder, fileSizeLimitInMb, fileFormats, multiple } = documentCategory;
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
@@ -76,7 +76,7 @@ function LoadModal(props: LoadModalProps) {
         <ImageUploading multiple maxNumber={5} acceptType={fileFormats} value={images} onChange={onChange}>
           {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
-              <h6 className="load__head">{documentLabel(title, multi ? recordsQuantity + 1 : undefined)}</h6>
+              <h6 className="load__head">{documentLabel(title, multiple ? recordsQuantity + 1 : undefined)}</h6>
               <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres {label} aus.</div>
               <div className="load__files">
                 {images.map((image: ImageType, index: number) => (
@@ -101,7 +101,7 @@ function LoadModal(props: LoadModalProps) {
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
               <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
-              {multi ? (
+              {multiple ? (
                 <>
                   <hr className="load__line" />
                   <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
@@ -116,7 +116,7 @@ function LoadModal(props: LoadModalProps) {
       <div className="load__save">
         <Collapse opened={images.length > 0}>
           <Button
-            text={buttonName(title, multi ? recordsQuantity + 1 : undefined)}
+            text={buttonName(title, multiple ? recordsQuantity + 1 : undefined)}
             disabled={oversizedImages.length > 0}
             onClick={saveFiles}
           />

@@ -1,7 +1,7 @@
-import "./info.css";
+import "./lead-info.css";
 import { useEffect, useState } from "react";
 
-function Info() {
+function LeadInfo() {
   const [number, setNumber] = useState<string>("");
   const [name, setName] = useState<string>("");
 
@@ -12,23 +12,23 @@ function Info() {
   }, []);
 
   return (
-    <div className="info">
-      <h1 className="info__title">Dokumentenübermittlung</h1>
-      <div className="info__info">
-        <div data-testid="info-number" className="info__label">
-          <b>Aktenzeichen: </b>
+    <div className="lead-info">
+      <h1 className="lead-info__title">Dokumentenübermittlung</h1>
+      <div className="lead-info__content">
+        <div data-testid="info-number" className="lead-info__label">
+          <strong>Aktenzeichen: </strong>
           {number}
         </div>
-        <div data-testid="info-name" className="info__label">
-          <b>Name: </b>
+        <div data-testid="info-name" className="lead-info__label">
+          <strong>Name: </strong>
           {name}
         </div>
       </div>
-      <p className="info__description">
+      <p className="lead-info__description">
         Klicken Sie auf die orangenen Buttons, um die jeweiligen Dateien zu übermitteln.
       </p>
     </div>
   );
 }
 
-export default Info;
+export default LeadInfo;
