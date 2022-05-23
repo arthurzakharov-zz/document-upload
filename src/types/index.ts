@@ -23,3 +23,5 @@ export type ImageRecord = {
   name: string;
   images: ImageListType;
 };
+
+export type DataSize = "B" | "kB" | "MB";

@@ -3,12 +3,13 @@ import "./button.css";
 export interface ButtonProps {
   text: string;
   onClick: () => void;
+  disabled?: boolean;
 }
 
 function Button(props: ButtonProps) {
-  const { text, onClick } = props;
+  const { text, onClick, disabled } = props;
   return (
-    <button type="button" className="button" onClick={onClick}>
+    <button type="button" disabled={disabled} className="button" onClick={onClick}>
       {text}
     </button>
   );
