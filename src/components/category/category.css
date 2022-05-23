@@ -50,8 +50,8 @@
 
 .category__label {
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: var(--green-1);
 }
 
@@ -106,8 +106,8 @@
   justify-content: center;
   background-color: var(--grey-7);
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: var(--green-2);
 }
 

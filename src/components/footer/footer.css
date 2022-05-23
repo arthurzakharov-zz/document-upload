@@ -5,8 +5,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 12px;
-  line-height: 22px;
+  font-size: 0.75rem;
+  line-height: 1.375rem;
   font-weight: 400;
   color: var(--grey-3);
 }

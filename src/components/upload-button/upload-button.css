@@ -36,8 +36,8 @@
   font-family: "Titillium Web", sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 15px;
-  line-height: 20px;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
   color: var(--white-1);
 }
 

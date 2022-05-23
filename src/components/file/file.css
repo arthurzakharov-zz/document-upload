@@ -12,8 +12,8 @@
 .file__name {
   margin-left: 10px;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: var(--green-1);
 }
 

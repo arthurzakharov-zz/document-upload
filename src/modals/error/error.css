@@ -30,8 +30,8 @@
   margin-bottom: 18px;
   font-family: "Titillium Web", sans-serif;
   font-weight: 400;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: 1.75rem;
+  line-height: 2rem;
   text-align: center;
   color: var(--red-1);
 }
@@ -39,8 +39,8 @@
 .error__text {
   margin-bottom: 20px;
   font-weight: 300;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
   color: var(--black-4);
 }
 

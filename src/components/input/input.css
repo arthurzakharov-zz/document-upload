@@ -11,8 +11,8 @@
   width: 100%;
   display: inline-block;
   font-weight: 300;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 0.875rem;
+  line-height: 1.375rem;
   color: var(--black-2);
 }
 

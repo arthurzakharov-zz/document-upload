@@ -36,7 +36,7 @@
   display: none;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.125rem;
   letter-spacing: 1px;
   color: var(--green-1);
 }
@@ -56,7 +56,7 @@
   display: inline;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--green-1);
 }
 
