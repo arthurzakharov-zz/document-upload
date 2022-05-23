@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UploadButton Snapshot is in loaded state 1`] = `
-<button
+<div
   class="upload-button upload-button--loaded"
-  data-testid="upload-button"
-  tabindex="-1"
-  type="button"
+  data-testid="upload-div"
 >
   <svg
     class="upload-button__check"
@@ -22,14 +20,14 @@ exports[`UploadButton Snapshot is in loaded state 1`] = `
       stroke-width="2"
     />
   </svg>
-</button>
+</div>
 `;
 
 exports[`UploadButton Snapshot is in not loaded state 1`] = `
 <button
+  aria-label="upload-single-file"
   class="upload-button"
   data-testid="upload-button"
-  tabindex="0"
   type="button"
 >
   <span

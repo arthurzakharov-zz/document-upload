@@ -9,7 +9,7 @@ export interface ButtonProps {
 function Button(props: ButtonProps) {
   const { text, onClick, disabled } = props;
   return (
-    <button type="button" disabled={disabled} className="button" onClick={onClick}>
+    <button type="button" aria-label={text} disabled={disabled} className="button" onClick={onClick}>
       {text}
     </button>
   );

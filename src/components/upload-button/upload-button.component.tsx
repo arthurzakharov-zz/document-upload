@@ -20,25 +20,23 @@ function UploadButton(props: UploadButtonProps) {
     }
   };
 
-  return (
+  return loaded ? (
+    <div data-testid="upload-div" className={uploadButton(loaded)}>
+      <SvgCheck data-testid="upload-button-check" className="upload-button__check" />
+    </div>
+  ) : (
     <button
       data-testid="upload-button"
+      aria-label={multiple ? "upload-single-file" : "upload-multiple-file"}
       type="button"
       className={uploadButton(loaded)}
-      tabIndex={loaded ? -1 : 0}
       onClick={onClickHandler}
     >
-      {loaded ? (
-        <SvgCheck data-testid="upload-button-check" className="upload-button__check" />
+      <span className="upload-button__text">Hochladen</span>
+      {multiple ? (
+        <SvgPlus data-testid="upload-button-plus" className="upload-button__plus" />
       ) : (
-        <>
-          <span className="upload-button__text">Hochladen</span>
-          {multiple ? (
-            <SvgPlus data-testid="upload-button-plus" className="upload-button__plus" />
-          ) : (
-            <SvgUpload data-testid="upload-button-upload" className="upload-button__upload" />
-          )}
-        </>
+        <SvgUpload data-testid="upload-button-upload" className="upload-button__upload" />
       )}
     </button>
   );
