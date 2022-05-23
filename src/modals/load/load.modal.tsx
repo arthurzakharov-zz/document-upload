@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState } from "react";
 import ImageUploading, { ImageListType, ImageType } from "react-images-uploading";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,17 +11,18 @@ import Button from "../../components/button";
 import Collapse from "../../components/collapse";
 import File from "../../components/file";
 import Input from "../../components/input";
-import { buttonName, documentLabel, loadFile } from "./load.utils";
+import { allowedFilesDescription, buttonName, documentLabel, imageKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
+import { DocumentCategory } from "../../types";
 import "./load.css";
 
 export interface LoadModalProps {
-  multi: boolean;
-  label: string;
+  documentCategory: DocumentCategory;
 }
 
 function LoadModal(props: LoadModalProps) {
-  const { multi, label } = props;
+  const { documentCategory } = props;
+  const { label, placeholder, fileSizeLimitInMb, fileFormats, multi } = documentCategory;
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
@@ -62,7 +62,7 @@ function LoadModal(props: LoadModalProps) {
     const listOfOversizedImages: number[] = [];
     imageList.forEach((image: ImageType, index) => {
       const imageSize = get(image, "file", "size");
-      if (convertDataSize(imageSize, "B", "MB") > 10) {
+      if (convertDataSize(imageSize, "B", "MB") > fileSizeLimitInMb) {
         listOfOversizedImages.push(index);
       }
     });
@@ -73,29 +73,14 @@ function LoadModal(props: LoadModalProps) {
   return (
     <div className="load">
       <div className="load__content">
-        <ImageUploading
-          multiple
-          maxNumber={5}
-          acceptType={["pdf", "jpg", "jpeg", "png", "heic"]}
-          value={images}
-          onChange={onChange}
-        >
+        <ImageUploading multiple maxNumber={5} acceptType={fileFormats} value={images} onChange={onChange}>
           {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
               <h6 className="load__head">{documentLabel(title, multi ? recordsQuantity + 1 : undefined)}</h6>
               <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres {label} aus.</div>
               <div className="load__files">
                 {images.map((image: ImageType, index: number) => (
-                  <Collapse
-                    key={get(image, "file", "name").concat(
-                      "_",
-                      get(image, "file", "lastModified"),
-                      "_",
-                      get(image, "file", "size"),
-                    )}
-                    opened={fileToClose !== get(image, "file", "name")}
-                    duration={300}
-                  >
+                  <Collapse key={imageKey(image)} opened={fileToClose !== get(image, "file", "name")} duration={300}>
                     <div
                       className={loadFile(oversizedImages.includes(index))}
                       style={{
@@ -115,19 +100,12 @@ function LoadModal(props: LoadModalProps) {
                 <SvgUpload className="load__button-icon" />
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
-              <p className="load__manual">
-                Maximale Dateigröße pro Datei: 10MB. Unterstützte Dateitypen: PDF, JPG,JPEG, PNG, HEIC.
-              </p>
+              <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
               {multi ? (
                 <>
                   <hr className="load__line" />
                   <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
-                  <Input
-                    id="file-name"
-                    name="file-name"
-                    placeholder="z.B. Mahnung, Forderungsaufstellung, ..."
-                    onChange={onFileNameChange}
-                  />
+                  <Input id="file-name" name="file-name" placeholder={placeholder} onChange={onFileNameChange} />
                   <p className="load__tip">Leer lassen wenn unsicher</p>
                 </>
               ) : null}

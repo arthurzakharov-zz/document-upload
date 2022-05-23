@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecordsByCategory } from "../../store/image/image.selectors";
 import { openModal } from "../../store/modal/modal.actions";
-import { ImageRecord } from "../../types";
+import { DocumentCategory, ImageRecord } from "../../types";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
@@ -12,12 +12,12 @@ import { category, categoryArrow } from "./category.utils";
 import "./category.css";
 
 export interface CategoryProps {
-  label: string;
-  multi: boolean;
+  documentCategory: DocumentCategory;
 }
 
 function Category(props: CategoryProps) {
-  const { label, multi } = props;
+  const { documentCategory } = props;
+  const { label, multi } = documentCategory;
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -26,7 +26,7 @@ function Category(props: CategoryProps) {
   const dispatch = useDispatch();
 
   const clickHandler = () => {
-    dispatch(openModal("load", true, { multi, label }));
+    dispatch(openModal("load", true, { documentCategory }));
   };
 
   const toggleDetailedView = () => {

@@ -10,7 +10,7 @@ function Main() {
       <Info />
       <div className="main__categories">
         {categories.map((category: DocumentCategory) => (
-          <Category key={category.label} label={category.label} multi={category.multi} />
+          <Category key={category.label} documentCategory={category} />
         ))}
       </div>
     </div>
