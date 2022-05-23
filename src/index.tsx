@@ -1,6 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import "@fontsource/open-sans/300.css";
+import "@fontsource/open-sans/400.css";
+import "@fontsource/open-sans/600.css";
+import "@fontsource/rubik/400.css";
+import "@fontsource/titillium-web/400.css";
+import "@fontsource/titillium-web/600.css";
 import store from "./store";
 import App from "./components/app";
 import "./styles/reset.css";

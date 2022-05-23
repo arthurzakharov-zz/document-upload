@@ -4,8 +4,8 @@ const categories: DocumentCategory[] = [
   {
     label: "Personalausweis",
     placeholder: "z.B. Personalausweis",
-    fileSizeLimitInMb: 10,
-    fileFormats: ["pdf", "jpg", "jpeg", "png", "heic"],
+    fileSizeLimitInMb: 5,
+    fileFormats: ["pdf", "jpg", "jpeg"],
     multi: false,
   },
   {
