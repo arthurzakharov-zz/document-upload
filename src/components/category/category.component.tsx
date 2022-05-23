@@ -45,7 +45,7 @@ function Category(props: CategoryProps) {
               <div className="category__label">{label}</div>
             </button>
           ) : (
-            <h6 className="category__label">{label}</h6>
+            <div className="category__label">{label}</div>
           )}
           <div className="category__question">
             <SvgQuestion className="category__symbol" />
