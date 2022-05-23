@@ -24,7 +24,7 @@ function Footer() {
   };
 
   return (
-    <div className="footer">
+    <footer className="footer">
       <hr className="footer__line" />
       <span className="footer__company">{companyName("schuldenanalyse-kostenlos.de")}</span>
       <ul className="footer__list">
@@ -43,7 +43,7 @@ function Footer() {
           </Fragment>
         ))}
       </ul>
-    </div>
+    </footer>
   );
 }
 
