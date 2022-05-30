@@ -7,6 +7,7 @@ import {
   selectModalIsWithCloseButton,
   selectModalMain,
   selectModalMainProps,
+  selectModalSize,
 } from "../../store/modal/modal.selectors";
 import useLockedBody from "../../hooks/useLockedBody";
 import SvgClose from "../../svg/Close";
@@ -15,6 +16,7 @@ import "./modal.css";
 function Modal() {
   const isOpened = useSelector(selectModalIsOpened);
   const withCloseButton = useSelector(selectModalIsWithCloseButton);
+  const size = useSelector(selectModalSize);
   const Main = useSelector(selectModalMain);
   const mainProps = useSelector(selectModalMainProps);
 
@@ -53,7 +55,7 @@ function Modal() {
       unmountOnExit
     >
       <div ref={ref} tabIndex={0} role="button" className="modal">
-        <div className="modal__body">
+        <div className="modal__body" data-modal-size={size}>
           {withCloseButton && (
             <button type="button" className="modal__close" onClick={close}>
               <SvgClose className="modal__icon" />

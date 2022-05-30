@@ -10,14 +10,6 @@
   border-top: none;
 }
 
-.category:last-of-type {
-  border-bottom: 1px solid transparent;
-}
-
-.category:last-of-type .category__content {
-  border-bottom: 1px solid var(--grey-6);
-}
-
 .category--opened + .category > .category__content {
   transition: border-top-color 300ms ease-in;
   transition-delay: 300ms;
@@ -92,7 +84,7 @@
 }
 
 .category__symbol {
-  height: 9px;
+  height: 12px;
   fill: var(--white-1);
 }
 
@@ -118,4 +110,14 @@
 
 .category__file:not(:last-of-type) {
   margin-bottom: 6px;
+}
+
+@media screen and (min-width: 768px) {
+  .category:last-of-type {
+    border-bottom: 1px solid transparent;
+  }
+
+  .category:last-of-type .category__content {
+    border-bottom: 1px solid var(--grey-6);
+  }
 }

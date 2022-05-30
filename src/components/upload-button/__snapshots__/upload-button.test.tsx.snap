@@ -33,7 +33,7 @@ exports[`UploadButton Snapshot is in not loaded state 1`] = `
   <span
     class="upload-button__text"
   >
-    Hochladen
+    Hinzufügen
   </span>
   <svg
     class="upload-button__plus"

@@ -1,8 +1,10 @@
 .document-upload {
-  box-shadow: 0 4px 10px var(--grey-5);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.05), 0 10px 10px rgba(0, 0, 0, 0.02);
   background-color: var(--white-1);
 }
 
-.document-upload__categories {
-  padding-bottom: 34px;
+@media screen and (min-width: 768px) {
+  .document-upload__categories {
+    padding-bottom: 34px;
+  }
 }

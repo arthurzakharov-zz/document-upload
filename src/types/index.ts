@@ -9,6 +9,8 @@ export type Reducer<T> = (state: T, action: Action) => T;
 
 export type ModalId = "general_info" | "privacy" | "impressum" | "load" | "error";
 
+export type ModalSize = "xs" | "sm";
+
 export type FooterLink = {
   label: string;
   id: ModalId;

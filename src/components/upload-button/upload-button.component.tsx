@@ -32,7 +32,7 @@ function UploadButton(props: UploadButtonProps) {
       className={uploadButton(loaded)}
       onClick={onClickHandler}
     >
-      <span className="upload-button__text">Hochladen</span>
+      <span className="upload-button__text">{multiple ? "Hinzufügen" : "Hochladen"}</span>
       {multiple ? (
         <SvgPlus data-testid="upload-button-plus" className="upload-button__plus" />
       ) : (

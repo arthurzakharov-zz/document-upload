@@ -40,7 +40,7 @@ function LoadModal(props: LoadModalProps) {
       await mockHttp(label !== "Gläubigerunterlagen");
       dispatch(addFilesToCategory(label, title, images));
     } catch (e) {
-      dispatch(openModal("error", false));
+      dispatch(openModal("error", "xs", false));
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -55,7 +55,7 @@ function LoadModal(props: LoadModalProps) {
   };
 
   const onFileNameChange = (name: string, value: string) => {
-    setTitle(value);
+    setTitle(value || label);
   };
 
   const onChange = (imageList: ImageListType) => {
@@ -73,10 +73,10 @@ function LoadModal(props: LoadModalProps) {
   return (
     <div className="load">
       <div className="load__content">
-        <ImageUploading multiple maxNumber={5} acceptType={fileFormats} value={images} onChange={onChange}>
+        <ImageUploading multiple maxNumber={100} acceptType={fileFormats} value={images} onChange={onChange}>
           {({ onImageUpload, onImageRemove }) => (
             <div className="load__main">
-              <h6 className="load__head">{documentLabel(title, multiple ? recordsQuantity + 1 : undefined)}</h6>
+              <h6 className="load__head">{documentLabel(label, title, multiple ? recordsQuantity + 1 : undefined)}</h6>
               <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres {label} aus.</div>
               <div className="load__files">
                 {images.map((image: ImageType, index: number) => (
@@ -84,8 +84,8 @@ function LoadModal(props: LoadModalProps) {
                     <div
                       className={loadFile(oversizedImages.includes(index))}
                       style={{
-                        marginTop: index === 0 ? 10 : 0,
-                        marginBottom: images.length - 1 >= index ? 10 : 0,
+                        marginTop: index === 0 ? 8 : 0,
+                        marginBottom: images.length - 1 >= index ? 8 : 0,
                       }}
                     >
                       <File
@@ -102,12 +102,16 @@ function LoadModal(props: LoadModalProps) {
               </button>
               <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
               {multiple ? (
-                <>
-                  <hr className="load__line" />
-                  <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
-                  <Input id="file-name" name="file-name" placeholder={placeholder} onChange={onFileNameChange} />
-                  <p className="load__tip">Leer lassen wenn unsicher</p>
-                </>
+                <div className="load__footer">
+                  <Collapse opened={images.length > 0}>
+                    <>
+                      <hr className="load__line" />
+                      <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
+                      <Input id="file-name" name="file-name" placeholder={placeholder} onChange={onFileNameChange} />
+                      <p className="load__tip">Leer lassen wenn unsicher</p>
+                    </>
+                  </Collapse>
+                </div>
               ) : null}
             </div>
           )}
@@ -116,7 +120,7 @@ function LoadModal(props: LoadModalProps) {
       <div className="load__save">
         <Collapse opened={images.length > 0}>
           <Button
-            text={buttonName(title, multiple ? recordsQuantity + 1 : undefined)}
+            text={buttonName(label, title, multiple ? recordsQuantity + 1 : undefined)}
             disabled={oversizedImages.length > 0}
             onClick={saveFiles}
           />

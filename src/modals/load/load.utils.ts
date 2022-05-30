@@ -2,10 +2,19 @@ import cn from "classnames";
 import { ImageType } from "react-images-uploading";
 import { get } from "../../utils";
 
-export const documentLabel = (name: string, count?: number): string => (count ? `${name} #${count}` : name);
+export const documentLabel = (label: string, title: string, count?: number): string => {
+  if (count) {
+    return label === title ? `${label} #${count}` : title;
+  }
+  return label;
+};
 
-export const buttonName = (name: string, count?: number): string =>
-  count ? `${name} #${count} übermitteln` : `${name} übermitteln`;
+export const buttonName = (label: string, title: string, count?: number): string => {
+  if (count) {
+    return label === title ? `${label} #${count} übermitteln` : `"${title}" übermitteln`;
+  }
+  return label;
+};
 
 export const loadFile = (error: boolean): string =>
   cn("load__file", {

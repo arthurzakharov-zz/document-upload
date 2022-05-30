@@ -1,12 +1,11 @@
 .input {
   width: 100%;
-  border: 2px solid var(--grey-9);
   border-radius: 2px;
   background-color: var(--white-1);
 }
 
 .input__field {
-  border: none;
+  border: 2px solid var(--grey-9);
   padding: 10px 17px 10px 13px;
   width: 100%;
   display: inline-block;
@@ -17,5 +16,8 @@
 }
 
 .input__field::placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
   color: var(--black-3);
 }

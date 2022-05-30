@@ -20,7 +20,7 @@ function Footer() {
   }, []);
 
   const linkClick = (name: ModalId): void => {
-    dispatch(openModal(name, true));
+    dispatch(openModal(name, "sm", true));
   };
 
   return (

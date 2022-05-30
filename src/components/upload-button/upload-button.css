@@ -2,12 +2,16 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  box-shadow: 0 4px 10px var(--grey-5);
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--orange-1);
   cursor: pointer;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.upload-button:hover {
+  box-shadow: 0 4px 10px var(--grey-5);
 }
 
 .upload-button--loaded {

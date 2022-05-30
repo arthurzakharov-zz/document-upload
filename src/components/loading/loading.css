@@ -42,7 +42,7 @@
   position: relative;
   text-indent: -9999rem;
   animation: mulShdSpin 1.1s infinite ease;
-  transform: translateZ(0) scale(1.25);
+  transform: translateZ(0) scale(0.625);
 }
 
 @keyframes mulShdSpin {
