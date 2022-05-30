@@ -18,6 +18,7 @@ export type FooterLink = {
 
 export type DocumentCategory = {
   label: string;
+  uploadDescription: string;
   placeholder: string;
   fileSizeLimitInMb: number;
   fileFormats: string[];

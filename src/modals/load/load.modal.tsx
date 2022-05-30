@@ -22,7 +22,7 @@ export interface LoadModalProps {
 
 function LoadModal(props: LoadModalProps) {
   const { documentCategory } = props;
-  const { label, placeholder, fileSizeLimitInMb, fileFormats, multiple } = documentCategory;
+  const { label, uploadDescription, placeholder, fileSizeLimitInMb, fileFormats, multiple } = documentCategory;
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
@@ -59,6 +59,8 @@ function LoadModal(props: LoadModalProps) {
   };
 
   const onChange = (imageList: ImageListType) => {
+    // eslint-disable-next-line no-console
+    console.log("onChange", imageList);
     const listOfOversizedImages: number[] = [];
     imageList.forEach((image: ImageType, index) => {
       const imageSize = get(image, "file", "size");
@@ -74,47 +76,53 @@ function LoadModal(props: LoadModalProps) {
     <div className="load">
       <div className="load__content">
         <ImageUploading multiple maxNumber={100} acceptType={fileFormats} value={images} onChange={onChange}>
-          {({ onImageUpload, onImageRemove }) => (
-            <div className="load__main">
-              <h6 className="load__head">{documentLabel(label, title, multiple ? recordsQuantity + 1 : undefined)}</h6>
-              <div className="load__info">Wählen Sie hier nur Dateien/Photos Ihres {label} aus.</div>
-              <div className="load__files">
-                {images.map((image: ImageType, index: number) => (
-                  <Collapse key={imageKey(image)} opened={fileToClose !== get(image, "file", "name")} duration={300}>
-                    <div
-                      className={loadFile(oversizedImages.includes(index))}
-                      style={{
-                        marginTop: index === 0 ? 8 : 0,
-                        marginBottom: images.length - 1 >= index ? 8 : 0,
-                      }}
-                    >
-                      <File
-                        name={get(image, "file", "name")}
-                        onClick={() => onFileClick(image, index, onImageRemove)}
-                      />
-                    </div>
-                  </Collapse>
-                ))}
-              </div>
-              <button type="button" className="load__button" onClick={onImageUpload}>
-                <SvgUpload className="load__button-icon" />
-                <span className="load__button-text">Datei(en) auswählen</span>
-              </button>
-              <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
-              {multiple ? (
-                <div className="load__footer">
-                  <Collapse opened={images.length > 0}>
-                    <>
-                      <hr className="load__line" />
-                      <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
-                      <Input id="file-name" name="file-name" placeholder={placeholder} onChange={onFileNameChange} />
-                      <p className="load__tip">Leer lassen wenn unsicher</p>
-                    </>
-                  </Collapse>
+          {({ onImageUpload, onImageRemove }) => {
+            // eslint-disable-next-line no-console
+            console.log("on", onImageUpload);
+            return (
+              <div className="load__main">
+                <h6 className="load__head">
+                  {documentLabel(label, title, multiple ? recordsQuantity + 1 : undefined)}
+                </h6>
+                <div className="load__info">{uploadDescription}</div>
+                <div className="load__files">
+                  {images.map((image: ImageType, index: number) => (
+                    <Collapse key={imageKey(image)} opened={fileToClose !== get(image, "file", "name")} duration={300}>
+                      <div
+                        className={loadFile(oversizedImages.includes(index))}
+                        style={{
+                          marginTop: index === 0 ? 8 : 0,
+                          marginBottom: images.length - 1 >= index ? 8 : 0,
+                        }}
+                      >
+                        <File
+                          name={get(image, "file", "name")}
+                          onClick={() => onFileClick(image, index, onImageRemove)}
+                        />
+                      </div>
+                    </Collapse>
+                  ))}
                 </div>
-              ) : null}
-            </div>
-          )}
+                <button type="button" className="load__button" onClick={onImageUpload}>
+                  <SvgUpload className="load__button-icon" />
+                  <span className="load__button-text">Datei(en) auswählen</span>
+                </button>
+                <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
+                {multiple ? (
+                  <div className="load__footer">
+                    <Collapse opened={images.length > 0}>
+                      <>
+                        <hr className="load__line" />
+                        <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
+                        <Input id="file-name" name="file-name" placeholder={placeholder} onChange={onFileNameChange} />
+                        <p className="load__tip">Leer lassen wenn unsicher</p>
+                      </>
+                    </Collapse>
+                  </div>
+                ) : null}
+              </div>
+            );
+          }}
         </ImageUploading>
       </div>
       <div className="load__save">
