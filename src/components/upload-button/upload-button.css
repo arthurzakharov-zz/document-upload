@@ -16,7 +16,7 @@
 
 .upload-button--loaded {
   cursor: not-allowed;
-  background-color: var(--white-1);
+  background-color: var(--grey-7);
 }
 
 .upload-button__check {

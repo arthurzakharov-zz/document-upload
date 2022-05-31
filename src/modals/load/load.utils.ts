@@ -25,7 +25,10 @@ export const imageKey = (image: ImageType): string =>
   get(image, "file", "name").concat("_", get(image, "file", "lastModified"), "_", get(image, "file", "size"));
 
 export const allowedFilesDescription = (size: number, formats: string[]): string => {
-  return `Maximale Dateigröße pro Datei: ${size}MB. Unterstützte Dateitypen: ${formats.map((f: string, index: number) =>
-    f.toUpperCase().concat(formats.length > index + 1 ? ", " : ""),
-  )}.`;
+  const allowedFormats = formats
+    .map((f: string, index: number) => {
+      return f.toUpperCase().concat(formats.length > index + 1 ? ", " : "-");
+    })
+    .join("");
+  return `Maximale Dateigröße pro Datei: ${size}MB. Unterstützte Dateitypen: ${allowedFormats}.`;
 };
