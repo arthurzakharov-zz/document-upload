@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ImageUploading, { ImageListType, ImageType } from "react-images-uploading";
 import useReactRedux from "../../hooks/useReactRedux";
-import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
-import { imageAddToCategory } from "../../store/image/image.slice";
-import { uiIsLoadingOn, uiIsLoadingOff } from "../../store/ui/ui.slice";
-import { modalClose, modalOpen } from "../../store/modal/modal.slice";
+import { selectRecordsByCategoryQuantity } from "../../redux/image/image.selectors";
+import { imageAddToCategory } from "../../redux/image/image.slice";
+import { uiIsLoadingOn, uiIsLoadingOff } from "../../redux/ui/ui.slice";
+import { modalClose, modalOpen } from "../../redux/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";

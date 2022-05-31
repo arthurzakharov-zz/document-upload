@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { selectRecordsByCategory } from "../../store/image/image.selectors";
-import { modalOpen } from "../../store/modal/modal.slice";
+import { selectRecordsByCategory } from "../../redux/image/image.selectors";
+import { modalOpen } from "../../redux/modal/modal.slice";
 import { DocumentCategory, ImageRecord } from "../../types";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";

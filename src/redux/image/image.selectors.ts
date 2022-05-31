@@ -1,5 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { StateType } from "../index";
+import { StateType } from "../store";
 import { ImageRecord } from "../../types";
 import { isObjectEmpty } from "../../utils";
 

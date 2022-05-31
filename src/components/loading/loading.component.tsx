@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import useReactRedux from "../../hooks/useReactRedux";
-import { selectUiIsLoading } from "../../store/ui/ui.selectors";
+import { selectUiIsLoading } from "../../redux/ui/ui.selectors";
 import "./loading.css";
 
 function Loading() {

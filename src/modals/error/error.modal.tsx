@@ -1,5 +1,5 @@
 import useReactRedux from "../../hooks/useReactRedux";
-import { modalClose } from "../../store/modal/modal.slice";
+import { modalClose } from "../../redux/modal/modal.slice";
 import SvgError from "../../svg/Error";
 import Button from "../../components/button";
 import "./error.css";

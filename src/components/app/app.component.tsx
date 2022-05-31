@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
-import { imageInit } from "../../store/image/image.slice";
-import { uiIsLoadingOff, uiIsLoadingOn } from "../../store/ui/ui.slice";
+import { imageInit } from "../../redux/image/image.slice";
+import { uiIsLoadingOff, uiIsLoadingOn } from "../../redux/ui/ui.slice";
 import DocumentUpload from "../document-upload";
 import Footer from "../footer";
 import Header from "../header";

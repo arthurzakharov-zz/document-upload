@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import useReactRedux from "../../hooks/useReactRedux";
-import { modalClear, modalClose } from "../../store/modal/modal.slice";
+import { modalClear, modalClose } from "../../redux/modal/modal.slice";
 import {
   selectModalIsOpen,
   selectModalWithCloseButton,
   selectModalMain,
   selectModalMainProps,
   selectModalSize,
-} from "../../store/modal/modal.selectors";
+} from "../../redux/modal/modal.selectors";
 import useLockedBody from "../../hooks/useLockedBody";
 import SvgClose from "../../svg/Close";
 import "./modal.css";
