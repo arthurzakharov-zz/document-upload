@@ -1,7 +1,9 @@
-import { applyMiddleware, createStore, Middleware } from "redux";
-import thunk from "redux-thunk";
+import { configureStore, Middleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import reducer from "./root.reducer";
+import thunk from "redux-thunk";
+import imageSlice from "./image/image.slice";
+import modalSlice from "./modal/modal.slice";
+import uiSlice from "./ui/ui.slice";
 
 const middlewares: Middleware[] = [thunk];
 
@@ -9,4 +11,17 @@ if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
 }
 
-export default createStore(reducer, applyMiddleware(...middlewares));
+const store = configureStore({
+  reducer: {
+    image: imageSlice,
+    modal: modalSlice,
+    ui: uiSlice,
+  },
+  middleware: middlewares,
+  devTools: true,
+});
+
+export type StateType = ReturnType<typeof store.getState>;
+export type DispatchType = typeof store.dispatch;
+
+export default store;

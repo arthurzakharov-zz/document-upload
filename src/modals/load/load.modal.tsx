@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ImageUploading, { ImageListType, ImageType } from "react-images-uploading";
-import { useDispatch, useSelector } from "react-redux";
-import { addFilesToCategory } from "../../store/image/image.actions";
+import useReactRedux from "../../hooks/useReactRedux";
 import { selectRecordsByCategoryQuantity } from "../../store/image/image.selectors";
-import { modalClose, openModal } from "../../store/modal/modal.actions";
-import { setIsLoading } from "../../store/ui/ui.actions";
+import { imageAddToCategory } from "../../store/image/image.slice";
+import { uiIsLoadingOn, uiIsLoadingOff } from "../../store/ui/ui.slice";
+import { modalClose, modalOpen } from "../../store/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
 import Button from "../../components/button";
@@ -29,20 +29,20 @@ function LoadModal(props: LoadModalProps) {
   const [images, setImages] = useState<ImageListType>([]);
   const [oversizedImages, setOversizedImages] = useState<number[]>([]);
 
-  const recordsQuantity = useSelector(selectRecordsByCategoryQuantity(label));
+  const { dispatch, useSelector } = useReactRedux();
 
-  const dispatch = useDispatch();
+  const recordsQuantity = useSelector(selectRecordsByCategoryQuantity(label));
 
   const saveFiles = async () => {
     try {
-      dispatch(setIsLoading(true));
+      dispatch(uiIsLoadingOn());
       dispatch(modalClose());
       await mockHttp(label !== "Gläubigerunterlagen");
-      dispatch(addFilesToCategory(label, title, images));
+      dispatch(imageAddToCategory({ category: label, name: title, files: images }));
     } catch (e) {
-      dispatch(openModal("error", "xs", false));
+      dispatch(modalOpen({ type: "error", size: "xs", withCloseButton: false }));
     } finally {
-      dispatch(setIsLoading(false));
+      dispatch(uiIsLoadingOff());
     }
   };
 

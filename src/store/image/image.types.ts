@@ -1,2 +1,12 @@
-export const INIT_IMAGES = "INIT_IMAGES";
-export const ADD_IMAGES_TO_CATEGORY = "ADD_IMAGES_TO_CATEGORY";
+import { ImageListType } from "react-images-uploading";
+import { ImageRecord } from "../../types";
+
+export type ImageReducerType = {
+  [key: string]: ImageRecord[];
+};
+
+export type ImageAddToCategoryPayloadType = {
+  category: string;
+  name: string;
+  files: ImageListType;
+};

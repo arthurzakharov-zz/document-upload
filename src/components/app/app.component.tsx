@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { initFiles } from "../../store/image/image.actions";
-import { setIsLoading } from "../../store/ui/ui.actions";
+import useReactRedux from "../../hooks/useReactRedux";
+import { imageInit } from "../../store/image/image.slice";
+import { uiIsLoadingOff, uiIsLoadingOn } from "../../store/ui/ui.slice";
 import DocumentUpload from "../document-upload";
 import Footer from "../footer";
 import Header from "../header";
@@ -11,17 +11,17 @@ import { mockHttp } from "../../mock";
 import "./app.css";
 
 function App() {
-  const dispatch = useDispatch();
+  const { dispatch } = useReactRedux();
 
   const loadInitData = async () => {
-    dispatch(setIsLoading(true));
+    dispatch(uiIsLoadingOn());
     await mockHttp(true);
-    dispatch(setIsLoading(false));
+    dispatch(uiIsLoadingOff());
   };
 
   useEffect(() => {
     // TODO: what makes it render 2 times?
-    dispatch(initFiles());
+    dispatch(imageInit());
     loadInitData();
   }, []);
 

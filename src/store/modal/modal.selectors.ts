@@ -1,18 +1,14 @@
-import { createSelector } from "reselect";
-import { RootReducer } from "../root.reducer";
-import { ModalReducer } from "./modal.reducer";
+import { createSelector } from "@reduxjs/toolkit";
+import { StateType } from "../index";
 
-export const selectModal = (state: RootReducer) => state.modal;
+export const selectModal = (state: StateType) => state.modal;
 
-export const selectModalIsOpened = createSelector([selectModal], (modal: ModalReducer) => modal.isOpen);
+export const selectModalIsOpen = createSelector(selectModal, (modal) => modal.isOpen);
 
-export const selectModalIsWithCloseButton = createSelector(
-  [selectModal],
-  (modal: ModalReducer) => modal.withCloseButton,
-);
+export const selectModalWithCloseButton = createSelector(selectModal, (modal) => modal.withCloseButton);
 
-export const selectModalSize = createSelector([selectModal], (modal: ModalReducer) => modal.size);
+export const selectModalSize = createSelector(selectModal, (modal) => modal.size);
 
-export const selectModalMain = createSelector([selectModal], (modal: ModalReducer) => modal.main);
+export const selectModalMain = createSelector(selectModal, (modal) => modal.main);
 
-export const selectModalMainProps = createSelector([selectModal], (modal: ModalReducer) => modal.mainProps);
+export const selectModalMainProps = createSelector(selectModal, (modal) => modal.mainProps);

@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { openModal } from "../../store/modal/modal.actions";
+import { modalOpen } from "../../store/modal/modal.slice";
+import useReactRedux from "../../hooks/useReactRedux";
 import { companyName } from "./footer.utils";
 import { FooterLink, ModalId } from "../../types";
 import "./footer.css";
@@ -8,7 +8,7 @@ import "./footer.css";
 function Footer() {
   const [links, setLinks] = useState<FooterLink[]>([]);
 
-  const dispatch = useDispatch();
+  const { dispatch } = useReactRedux();
 
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
@@ -20,7 +20,7 @@ function Footer() {
   }, []);
 
   const linkClick = (name: ModalId): void => {
-    dispatch(openModal(name, "sm", true));
+    dispatch(modalOpen({ type: name, size: "sm", withCloseButton: true }));
   };
 
   return (

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
-import { useDispatch, useSelector } from "react-redux";
-import { clearMain, modalClose } from "../../store/modal/modal.actions";
+import useReactRedux from "../../hooks/useReactRedux";
+import { modalClear, modalClose } from "../../store/modal/modal.slice";
 import {
-  selectModalIsOpened,
-  selectModalIsWithCloseButton,
+  selectModalIsOpen,
+  selectModalWithCloseButton,
   selectModalMain,
   selectModalMainProps,
   selectModalSize,
@@ -14,13 +14,13 @@ import SvgClose from "../../svg/Close";
 import "./modal.css";
 
 function Modal() {
-  const isOpened = useSelector(selectModalIsOpened);
-  const withCloseButton = useSelector(selectModalIsWithCloseButton);
+  const { dispatch, useSelector } = useReactRedux();
+
+  const isOpened = useSelector(selectModalIsOpen);
+  const withCloseButton = useSelector(selectModalWithCloseButton);
   const size = useSelector(selectModalSize);
   const Main = useSelector(selectModalMain);
   const mainProps = useSelector(selectModalMainProps);
-
-  const dispatch = useDispatch();
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ function Modal() {
   };
 
   const onExited = () => {
-    dispatch(clearMain());
+    dispatch(modalClear());
   };
 
   return (

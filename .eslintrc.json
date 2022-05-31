@@ -50,6 +50,7 @@
     "react-hooks/rules-of-hooks": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-cycle": "off"
+    "import/no-cycle": "off",
+    "no-param-reassign": "off"
   }
 }

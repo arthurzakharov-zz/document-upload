@@ -1,11 +1,11 @@
-import { useDispatch } from "react-redux";
-import { modalClose } from "../../store/modal/modal.actions";
+import useReactRedux from "../../hooks/useReactRedux";
+import { modalClose } from "../../store/modal/modal.slice";
 import SvgError from "../../svg/Error";
 import Button from "../../components/button";
 import "./error.css";
 
 function Error() {
-  const dispatch = useDispatch();
+  const { dispatch } = useReactRedux();
 
   const onClick = () => {
     dispatch(modalClose());

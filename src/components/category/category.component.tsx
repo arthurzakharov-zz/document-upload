@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { selectRecordsByCategory } from "../../store/image/image.selectors";
-import { openModal } from "../../store/modal/modal.actions";
+import { modalOpen } from "../../store/modal/modal.slice";
 import { DocumentCategory, ImageRecord } from "../../types";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
@@ -10,6 +9,7 @@ import File from "../file";
 import UploadButton from "../upload-button";
 import { category, categoryArrow } from "./category.utils";
 import "./category.css";
+import useReactRedux from "../../hooks/useReactRedux";
 
 export interface CategoryProps {
   documentCategory: DocumentCategory;
@@ -21,16 +21,16 @@ function Category(props: CategoryProps) {
 
   const [opened, setOpened] = useState<boolean>(false);
 
+  const { dispatch, useSelector } = useReactRedux();
+
   const images = useSelector(selectRecordsByCategory(label));
 
-  const dispatch = useDispatch();
-
   const openAndCloseIfImageWasLoaded = () => {
-    if (images.length > 0) {
+    if (images.length > 0 && multiple) {
       setOpened(true);
       setTimeout(() => {
         setOpened(false);
-      }, 900);
+      }, 750);
     }
   };
 
@@ -39,7 +39,7 @@ function Category(props: CategoryProps) {
   }, [images]);
 
   const clickHandler = () => {
-    dispatch(openModal("load", "xs", true, { documentCategory }));
+    dispatch(modalOpen({ type: "load", size: "xs", withCloseButton: true, props: { documentCategory } }));
   };
 
   const toggleDetailedView = () => {
