@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectRecordsByCategory } from "../../store/image/image.selectors";
 import { openModal } from "../../store/modal/modal.actions";
@@ -24,6 +24,19 @@ function Category(props: CategoryProps) {
   const images = useSelector(selectRecordsByCategory(label));
 
   const dispatch = useDispatch();
+
+  const openAndCloseIfImageWasLoaded = () => {
+    if (images.length > 0) {
+      setOpened(true);
+      setTimeout(() => {
+        setOpened(false);
+      }, 900);
+    }
+  };
+
+  useEffect(() => {
+    openAndCloseIfImageWasLoaded();
+  }, [images]);
 
   const clickHandler = () => {
     dispatch(openModal("load", "xs", true, { documentCategory }));

@@ -59,8 +59,6 @@ function LoadModal(props: LoadModalProps) {
   };
 
   const onChange = (imageList: ImageListType) => {
-    // eslint-disable-next-line no-console
-    console.log("onChange", imageList);
     const listOfOversizedImages: number[] = [];
     imageList.forEach((image: ImageType, index) => {
       const imageSize = get(image, "file", "size");
@@ -77,8 +75,6 @@ function LoadModal(props: LoadModalProps) {
       <div className="load__content">
         <ImageUploading multiple maxNumber={100} acceptType={fileFormats} value={images} onChange={onChange}>
           {({ onImageUpload, onImageRemove }) => {
-            // eslint-disable-next-line no-console
-            console.log("on", onImageUpload);
             return (
               <div className="load__main">
                 <h6 className="load__head">
