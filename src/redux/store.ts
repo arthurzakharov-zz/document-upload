@@ -1,32 +1,24 @@
 import { configureStore, Middleware } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import storage from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
 import logger from "redux-logger";
-import thunk from "redux-thunk";
 import imageSlice from "./image/image.slice";
 import modalSlice from "./modal/modal.slice";
 import uiSlice from "./ui/ui.slice";
 
-const persistConfig = {
-  key: "document-upload",
-  storage,
-  blacklist: ["modal", "ui"],
+const MIDDLEWARES: Middleware[] = [];
+
+const REDUCERS = {
+  image: imageSlice,
+  modal: modalSlice,
+  ui: uiSlice,
 };
 
-const reducers = combineReducers({ image: imageSlice, modal: modalSlice, ui: uiSlice });
-
-const persistedReducer = persistReducer(persistConfig, reducers);
-
-const middlewares: Middleware[] = [thunk];
-
 if (process.env.NODE_ENV === "development") {
-  middlewares.push(logger);
+  MIDDLEWARES.push(logger);
 }
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: middlewares,
+  reducer: REDUCERS,
+  middleware: MIDDLEWARES,
   devTools: process.env.NODE_ENV !== "production",
 });
 

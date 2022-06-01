@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
-import { imageInit } from "../../redux/image/image.slice";
-import { selectImage } from "../../redux/image/image.selectors";
 import { uiIsLoadingOff, uiIsLoadingOn } from "../../redux/ui/ui.slice";
-import { isObjectEmpty } from "../../utils";
 import DocumentUpload from "../document-upload";
 import Footer from "../footer";
 import Header from "../header";
@@ -13,9 +10,7 @@ import { mockHttp } from "../../mock";
 import "./app.css";
 
 function App() {
-  const { dispatch, useSelector } = useReactRedux();
-
-  const image = useSelector(selectImage);
+  const { dispatch } = useReactRedux();
 
   const loadInitData = async () => {
     dispatch(uiIsLoadingOn());
@@ -24,9 +19,6 @@ function App() {
   };
 
   useEffect(() => {
-    if (isObjectEmpty(image)) {
-      dispatch(imageInit());
-    }
     loadInitData();
   }, []);
 

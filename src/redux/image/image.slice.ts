@@ -7,18 +7,14 @@ const imageSetName = (name: string, imageSet: ImageRecord[]): string => {
   return `${name} #${imageSet.length + 1}`;
 };
 
-const INITIAL_STATE: ImageReducerType = {};
+const INITIAL_STATE: ImageReducerType = categories.reduce((obj: ImageReducerType, category: DocumentCategory) => {
+  return { ...obj, [category.label]: [] };
+}, {});
 
 const imageSlice = createSlice({
   name: "image",
   initialState: INITIAL_STATE,
   reducers: {
-    imageInit(state) {
-      const initializedCategories = categories.reduce((obj: ImageReducerType, category: DocumentCategory) => {
-        return { ...obj, [category.label]: [] };
-      }, {});
-      Object.assign(state, initializedCategories);
-    },
     imageAddToCategory(state, action: PayloadAction<ImageAddToCategoryPayloadType>) {
       state[action.payload.category] = [
         ...state[action.payload.category],
@@ -31,6 +27,6 @@ const imageSlice = createSlice({
   },
 });
 
-export const { imageInit, imageAddToCategory } = imageSlice.actions;
+export const { imageAddToCategory } = imageSlice.actions;
 
 export default imageSlice.reducer;

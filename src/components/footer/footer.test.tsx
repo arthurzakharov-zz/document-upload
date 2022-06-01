@@ -1,12 +1,10 @@
 import { render } from "@testing-library/react";
 import configureStore from "redux-mock-store";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
 import Footer from "./footer.component";
 import { companyName } from "./footer.utils";
 
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
+const mockStore = configureStore();
 
 describe("Footer", () => {
   test("companyName", () => {
