@@ -13,11 +13,11 @@ import File from "../../components/file";
 import Input from "../../components/input";
 import { allowedFilesDescription, buttonName, documentLabel, imageKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
-import { DocumentCategory } from "../../types";
+import { DocumentCategoryType } from "../../types";
 import "./load.css";
 
 export interface LoadModalProps {
-  documentCategory: DocumentCategory;
+  documentCategory: DocumentCategoryType;
 }
 
 function LoadModal(props: LoadModalProps) {
@@ -38,7 +38,15 @@ function LoadModal(props: LoadModalProps) {
       dispatch(uiIsLoadingOn());
       dispatch(modalClose());
       await mockHttp(label !== "Gläubigerunterlagen");
-      dispatch(imageAddToCategory({ category: label, name: title, files: images }));
+      dispatch(
+        imageAddToCategory({
+          category: label,
+          name: title,
+          files: images.map((image: ImageType) => ({
+            dataURL: image.dataURL,
+          })),
+        }),
+      );
     } catch (e) {
       dispatch(modalOpen({ type: "error", size: "xs", withCloseButton: false }));
     } finally {

@@ -7,7 +7,7 @@ export const selectModalIsOpen = createSelector(selectModal, (modal) => modal.is
 
 export const selectModalWithCloseButton = createSelector(selectModal, (modal) => modal.withCloseButton);
 
-export const selectModalSize = createSelector(selectModal, (modal) => modal.size);
+export const selectModalSizeType = createSelector(selectModal, (modal) => modal.size);
 
 export const selectModalMain = createSelector(selectModal, (modal) => modal.main);
 

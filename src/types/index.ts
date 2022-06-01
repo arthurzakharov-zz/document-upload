@@ -1,16 +1,24 @@
-import { ImageListType } from "react-images-uploading";
+import { ImageType } from "react-images-uploading";
 
-export type ModalId = "general_info" | "privacy" | "impressum" | "load" | "error";
+export type ModalIdType = "general_info" | "privacy" | "impressum" | "load" | "error";
 
-export type ModalSize = "xs" | "sm";
+export type ModalSizeType = "xs" | "sm";
 
-export type FooterLink = {
+export type FooterLinkType = {
   label: string;
-  id: ModalId;
+  id: ModalIdType;
 };
 
-export type DocumentCategory = {
-  label: string;
+export type CategoryNameType =
+  | "Personalausweis"
+  | "Gläubigerunterlagen"
+  | "Einkommensnachweis"
+  | "Arbeitsvertrag"
+  | "Schufa-Auskunft"
+  | "Sonstiges";
+
+export type DocumentCategoryType = {
+  label: CategoryNameType;
   uploadDescription: string;
   placeholder: string;
   fileSizeLimitInMb: number;
@@ -18,9 +26,9 @@ export type DocumentCategory = {
   multiple: boolean;
 };
 
-export type ImageRecord = {
+export type ImageRecordType = {
   name: string;
-  images: ImageListType;
+  images: Pick<ImageType, "dataURL">[];
 };
 
-export type DataSize = "B" | "kB" | "MB";
+export type DataSizeType = "B" | "kB" | "MB";

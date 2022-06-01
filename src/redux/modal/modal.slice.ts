@@ -1,7 +1,7 @@
 import { ElementType } from "react";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { ModalReducerType } from "./modal.types";
-import { ModalId } from "../../types";
+import { ModalIdType } from "../../types";
 import ErrorModal from "../../modals/error/error.modal";
 import GeneralInfoModal from "../../modals/general-info";
 import ImpressumModal from "../../modals/impressum";
@@ -17,7 +17,7 @@ const INITIAL_STATE: ModalReducerType = {
   mainProps: {},
 };
 
-const main = (id: ModalId): ElementType | null => {
+const main = (id: ModalIdType): ElementType | null => {
   switch (id) {
     case "error":
       return ErrorModal;

@@ -7,7 +7,7 @@ import {
   selectModalWithCloseButton,
   selectModalMain,
   selectModalMainProps,
-  selectModalSize,
+  selectModalSizeType,
 } from "../../redux/modal/modal.selectors";
 import useLockedBody from "../../hooks/useLockedBody";
 import SvgClose from "../../svg/Close";
@@ -18,7 +18,7 @@ function Modal() {
 
   const isOpened = useSelector(selectModalIsOpen);
   const withCloseButton = useSelector(selectModalWithCloseButton);
-  const size = useSelector(selectModalSize);
+  const size = useSelector(selectModalSizeType);
   const Main = useSelector(selectModalMain);
   const mainProps = useSelector(selectModalMainProps);
 

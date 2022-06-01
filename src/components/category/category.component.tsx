@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
+import useReactRedux from "../../hooks/useReactRedux";
 import { selectRecordsByCategory } from "../../redux/image/image.selectors";
 import { modalOpen } from "../../redux/modal/modal.slice";
-import { DocumentCategory, ImageRecord } from "../../types";
+import { DocumentCategoryType, ImageRecordType } from "../../types";
+import { category, categoryArrow } from "./category.utils";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
 import File from "../file";
 import UploadButton from "../upload-button";
-import { category, categoryArrow } from "./category.utils";
 import "./category.css";
-import useReactRedux from "../../hooks/useReactRedux";
 
 export interface CategoryProps {
-  documentCategory: DocumentCategory;
+  documentCategory: DocumentCategoryType;
 }
 
 function Category(props: CategoryProps) {
@@ -71,7 +71,7 @@ function Category(props: CategoryProps) {
       </div>
       <Collapse opened={opened}>
         <div className="category__files">
-          {images.map((image: ImageRecord) => (
+          {images.map((image: ImageRecordType) => (
             <div key={image.name} className="category__file">
               <File name={image.name} />
             </div>

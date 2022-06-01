@@ -1,17 +1,17 @@
 import { ElementType } from "react";
-import { ModalId, ModalSize } from "../../types";
+import { ModalIdType, ModalSizeType } from "../../types";
 
 export type ModalReducerType = {
   isOpen: boolean;
   withCloseButton: boolean;
-  size: ModalSize;
+  size: ModalSizeType;
   main: ElementType | null;
   mainProps: Object;
 };
 
 export type ModalOpenActionType = {
-  type: ModalId;
-  size: ModalSize;
+  type: ModalIdType;
+  size: ModalSizeType;
   withCloseButton: boolean;
   props?: Object;
 };

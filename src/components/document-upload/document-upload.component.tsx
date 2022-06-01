@@ -1,4 +1,4 @@
-import { DocumentCategory } from "../../types";
+import { DocumentCategoryType } from "../../types";
 import categories from "../../config/categories";
 import Category from "../category";
 import LeadInfo from "../lead-info";
@@ -9,7 +9,7 @@ function DocumentUpload() {
     <main className="document-upload">
       <LeadInfo />
       <div className="document-upload__categories">
-        {categories.map((category: DocumentCategory) => (
+        {categories.map((category: DocumentCategoryType) => (
           <Category key={category.label} documentCategory={category} />
         ))}
       </div>

@@ -1,6 +1,6 @@
-import { DocumentCategory } from "../types";
+import { DocumentCategoryType } from "../types";
 
-const categories: DocumentCategory[] = [
+const categories: DocumentCategoryType[] = [
   {
     label: "Personalausweis",
     uploadDescription: "Wählen Sie hier nur Dateien/Photos Ihres Personalausweis aus.",
