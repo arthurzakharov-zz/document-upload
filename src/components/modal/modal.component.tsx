@@ -47,7 +47,7 @@ function Modal() {
   return (
     <CSSTransition
       in={isOpened}
-      timeout={{ enter: 600, exit: 1050 }}
+      timeout={{ enter: 1600, exit: 1050 }}
       nodeRef={ref}
       classNames="modal"
       onEntered={onEntered}

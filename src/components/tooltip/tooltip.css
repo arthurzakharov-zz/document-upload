@@ -1,0 +1,91 @@
+.tooltip {
+  --tooltip-fade: 300ms;
+  position: relative;
+}
+
+.tooltip::before {
+  cursor: pointer;
+  display: block;
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 175%;
+  height: 175%;
+  transform: translate(-50%, -50%);
+}
+
+.tooltip__modal {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  z-index: 1;
+  width: 250px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+}
+
+.tooltip__modal-enter {
+  opacity: 0;
+}
+
+.tooltip__modal-enter-active {
+  opacity: 1;
+  transition: opacity var(--tooltip-fade);
+  transition-delay: 0ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tooltip__modal-exit {
+  opacity: 1;
+}
+
+.tooltip__modal-exit-active {
+  opacity: 0;
+  transition: opacity var(--tooltip-fade);
+  transition-delay: 0ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tooltip__content {
+  position: relative;
+  z-index: 2;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: var(--white-1);
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--black-2);
+  text-align: left;
+}
+
+.tooltip__pointer {
+  position: absolute;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  background-color: var(--white-1);
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.25);
+  transform: rotate(45deg);
+}
+
+@media screen and (min-width: 768px) {
+  .tooltip::before {
+    width: 150%;
+    height: 150%;
+  }
+  .tooltip__pointer::before {
+    cursor: pointer;
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    width: 350%;
+    height: 350%;
+    transform: translate(-50%, -50%);
+  }
+}

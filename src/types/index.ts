@@ -19,6 +19,7 @@ export type CategoryNameType =
 
 export type DocumentCategoryType = {
   label: CategoryNameType;
+  tooltip?: string;
   uploadDescription: string;
   placeholder: string;
   fileSizeLimitInMb: number;

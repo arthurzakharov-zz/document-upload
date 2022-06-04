@@ -10,6 +10,7 @@ import Collapse from "../collapse";
 import File from "../file";
 import UploadButton from "../upload-button";
 import "./category.css";
+import Tooltip from "../tooltip";
 
 export interface CategoryProps {
   documentCategory: DocumentCategoryType;
@@ -17,7 +18,7 @@ export interface CategoryProps {
 
 function Category(props: CategoryProps) {
   const { documentCategory } = props;
-  const { label, multiple } = documentCategory;
+  const { label, multiple, tooltip } = documentCategory;
 
   const [opened, setOpened] = useState<boolean>(false);
 
@@ -60,9 +61,15 @@ function Category(props: CategoryProps) {
           ) : (
             <div className="category__label">{label}</div>
           )}
-          <div className="category__question">
-            <SvgQuestion className="category__symbol" />
-          </div>
+          {tooltip && (
+            <div className="category__question-wrap">
+              <Tooltip content={tooltip}>
+                <div className="category__question">
+                  <SvgQuestion className="category__symbol" />
+                </div>
+              </Tooltip>
+            </div>
+          )}
         </div>
         <div className="category__right">
           {inMultiModeHasImages() ? <div className="category__count">{images.length}</div> : null}
