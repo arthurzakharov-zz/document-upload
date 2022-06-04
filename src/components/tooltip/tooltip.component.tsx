@@ -113,7 +113,7 @@ function Tooltip(props: PropsWithChildren<TooltipProps>) {
     >
       <CSSTransition
         in={isVisible}
-        timeout={300}
+        timeout={200}
         nodeRef={modalRef}
         classNames="tooltip__modal"
         onExited={onExit}
