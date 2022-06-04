@@ -3,19 +3,6 @@
   position: relative;
 }
 
-.tooltip::before {
-  cursor: pointer;
-  display: block;
-  content: "";
-  position: absolute;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  width: 175%;
-  height: 175%;
-  transform: translate(-50%, -50%);
-}
-
 .tooltip__modal {
   display: block;
   cursor: pointer;
@@ -73,8 +60,16 @@
 
 @media screen and (min-width: 768px) {
   .tooltip::before {
+    cursor: pointer;
+    display: block;
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
     width: 150%;
     height: 150%;
+    transform: translate(-50%, -50%);
   }
   .tooltip__pointer::before {
     cursor: pointer;

@@ -39,7 +39,7 @@ function Tooltip(props: PropsWithChildren<TooltipProps>) {
 
   useEffect(() => {
     const onDocumentClick = (e: MouseEvent) => {
-      if (tooltipRef.current && tooltipRef.current.contains(e.target as Node)) {
+      if (childRef.current && childRef.current.contains(e.target as Node)) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
