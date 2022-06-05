@@ -52,6 +52,7 @@
     "react/jsx-props-no-spreading": "off",
     "import/no-cycle": "off",
     "no-param-reassign": "off",
-    "react/no-danger": "off"
+    "react/no-danger": "off",
+    "@typescript-eslint/no-shadow": "off"
   }
 }

@@ -7,7 +7,7 @@ const categories: DocumentCategoryType[] = [
     uploadDescription: "Wählen Sie hier nur Dateien/Photos Ihres Personalausweis aus.",
     placeholder: "z.B. Personalausweis",
     fileSizeLimitInMb: 5,
-    fileFormats: ["pdf", "jpg", "jpeg"],
+    fileFormats: ["pdf", "jpg", "jpeg", "png"],
     multiple: false,
   },
   {

@@ -1,4 +1,10 @@
-import { ImageType } from "react-images-uploading";
+export interface ImageType {
+  dataURL?: string;
+  file?: File;
+  [key: string]: any;
+}
+
+export type ImageListType = Array<ImageType>;
 
 export type ModalIdType = "general_info" | "privacy" | "impressum" | "load" | "error";
 

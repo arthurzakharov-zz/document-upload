@@ -1,5 +1,4 @@
-import { ImageType } from "react-images-uploading";
-import { ImageRecordType, CategoryNameType } from "../../types";
+import { ImageRecordType, CategoryNameType, ImageType } from "../../types";
 
 export type ImageReducerType = {
   [key in CategoryNameType]: ImageRecordType[];

@@ -1,6 +1,6 @@
 import cn from "classnames";
-import { ImageType } from "react-images-uploading";
 import { get } from "../../utils";
+import { ImageType } from "../../types";
 
 export const documentLabel = (label: string, title: string, count?: number): string => {
   if (count) {
