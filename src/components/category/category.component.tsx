@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
-import { selectRecordsByCategory } from "../../redux/image/image.selectors";
+import { selectFileCategory } from "../../redux/file/file.selectors";
 import { modalOpen } from "../../redux/modal/modal.slice";
-import { DocumentCategoryType, ImageRecordType } from "../../types";
+import { DocumentCategoryType, FileRecordType } from "../../types";
 import { category, categoryArrow } from "./category.utils";
 import SvgQuestion from "../../svg/Question";
 import SvgArrow from "../../svg/Arrow";
 import Collapse from "../collapse";
 import File from "../file";
+import Tooltip from "../tooltip";
 import UploadButton from "../upload-button";
 import "./category.css";
-import Tooltip from "../tooltip";
 
 export interface CategoryProps {
   documentCategory: DocumentCategoryType;
@@ -24,10 +24,10 @@ function Category(props: CategoryProps) {
 
   const { dispatch, useSelector } = useReactRedux();
 
-  const images = useSelector(selectRecordsByCategory(label));
+  const fileCategory = useSelector(selectFileCategory(label));
 
-  const openAndCloseIfImageWasLoaded = () => {
-    if (images.length > 0 && multiple) {
+  const openAndCloseIfFileWasLoaded = () => {
+    if (fileCategory.length > 0 && multiple) {
       setOpened(true);
       setTimeout(() => {
         setOpened(false);
@@ -36,8 +36,8 @@ function Category(props: CategoryProps) {
   };
 
   useEffect(() => {
-    openAndCloseIfImageWasLoaded();
-  }, [images]);
+    openAndCloseIfFileWasLoaded();
+  }, [fileCategory]);
 
   const clickHandler = () => {
     dispatch(modalOpen({ type: "load", size: "xs", withCloseButton: true, props: { documentCategory } }));
@@ -47,13 +47,13 @@ function Category(props: CategoryProps) {
     setOpened(!opened);
   };
 
-  const inMultiModeHasImages = (): boolean => multiple && images.length > 0;
+  const inMultiModeHasFiles = (): boolean => multiple && fileCategory.length > 0;
 
   return (
     <div className={category(opened)}>
       <div className="category__content">
         <div className="category__left">
-          {inMultiModeHasImages() ? (
+          {inMultiModeHasFiles() ? (
             <button type="button" className="category__button" onClick={toggleDetailedView}>
               <SvgArrow className={categoryArrow(opened)} />
               <div className="category__label">{label}</div>
@@ -72,15 +72,15 @@ function Category(props: CategoryProps) {
           )}
         </div>
         <div className="category__right">
-          {inMultiModeHasImages() ? <div className="category__count">{images.length}</div> : null}
-          <UploadButton loaded={!multiple && !!images.length} multiple={multiple} onClick={clickHandler} />
+          {inMultiModeHasFiles() ? <div className="category__count">{fileCategory.length}</div> : null}
+          <UploadButton loaded={!multiple && !!fileCategory.length} multiple={multiple} onClick={clickHandler} />
         </div>
       </div>
       <Collapse opened={opened}>
         <div className="category__files">
-          {images.map((image: ImageRecordType) => (
-            <div key={image.name} className="category__file">
-              <File name={image.name} />
+          {fileCategory.map((fileRecord: FileRecordType) => (
+            <div key={fileRecord.name} className="category__file">
+              <File name={fileRecord.name} />
             </div>
           ))}
         </div>

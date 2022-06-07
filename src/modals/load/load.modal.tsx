@@ -1,8 +1,8 @@
 /* eslint-disable */
 import { useState } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
-import { selectRecordsByCategoryQuantity } from "../../redux/image/image.selectors";
-import { imageAddToCategory } from "../../redux/image/image.slice";
+import { selectFileCategoryQuantity } from "../../redux/file/file.selectors";
+import { fileAddToCategory } from "../../redux/file/file.slice";
 import { uiIsLoadingOn, uiIsLoadingOff } from "../../redux/ui/ui.slice";
 import { modalClose, modalOpen } from "../../redux/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
@@ -12,9 +12,10 @@ import Collapse from "../../components/collapse";
 import File from "../../components/file";
 import FileUpload from "../../components/file-upload";
 import Input from "../../components/input";
-import { allowedFilesDescription, buttonName, documentLabel, imageKey, loadFile } from "./load.utils";
+import { allowedFilesDescription, buttonName, documentLabel, fileKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
-import { DocumentCategoryType, ImageListType, ImageType } from "../../types";
+import { DocumentCategoryType } from "../../types";
+import { FileUploadListType, FileUploadType } from "../../components/file-upload/file-upload.types";
 import "./load.css";
 
 export interface LoadModalProps {
@@ -27,12 +28,12 @@ function LoadModal(props: LoadModalProps) {
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
-  const [images, setImages] = useState<ImageListType>([]);
-  const [oversizedImages, setOversizedImages] = useState<number[]>([]);
+  const [files, setFiles] = useState<FileUploadListType>([]);
+  const [oversizedFiles, setOversizedFiles] = useState<number[]>([]);
 
   const { dispatch, useSelector } = useReactRedux();
 
-  const recordsQuantity = useSelector(selectRecordsByCategoryQuantity(label));
+  const recordsQuantity = useSelector(selectFileCategoryQuantity(label));
 
   const saveFiles = async () => {
     try {
@@ -40,11 +41,11 @@ function LoadModal(props: LoadModalProps) {
       dispatch(modalClose());
       await mockHttp(label !== "Gläubigerunterlagen");
       dispatch(
-        imageAddToCategory({
+        fileAddToCategory({
           category: label,
           name: title,
-          files: images.map((image: ImageType) => ({
-            dataURL: image.dataURL,
+          files: files.map((file: FileUploadType) => ({
+            dataURL: file.dataURL,
           })),
         }),
       );
@@ -55,10 +56,10 @@ function LoadModal(props: LoadModalProps) {
     }
   };
 
-  const onFileClick = (image: ImageType, index: number, onImageRemove: (index: number) => void) => {
-    setFileToClose(get(image, "file", "name"));
+  const onFileClick = (file: FileUploadType, index: number, onFileRemove: (index: number) => void) => {
+    setFileToClose(get(file, "file", "name"));
     setTimeout(() => {
-      onImageRemove(index);
+      onFileRemove(index);
       setFileToClose("");
     }, 450);
   };
@@ -67,26 +68,26 @@ function LoadModal(props: LoadModalProps) {
     setTitle(value || label);
   };
 
-  const onChange = (imageList: ImageListType) => {
-    const listOfOversizedImages: number[] = [];
-    imageList.forEach((image: ImageType, index) => {
-      const imageSize = get(image, "file", "size");
-      if (convertDataSize(imageSize, "B", "MB") > fileSizeLimitInMb) {
-        listOfOversizedImages.push(index);
+  const onChange = (fileList: FileUploadListType) => {
+    const listOfOversizedFiles: number[] = [];
+    fileList.forEach((file: FileUploadType, index) => {
+      const fileSize = get(file, "file", "size");
+      if (convertDataSize(fileSize, "B", "MB") > fileSizeLimitInMb) {
+        listOfOversizedFiles.push(index);
       }
     });
-    setOversizedImages(listOfOversizedImages);
-    setImages(imageList);
+    setOversizedFiles(listOfOversizedFiles);
+    setFiles(fileList);
   };
 
   return (
     <div className="load">
       <div className="load__content">
         <FileUpload
-          files={images}
-          acceptType={fileFormats}
+          files={files}
+          fileResolutions={fileFormats}
           maxFileSize={convertDataSize(10, "MB", "B")}
-          maxNumber={100}
+          maxFileNumber={100}
           onChange={onChange}
         >
           {({ onFileUpload, onFileRemove }) => (
@@ -94,16 +95,16 @@ function LoadModal(props: LoadModalProps) {
               <h6 className="load__head">{documentLabel(label, title, multiple ? recordsQuantity + 1 : undefined)}</h6>
               <div className="load__info">{uploadDescription}</div>
               <div className="load__files">
-                {images.map((image: ImageType, index: number) => (
-                  <Collapse key={imageKey(image)} opened={fileToClose !== get(image, "file", "name")} duration={300}>
+                {files.map((file: FileUploadType, index: number) => (
+                  <Collapse key={fileKey(file)} opened={fileToClose !== get(file, "file", "name")} duration={300}>
                     <div
-                      className={loadFile(oversizedImages.includes(index))}
+                      className={loadFile(oversizedFiles.includes(index))}
                       style={{
                         marginTop: index === 0 ? 8 : 0,
-                        marginBottom: images.length - 1 >= index ? 8 : 0,
+                        marginBottom: files.length - 1 >= index ? 8 : 0,
                       }}
                     >
-                      <File name={get(image, "file", "name")} onClick={() => onFileClick(image, index, onFileRemove)} />
+                      <File name={get(file, "file", "name")} onClick={() => onFileClick(file, index, onFileRemove)} />
                     </div>
                   </Collapse>
                 ))}
@@ -115,7 +116,7 @@ function LoadModal(props: LoadModalProps) {
               <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
               {multiple ? (
                 <div className="load__footer">
-                  <Collapse opened={images.length > 0}>
+                  <Collapse opened={files.length > 0}>
                     <>
                       <hr className="load__line" />
                       <p className="load__rename">Möchten Sie dieses Dokument benennen?</p>
@@ -130,10 +131,10 @@ function LoadModal(props: LoadModalProps) {
         </FileUpload>
       </div>
       <div className="load__save">
-        <Collapse opened={images.length > 0}>
+        <Collapse opened={files.length > 0}>
           <Button
             text={buttonName(label, title, multiple ? recordsQuantity + 1 : undefined)}
-            disabled={oversizedImages.length > 0}
+            disabled={oversizedFiles.length > 0}
             onClick={saveFiles}
           />
         </Collapse>

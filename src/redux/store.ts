@@ -1,13 +1,13 @@
 import { configureStore, Middleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
-import imageSlice from "./image/image.slice";
+import fileSlice from "./file/file.slice";
 import modalSlice from "./modal/modal.slice";
 import uiSlice from "./ui/ui.slice";
 
 const MIDDLEWARES: Middleware[] = [];
 
 const REDUCERS = {
-  image: imageSlice,
+  file: fileSlice,
   modal: modalSlice,
   ui: uiSlice,
 };

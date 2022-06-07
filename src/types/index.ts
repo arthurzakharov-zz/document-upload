@@ -1,14 +1,10 @@
-export interface ImageType {
-  dataURL?: string;
-  file?: File;
-  [key: string]: any;
-}
-
-export type ImageListType = Array<ImageType>;
+import { FileUploadType } from "../components/file-upload/file-upload.types";
 
 export type ModalIdType = "general_info" | "privacy" | "impressum" | "load" | "error";
 
 export type ModalSizeType = "xs" | "sm";
+
+export type FileResolutionType = "pdf" | "png" | "jpg" | "jpeg" | "heic" | "gif";
 
 export type FooterLinkType = {
   label: string;
@@ -29,13 +25,13 @@ export type DocumentCategoryType = {
   uploadDescription: string;
   placeholder: string;
   fileSizeLimitInMb: number;
-  fileFormats: string[];
+  fileFormats: FileResolutionType[];
   multiple: boolean;
 };
 
-export type ImageRecordType = {
+export type FileRecordType = {
   name: string;
-  images: Pick<ImageType, "dataURL">[];
+  files: Pick<FileUploadType, "dataURL">[];
 };
 
 export type DataSizeType = "B" | "kB" | "MB";

@@ -1,35 +1,16 @@
-import { ReactNode, useRef, ChangeEvent, useCallback, RefObject } from "react";
-import { ImageListType } from "../../types";
-import "./file-upload.css";
-
-export type FileUploadErrorType = {
-  maxFileSize?: boolean;
-  maxNumber?: boolean;
-};
-
-export type FileUploadChildrenType = {
-  onFileUpload: () => void;
-  onFileRemove: (index: number) => void;
-};
-
-export type FileUploadPropsType = {
-  files: ImageListType;
-  acceptType: string[];
-  maxFileSize: number;
-  maxNumber: number;
-  children: (props: FileUploadChildrenType) => ReactNode;
-  onChange: (files: ImageListType, errors?: FileUploadErrorType) => void;
-};
+import { useRef, ChangeEvent, useCallback, RefObject } from "react";
+import { FileUploadErrorType, FileUploadPropsType, FileUploadListType } from "./file-upload.types";
+import { FileResolutionType } from "../../types";
 
 function FileUpload(props: FileUploadPropsType) {
-  const { files, acceptType, maxFileSize, maxNumber, children, onChange } = props;
+  const { files, fileResolutions, maxFileSize, maxFileNumber, children, onChange } = props;
 
   const inFiles = files || [];
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const getAcceptTypeString = (acceptType: string[]): string => {
-    const convertedTypes = acceptType.map((type) => ".".concat(type));
+  const getAccept = (fileResolutions: FileResolutionType[]): string => {
+    const convertedTypes = fileResolutions.map((type) => ".".concat(type));
     return convertedTypes.join(", ");
   };
 
@@ -41,13 +22,13 @@ function FileUpload(props: FileUploadPropsType) {
     });
   };
 
-  const getListFiles = (files: FileList, dataURLKey: string): Promise<ImageListType> => {
+  const getListFiles = (files: FileList, dataURLKey: string): Promise<FileUploadListType> => {
     const promiseFiles: Array<Promise<string>> = [];
     for (let i = 0; i < files.length; i += 1) {
       promiseFiles.push(getBase64(files[i]));
     }
     return Promise.all(promiseFiles).then((fileListBase64: Array<string>) => {
-      const fileList: ImageListType = fileListBase64.map((base64, index) => ({
+      const fileList: FileUploadListType = fileListBase64.map((base64, index) => ({
         [dataURLKey]: base64,
         file: files[index],
       }));
@@ -65,8 +46,8 @@ function FileUpload(props: FileUploadPropsType) {
   };
 
   const getErrorValidation = (
-    fileList: ImageListType,
-    inFiles: ImageListType,
+    fileList: FileUploadListType,
+    inFiles: FileUploadListType,
     maxNumber: number,
     maxFileSize: number,
   ): FileUploadErrorType => {
@@ -85,8 +66,8 @@ function FileUpload(props: FileUploadPropsType) {
     return {};
   };
 
-  const validate = (fileList: ImageListType): FileUploadErrorType => {
-    return getErrorValidation(fileList, inFiles, maxNumber, maxFileSize);
+  const validate = (fileList: FileUploadListType): FileUploadErrorType => {
+    return getErrorValidation(fileList, inFiles, maxFileNumber, maxFileSize);
   };
 
   const handleChange = async (files: FileList | null) => {
@@ -129,8 +110,8 @@ function FileUpload(props: FileUploadPropsType) {
         ref={inputRef}
         type="file"
         multiple
-        accept={getAcceptTypeString(acceptType)}
-        className="file-upload"
+        accept={getAccept(fileResolutions)}
+        style={{ display: "none" }}
         onChange={onFilesChange}
       />
       {children({
