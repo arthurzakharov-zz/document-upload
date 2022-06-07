@@ -1,8 +1,8 @@
 import { useRef, ChangeEvent, useCallback, RefObject } from "react";
-import type { FileUploadErrorType, FileUploadPropsType, FileUploadListType } from "./file-upload.types";
+import type { UploadWrapperErrorType, UploadWrapperPropsType, UploadWrapperListType } from "./upload-wrapper.types";
 import type { DocumentResolutionType } from "../../types";
 
-function FileUpload(props: FileUploadPropsType) {
+function UploadWrapper(props: UploadWrapperPropsType) {
   const { files, fileResolutions, maxFileSize, maxFileNumber, children, onChange } = props;
 
   const inFiles = files || [];
@@ -22,13 +22,13 @@ function FileUpload(props: FileUploadPropsType) {
     });
   };
 
-  const getListFiles = (files: FileList, dataURLKey: string): Promise<FileUploadListType> => {
+  const getListFiles = (files: FileList, dataURLKey: string): Promise<UploadWrapperListType> => {
     const promiseFiles: Array<Promise<string>> = [];
     for (let i = 0; i < files.length; i += 1) {
       promiseFiles.push(getBase64(files[i]));
     }
     return Promise.all(promiseFiles).then((fileListBase64: Array<string>) => {
-      const fileList: FileUploadListType = fileListBase64.map((base64, index) => ({
+      const fileList: UploadWrapperListType = fileListBase64.map((base64, index) => ({
         [dataURLKey]: base64,
         file: files[index],
       }));
@@ -46,12 +46,12 @@ function FileUpload(props: FileUploadPropsType) {
   };
 
   const getErrorValidation = (
-    fileList: FileUploadListType,
-    inFiles: FileUploadListType,
+    fileList: UploadWrapperListType,
+    inFiles: UploadWrapperListType,
     maxNumber: number,
     maxFileSize: number,
-  ): FileUploadErrorType => {
-    const newErrors: FileUploadErrorType = {};
+  ): UploadWrapperErrorType => {
+    const newErrors: UploadWrapperErrorType = {};
     if (!isMaxNumberValid(fileList.length + inFiles.length, maxNumber)) {
       newErrors.maxNumber = true;
     } else {
@@ -66,7 +66,7 @@ function FileUpload(props: FileUploadPropsType) {
     return {};
   };
 
-  const validate = (fileList: FileUploadListType): FileUploadErrorType => {
+  const validate = (fileList: UploadWrapperListType): UploadWrapperErrorType => {
     return getErrorValidation(fileList, inFiles, maxFileNumber, maxFileSize);
   };
 
@@ -122,4 +122,4 @@ function FileUpload(props: FileUploadPropsType) {
   );
 }
 
-export default FileUpload;
+export default UploadWrapper;

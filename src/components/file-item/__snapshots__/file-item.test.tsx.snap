@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`File Screenshot 1`] = `
+exports[`FileItem Screenshot 1`] = `
 <div
-  class="file"
+  class="file-item"
 >
   <div
-    class="file__info"
+    class="file-item__info"
   >
     <svg
-      class="file__icon"
+      class="file-item__icon"
       fill="#CBD7D5"
       viewBox="0 0 17 22"
       xmlns="http://www.w3.org/2000/svg"
@@ -22,19 +22,19 @@ exports[`File Screenshot 1`] = `
       />
     </svg>
     <span
-      class="file__name"
-      data-testid="file-name"
+      class="file-item__name"
+      data-testid="file-item-name"
     >
       x
     </span>
   </div>
   <button
-    class="file__button"
-    data-testid="file-button"
+    class="file-item__button"
+    data-testid="file-item-button"
     type="button"
   >
     <svg
-      class="file__delete"
+      class="file-item__delete"
       fill="#DCE1D7"
       viewBox="0 0 19 20"
       xmlns="http://www.w3.org/2000/svg"

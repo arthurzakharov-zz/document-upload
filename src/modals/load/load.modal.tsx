@@ -6,10 +6,10 @@ import { isLoadingOn, isLoadingOff } from "../../redux/ui/ui.slice";
 import { modalClose, modalOpen } from "../../redux/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
 import { Upload } from "../../svg";
-import { Button, Collapse, File, FileUpload, Input } from "../../components";
+import { Button, Collapse, FileItem, UploadWrapper, Input } from "../../components";
 import { allowedFilesDescription, buttonName, documentLabel, fileKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
-import type { FileUploadListType, FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { UploadWrapperListType, UploadWrapperType } from "../../components/upload-wrapper/upload-wrapper.types";
 import type { LoadModalPropsType } from "./load.types";
 import "./load.css";
 
@@ -19,7 +19,7 @@ function LoadModal(props: LoadModalPropsType) {
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
-  const [files, setFiles] = useState<FileUploadListType>([]);
+  const [files, setFiles] = useState<UploadWrapperListType>([]);
   const [oversizedFiles, setOversizedFiles] = useState<number[]>([]);
 
   const { dispatch, useSelector } = useReactRedux();
@@ -35,7 +35,7 @@ function LoadModal(props: LoadModalPropsType) {
         fileAddToCategory({
           category: label,
           name: title,
-          files: files.map((file: FileUploadType) => ({
+          files: files.map((file: UploadWrapperType) => ({
             dataURL: file.dataURL,
           })),
         }),
@@ -47,7 +47,7 @@ function LoadModal(props: LoadModalPropsType) {
     }
   };
 
-  const onFileClick = (file: FileUploadType, index: number, onFileRemove: (index: number) => void) => {
+  const onFileClick = (file: UploadWrapperType, index: number, onFileRemove: (index: number) => void) => {
     setFileToClose(get(file, "file", "name"));
     setTimeout(() => {
       onFileRemove(index);
@@ -59,9 +59,9 @@ function LoadModal(props: LoadModalPropsType) {
     setTitle(value || label);
   };
 
-  const onChange = (fileList: FileUploadListType) => {
+  const onChange = (fileList: UploadWrapperListType) => {
     const listOfOversizedFiles: number[] = [];
-    fileList.forEach((file: FileUploadType, index) => {
+    fileList.forEach((file: UploadWrapperType, index) => {
       const fileSize = get(file, "file", "size");
       if (convertDataSize(fileSize, "B", "MB") > sizeLimit) {
         listOfOversizedFiles.push(index);
@@ -74,7 +74,7 @@ function LoadModal(props: LoadModalPropsType) {
   return (
     <div className="load">
       <div className="load__content">
-        <FileUpload
+        <UploadWrapper
           files={files}
           fileResolutions={resolution}
           maxFileSize={convertDataSize(10, "MB", "B")}
@@ -86,7 +86,7 @@ function LoadModal(props: LoadModalPropsType) {
               <h6 className="load__head">{documentLabel(label, title, multiple ? recordsQuantity + 1 : undefined)}</h6>
               <div className="load__info">{uploadDescription}</div>
               <div className="load__files">
-                {files.map((file: FileUploadType, index: number) => (
+                {files.map((file: UploadWrapperType, index: number) => (
                   <Collapse key={fileKey(file)} opened={fileToClose !== get(file, "file", "name")} duration={300}>
                     <div
                       className={loadFile(oversizedFiles.includes(index))}
@@ -95,7 +95,10 @@ function LoadModal(props: LoadModalPropsType) {
                         marginBottom: files.length - 1 >= index ? 8 : 0,
                       }}
                     >
-                      <File name={get(file, "file", "name")} onClick={() => onFileClick(file, index, onFileRemove)} />
+                      <FileItem
+                        name={get(file, "file", "name")}
+                        onClick={() => onFileClick(file, index, onFileRemove)}
+                      />
                     </div>
                   </Collapse>
                 ))}
@@ -119,7 +122,7 @@ function LoadModal(props: LoadModalPropsType) {
               ) : null}
             </div>
           )}
-        </FileUpload>
+        </UploadWrapper>
       </div>
       <div className="load__save">
         <Collapse opened={files.length > 0}>

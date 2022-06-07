@@ -4,7 +4,7 @@ import { selectFileCategory } from "../../redux/file/file.selectors";
 import type { FileRecordType } from "../../redux/file/file.types";
 import { modalOpen } from "../../redux/modal/modal.slice";
 import { Arrow, Question } from "../../svg";
-import { Collapse, File, Tooltip, UploadButton } from "..";
+import { Collapse, FileItem, Tooltip, UploadButton } from "..";
 import { category, categoryArrow } from "./category.utils";
 import type { CategoryPropsType } from "./category.types";
 import "./category.css";
@@ -73,7 +73,7 @@ function Category(props: CategoryPropsType) {
         <div className="category__files">
           {fileCategory.map((fileRecord: FileRecordType) => (
             <div key={fileRecord.name} className="category__file">
-              <File name={fileRecord.name} />
+              <FileItem name={fileRecord.name} />
             </div>
           ))}
         </div>

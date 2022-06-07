@@ -1,6 +1,6 @@
 import cn from "classnames";
+import type { UploadWrapperType } from "../../components/upload-wrapper/upload-wrapper.types";
 import { get } from "../../utils";
-import type { FileUploadType } from "../../components/file-upload/file-upload.types";
 
 export const documentLabel = (label: string, title: string, count?: number): string => {
   if (count) {
@@ -21,7 +21,7 @@ export const loadFile = (error: boolean): string =>
     "load__file--error": error,
   });
 
-export const fileKey = (file: FileUploadType): string =>
+export const fileKey = (file: UploadWrapperType): string =>
   get(file, "file", "name").concat("_", get(file, "file", "lastModified"), "_", get(file, "file", "size"));
 
 export const allowedFilesDescription = (size: number, formats: string[]): string => {

@@ -1,9 +1,9 @@
 import type { DocumentLabelType } from "../../types";
-import type { FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { UploadWrapperType } from "../../components/upload-wrapper/upload-wrapper.types";
 
 export type FileRecordType = {
   name: string;
-  files: Pick<FileUploadType, "dataURL">[];
+  files: Pick<UploadWrapperType, "dataURL">[];
 };
 
 export type FileReducerType = {
@@ -13,5 +13,5 @@ export type FileReducerType = {
 export type FileAddToCategoryPayloadActionType = {
   category: DocumentLabelType;
   name: string;
-  files: Pick<FileUploadType, "dataURL">[];
+  files: Pick<UploadWrapperType, "dataURL">[];
 };

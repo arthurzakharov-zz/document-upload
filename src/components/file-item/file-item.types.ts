@@ -1,4 +1,4 @@
-export type FilePropsType = {
+export type FileItemPropsType = {
   name: string;
   onClick?: () => void;
 };

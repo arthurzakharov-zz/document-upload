@@ -20,7 +20,7 @@ function UploadButton(props: UploadButtonPropsType) {
   ) : (
     <button
       data-testid="upload-button"
-      aria-label={multiple ? "upload-single-file" : "upload-multiple-file"}
+      aria-label={multiple ? "upload-wrapper-single-file-item" : "upload-wrapper-multiple-file-item"}
       type="button"
       className={uploadButton(loaded)}
       onClick={onClickHandler}
