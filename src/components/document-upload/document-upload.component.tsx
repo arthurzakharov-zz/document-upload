@@ -1,7 +1,6 @@
-import { DocumentCategoryType } from "../../types";
+import type { DocumentCategoryType } from "../../types";
 import categories from "../../config/categories";
-import Category from "../category";
-import LeadInfo from "../lead-info";
+import { Category, LeadInfo } from "..";
 import "./document-upload.css";
 
 function DocumentUpload() {

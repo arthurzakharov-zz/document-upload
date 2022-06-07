@@ -1,34 +1,22 @@
-import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import type { PropsWithChildren } from "react";
 import { CSSTransition } from "react-transition-group";
 import useWindowSize from "../../hooks/useWindowSize";
+import type {
+  TooltipHorizontalPositionType,
+  TooltipPointerPositionType,
+  TooltipPropsType,
+  TooltipVerticalPositionType,
+} from "./tooltip.types";
 import "./tooltip.css";
 
-export interface TooltipProps {
-  content: string;
-}
-
-type HorizontalPositionType = {
-  left?: string;
-};
-
-type VerticalPositionType = {
-  top?: string;
-  bottom?: string;
-};
-
-type PointerPositionType = {
-  left?: string;
-  top?: string;
-  bottom?: string;
-};
-
-function Tooltip(props: PropsWithChildren<TooltipProps>) {
+function Tooltip(props: PropsWithChildren<TooltipPropsType>) {
   const { content, children } = props;
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [horizontalPosition, setHorizontalPosition] = useState<HorizontalPositionType>({});
-  const [verticalPosition, setVerticalPosition] = useState<VerticalPositionType>({});
-  const [pointerPosition, setPointerPosition] = useState<PointerPositionType>({});
+  const [horizontalPosition, setHorizontalPosition] = useState<TooltipHorizontalPositionType>({});
+  const [verticalPosition, setVerticalPosition] = useState<TooltipVerticalPositionType>({});
+  const [pointerPosition, setPointerPosition] = useState<TooltipPointerPositionType>({});
 
   const tooltipRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);

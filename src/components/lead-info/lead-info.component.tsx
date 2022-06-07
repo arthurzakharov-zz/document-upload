@@ -1,5 +1,5 @@
-import "./lead-info.css";
 import { useEffect, useState } from "react";
+import "./lead-info.css";
 
 function LeadInfo() {
   const [number, setNumber] = useState<string>("");

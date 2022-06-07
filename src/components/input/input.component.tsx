@@ -1,14 +1,8 @@
-import { ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
+import type { InputPropsType } from "./input.types";
 import "./input.css";
 
-export interface InputProps {
-  id: string;
-  name: string;
-  placeholder: string;
-  onChange: (name: string, value: string) => void;
-}
-
-function Input(props: InputProps) {
+function Input(props: InputPropsType) {
   const { id, name, placeholder, onChange } = props;
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {

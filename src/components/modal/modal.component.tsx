@@ -10,7 +10,7 @@ import {
   selectModalSizeType,
 } from "../../redux/modal/modal.selectors";
 import useLockedBody from "../../hooks/useLockedBody";
-import SvgClose from "../../svg/Close";
+import { Close } from "../../svg";
 import "./modal.css";
 
 function Modal() {
@@ -58,7 +58,7 @@ function Modal() {
         <div className="modal__body" data-modal-size={size}>
           {withCloseButton && (
             <button type="button" className="modal__close" onClick={close}>
-              <SvgClose className="modal__icon" />
+              <Close className="modal__icon" />
             </button>
           )}
           {Main && <Main {...mainProps} />}

@@ -1,0 +1,12 @@
+export { default as Arrow } from "./Arrow";
+export { default as Check } from "./Check";
+export { default as CircleCheck } from "./CircleCheck";
+export { default as Close } from "./Close";
+export { default as Error } from "./Error";
+export { default as File } from "./File";
+export { default as Logo } from "./Logo";
+export { default as Phone } from "./Phone";
+export { default as Plus } from "./Plus";
+export { default as Question } from "./Question";
+export { default as Trash } from "./Trash";
+export { default as Upload } from "./Upload";

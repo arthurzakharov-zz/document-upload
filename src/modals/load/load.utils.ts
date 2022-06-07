@@ -1,6 +1,6 @@
 import cn from "classnames";
 import { get } from "../../utils";
-import { FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { FileUploadType } from "../../components/file-upload/file-upload.types";
 
 export const documentLabel = (label: string, title: string, count?: number): string => {
   if (count) {

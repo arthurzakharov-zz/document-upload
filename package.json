@@ -10,7 +10,7 @@
     "test:snapshot": "react-scripts test --watchAll=false --updateSnapshot",
     "test:coverage": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
-    "svgr": "svgr --typescript --no-dimensions --no-index -d src/svg src/assets/svg",
+    "svgr": "svgr --typescript --no-dimensions -d src/svg src/assets/svg",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "predeploy": "npm run build",

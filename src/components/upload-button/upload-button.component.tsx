@@ -1,17 +1,10 @@
-import { MouseEvent } from "react";
-import SvgCheck from "../../svg/Check";
-import SvgPlus from "../../svg/Plus";
-import SvgUpload from "../../svg/Upload";
+import type { MouseEvent } from "react";
+import { Check, Plus, Upload } from "../../svg";
+import type { UploadButtonPropsType } from "./upload-button.types";
 import { uploadButton } from "./upload-button.utils";
 import "./upload-button.css";
 
-export interface UploadButtonProps {
-  loaded: boolean;
-  multiple: boolean;
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-}
-
-function UploadButton(props: UploadButtonProps) {
+function UploadButton(props: UploadButtonPropsType) {
   const { loaded, multiple, onClick } = props;
 
   const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
@@ -22,7 +15,7 @@ function UploadButton(props: UploadButtonProps) {
 
   return loaded ? (
     <div data-testid="upload-div" className={uploadButton(loaded)}>
-      <SvgCheck data-testid="upload-button-check" className="upload-button__check" />
+      <Check data-testid="upload-button-check" className="upload-button__check" />
     </div>
   ) : (
     <button
@@ -34,9 +27,9 @@ function UploadButton(props: UploadButtonProps) {
     >
       <span className="upload-button__text">{multiple ? "Hinzufügen" : "Hochladen"}</span>
       {multiple ? (
-        <SvgPlus data-testid="upload-button-plus" className="upload-button__plus" />
+        <Plus data-testid="upload-button-plus" className="upload-button__plus" />
       ) : (
-        <SvgUpload data-testid="upload-button-upload" className="upload-button__upload" />
+        <Upload data-testid="upload-button-upload" className="upload-button__upload" />
       )}
     </button>
   );

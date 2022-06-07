@@ -1,12 +1,7 @@
+import type { ButtonPropsType } from "./button.types";
 import "./button.css";
 
-export interface ButtonProps {
-  text: string;
-  onClick: () => void;
-  disabled?: boolean;
-}
-
-function Button(props: ButtonProps) {
+function Button(props: ButtonPropsType) {
   const { text, onClick, disabled } = props;
   return (
     <button type="button" aria-label={text} disabled={disabled} className="button" onClick={onClick}>

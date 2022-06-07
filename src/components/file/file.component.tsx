@@ -1,25 +1,20 @@
-import SvgTrash from "../../svg/Trash";
-import SvgFile from "../../svg/File";
+import type { FilePropsType } from "./file.types";
+import { File as FileIcon, Trash } from "../../svg";
 import "./file.css";
 
-export interface FileProps {
-  name: string;
-  onClick?: () => void;
-}
-
-function File(props: FileProps) {
+function File(props: FilePropsType) {
   const { name, onClick } = props;
   return (
     <div className="file">
       <div className="file__info">
-        <SvgFile className="file__icon" />
+        <FileIcon className="file__icon" />
         <span data-testid="file-name" className="file__name">
           {name}
         </span>
       </div>
       {onClick && (
         <button data-testid="file-button" type="button" className="file__button" onClick={onClick}>
-          <SvgTrash className="file__delete" />
+          <Trash className="file__delete" />
         </button>
       )}
     </div>

@@ -1,15 +1,10 @@
-import { FileUploadType } from "../components/file-upload/file-upload.types";
+import type { FileUploadType } from "../components/file-upload/file-upload.types";
 
 export type ModalIdType = "general_info" | "privacy" | "impressum" | "load" | "error";
 
 export type ModalSizeType = "xs" | "sm";
 
 export type FileResolutionType = "pdf" | "png" | "jpg" | "jpeg" | "heic" | "gif";
-
-export type FooterLinkType = {
-  label: string;
-  id: ModalIdType;
-};
 
 export type CategoryNameType =
   | "Personalausweis"

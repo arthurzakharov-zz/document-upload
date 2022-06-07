@@ -2,7 +2,8 @@ import { Fragment, useEffect, useState } from "react";
 import { modalOpen } from "../../redux/modal/modal.slice";
 import useReactRedux from "../../hooks/useReactRedux";
 import { companyName } from "./footer.utils";
-import { FooterLinkType, ModalIdType } from "../../types";
+import type { ModalIdType } from "../../types";
+import type { FooterLinkType } from "./footer.types";
 import "./footer.css";
 
 function Footer() {

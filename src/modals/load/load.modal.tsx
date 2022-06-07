@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
 import { selectFileCategoryQuantity } from "../../redux/file/file.selectors";
@@ -6,16 +5,12 @@ import { fileAddToCategory } from "../../redux/file/file.slice";
 import { isLoadingOn, isLoadingOff } from "../../redux/ui/ui.slice";
 import { modalClose, modalOpen } from "../../redux/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
-import SvgUpload from "../../svg/Upload";
-import Button from "../../components/button";
-import Collapse from "../../components/collapse";
-import File from "../../components/file";
-import FileUpload from "../../components/file-upload";
-import Input from "../../components/input";
+import { Upload } from "../../svg";
+import { Button, Collapse, File, FileUpload, Input } from "../../components";
 import { allowedFilesDescription, buttonName, documentLabel, fileKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
-import { DocumentCategoryType } from "../../types";
-import { FileUploadListType, FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { DocumentCategoryType } from "../../types";
+import type { FileUploadListType, FileUploadType } from "../../components/file-upload/file-upload.types";
 import "./load.css";
 
 export interface LoadModalProps {
@@ -110,7 +105,7 @@ function LoadModal(props: LoadModalProps) {
                 ))}
               </div>
               <button type="button" className="load__button" onClick={onFileUpload}>
-                <SvgUpload className="load__button-icon" />
+                <Upload className="load__button-icon" />
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
               <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>

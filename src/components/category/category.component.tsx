@@ -2,21 +2,14 @@ import { useEffect, useState } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
 import { selectFileCategory } from "../../redux/file/file.selectors";
 import { modalOpen } from "../../redux/modal/modal.slice";
-import { DocumentCategoryType, FileRecordType } from "../../types";
+import type { FileRecordType } from "../../types";
 import { category, categoryArrow } from "./category.utils";
-import SvgQuestion from "../../svg/Question";
-import SvgArrow from "../../svg/Arrow";
-import Collapse from "../collapse";
-import File from "../file";
-import Tooltip from "../tooltip";
-import UploadButton from "../upload-button";
+import { Arrow, Question } from "../../svg";
+import { Collapse, File, Tooltip, UploadButton } from "..";
+import type { CategoryPropsType } from "./category.types";
 import "./category.css";
 
-export interface CategoryProps {
-  documentCategory: DocumentCategoryType;
-}
-
-function Category(props: CategoryProps) {
+function Category(props: CategoryPropsType) {
   const { documentCategory } = props;
   const { label, multiple, tooltip } = documentCategory;
 
@@ -55,7 +48,7 @@ function Category(props: CategoryProps) {
         <div className="category__left">
           {inMultiModeHasFiles() ? (
             <button type="button" className="category__button" onClick={toggleDetailedView}>
-              <SvgArrow className={categoryArrow(opened)} />
+              <Arrow className={categoryArrow(opened)} />
               <div className="category__label">{label}</div>
             </button>
           ) : (
@@ -65,7 +58,7 @@ function Category(props: CategoryProps) {
             <div className="category__question-wrap">
               <Tooltip content={tooltip}>
                 <div className="category__question">
-                  <SvgQuestion className="category__symbol" />
+                  <Question className="category__symbol" />
                 </div>
               </Tooltip>
             </div>

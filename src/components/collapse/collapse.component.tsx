@@ -1,12 +1,9 @@
-import { useState, useEffect, PropsWithChildren } from "react";
+import { useState, useEffect } from "react";
+import type { PropsWithChildren } from "react";
 import AnimateHeight from "react-animate-height";
+import type { CollapsePropsType } from "./collapse.types";
 
-export interface CollapseProps {
-  opened: boolean;
-  duration?: number;
-}
-
-function Collapse(props: PropsWithChildren<CollapseProps>) {
+function Collapse(props: PropsWithChildren<CollapsePropsType>) {
   const { opened, children, duration = 300 } = props;
 
   const [height, setHeight] = useState<string | number>(0);

@@ -1,5 +1,5 @@
-import { FileRecordType, CategoryNameType } from "../../types";
-import { FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { FileRecordType, CategoryNameType } from "../../types";
+import type { FileUploadType } from "../../components/file-upload/file-upload.types";
 
 export type FileReducerType = {
   [key in CategoryNameType]: FileRecordType[];

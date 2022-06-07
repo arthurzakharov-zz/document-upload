@@ -1,10 +1,10 @@
 import useReactRedux from "../../hooks/useReactRedux";
 import { modalClose } from "../../redux/modal/modal.slice";
-import SvgError from "../../svg/Error";
-import Button from "../../components/button";
+import { Error } from "../../svg";
+import { Button } from "../../components";
 import "./error.css";
 
-function Error() {
+function ErrorModal() {
   const { dispatch } = useReactRedux();
 
   const onClick = () => {
@@ -15,7 +15,7 @@ function Error() {
     <div className="error">
       <div className="error__content">
         <div className="error__icon-wrap">
-          <SvgError className="error__icon" />
+          <Error className="error__icon" />
         </div>
         <h6 className="error__head">Irgendwas ist schief gelaufen!</h6>
         <div className="error__text">
@@ -32,4 +32,4 @@ function Error() {
   );
 }
 
-export default Error;
+export default ErrorModal;

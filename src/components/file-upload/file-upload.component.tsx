@@ -1,6 +1,6 @@
 import { useRef, ChangeEvent, useCallback, RefObject } from "react";
-import { FileUploadErrorType, FileUploadPropsType, FileUploadListType } from "./file-upload.types";
-import { FileResolutionType } from "../../types";
+import type { FileUploadErrorType, FileUploadPropsType, FileUploadListType } from "./file-upload.types";
+import type { FileResolutionType } from "../../types";
 
 function FileUpload(props: FileUploadPropsType) {
   const { files, fileResolutions, maxFileSize, maxFileNumber, children, onChange } = props;
