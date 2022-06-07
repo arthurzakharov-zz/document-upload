@@ -3,7 +3,7 @@ import { useState } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
 import { selectFileCategoryQuantity } from "../../redux/file/file.selectors";
 import { fileAddToCategory } from "../../redux/file/file.slice";
-import { uiIsLoadingOn, uiIsLoadingOff } from "../../redux/ui/ui.slice";
+import { isLoadingOn, isLoadingOff } from "../../redux/ui/ui.slice";
 import { modalClose, modalOpen } from "../../redux/modal/modal.slice";
 import { convertDataSize, get } from "../../utils";
 import SvgUpload from "../../svg/Upload";
@@ -37,7 +37,7 @@ function LoadModal(props: LoadModalProps) {
 
   const saveFiles = async () => {
     try {
-      dispatch(uiIsLoadingOn());
+      dispatch(isLoadingOn());
       dispatch(modalClose());
       await mockHttp(label !== "Gläubigerunterlagen");
       dispatch(
@@ -52,7 +52,7 @@ function LoadModal(props: LoadModalProps) {
     } catch (e) {
       dispatch(modalOpen({ type: "error", size: "xs", withCloseButton: false }));
     } finally {
-      dispatch(uiIsLoadingOff());
+      dispatch(isLoadingOff());
     }
   };
 

@@ -9,15 +9,15 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: INITIAL_STATE,
   reducers: {
-    uiIsLoadingOn(state) {
+    isLoadingOn(state) {
       state.isLoading = true;
     },
-    uiIsLoadingOff(state) {
+    isLoadingOff(state) {
       state.isLoading = false;
     },
   },
 });
 
-export const { uiIsLoadingOn, uiIsLoadingOff } = uiSlice.actions;
+export const { isLoadingOn, isLoadingOff } = uiSlice.actions;
 
 export default uiSlice.reducer;

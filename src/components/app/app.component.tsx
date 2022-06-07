@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import useReactRedux from "../../hooks/useReactRedux";
-import { uiIsLoadingOff, uiIsLoadingOn } from "../../redux/ui/ui.slice";
+import { isLoadingOff, isLoadingOn } from "../../redux/ui/ui.slice";
 import DocumentUpload from "../document-upload";
 import Footer from "../footer";
 import Header from "../header";
@@ -13,9 +13,9 @@ function App() {
   const { dispatch } = useReactRedux();
 
   const loadInitData = async () => {
-    dispatch(uiIsLoadingOn());
+    dispatch(isLoadingOn());
     await mockHttp(true);
-    dispatch(uiIsLoadingOff());
+    dispatch(isLoadingOff());
   };
 
   useEffect(() => {
