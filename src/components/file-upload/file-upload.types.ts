@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { FileResolutionType } from "../../types";
+import type { ReactNode } from "react";
+import type { DocumentResolutionType } from "../../types";
 
 export type FileUploadType = {
   dataURL?: string;
@@ -21,7 +21,7 @@ export type FileUploadChildrenType = {
 
 export type FileUploadPropsType = {
   files: FileUploadListType;
-  fileResolutions: FileResolutionType[];
+  fileResolutions: DocumentResolutionType[];
   maxFileSize: number;
   maxFileNumber: number;
   children: (props: FileUploadChildrenType) => ReactNode;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import type { PropsWithChildren } from "react";
 import { CSSTransition } from "react-transition-group";
-import useWindowSize from "../../hooks/useWindowSize";
+import { useWindowSize } from "../../hooks";
 import type {
   TooltipHorizontalPositionType,
   TooltipPointerPositionType,

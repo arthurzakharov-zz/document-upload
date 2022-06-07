@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { modalOpen } from "../../redux/modal/modal.slice";
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux } from "../../hooks";
 import { companyName } from "./footer.utils";
 import type { ModalIdType } from "../../redux/modal/modal.types";
 import type { FooterLinkType } from "./footer.types";

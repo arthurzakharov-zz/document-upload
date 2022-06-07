@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux } from "../../hooks";
 import { selectFileCategoryQuantity } from "../../redux/file/file.selectors";
 import { fileAddToCategory } from "../../redux/file/file.slice";
 import { isLoadingOn, isLoadingOff } from "../../redux/ui/ui.slice";
@@ -9,17 +9,13 @@ import { Upload } from "../../svg";
 import { Button, Collapse, File, FileUpload, Input } from "../../components";
 import { allowedFilesDescription, buttonName, documentLabel, fileKey, loadFile } from "./load.utils";
 import { mockHttp } from "../../mock";
-import type { DocumentCategoryType } from "../../types";
 import type { FileUploadListType, FileUploadType } from "../../components/file-upload/file-upload.types";
+import type { LoadModalPropsType } from "./load.types";
 import "./load.css";
 
-export interface LoadModalProps {
-  documentCategory: DocumentCategoryType;
-}
-
-function LoadModal(props: LoadModalProps) {
+function LoadModal(props: LoadModalPropsType) {
   const { documentCategory } = props;
-  const { label, uploadDescription, placeholder, fileSizeLimitInMb, fileFormats, multiple } = documentCategory;
+  const { label, uploadDescription, placeholder, sizeLimit, resolution, multiple } = documentCategory;
 
   const [fileToClose, setFileToClose] = useState<string>("");
   const [title, setTitle] = useState<string>(label);
@@ -67,7 +63,7 @@ function LoadModal(props: LoadModalProps) {
     const listOfOversizedFiles: number[] = [];
     fileList.forEach((file: FileUploadType, index) => {
       const fileSize = get(file, "file", "size");
-      if (convertDataSize(fileSize, "B", "MB") > fileSizeLimitInMb) {
+      if (convertDataSize(fileSize, "B", "MB") > sizeLimit) {
         listOfOversizedFiles.push(index);
       }
     });
@@ -80,7 +76,7 @@ function LoadModal(props: LoadModalProps) {
       <div className="load__content">
         <FileUpload
           files={files}
-          fileResolutions={fileFormats}
+          fileResolutions={resolution}
           maxFileSize={convertDataSize(10, "MB", "B")}
           maxFileNumber={100}
           onChange={onChange}
@@ -108,7 +104,7 @@ function LoadModal(props: LoadModalProps) {
                 <Upload className="load__button-icon" />
                 <span className="load__button-text">Datei(en) auswählen</span>
               </button>
-              <p className="load__manual">{allowedFilesDescription(fileSizeLimitInMb, fileFormats)}</p>
+              <p className="load__manual">{allowedFilesDescription(sizeLimit, resolution)}</p>
               {multiple ? (
                 <div className="load__footer">
                   <Collapse opened={files.length > 0}>

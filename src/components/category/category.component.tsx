@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux } from "../../hooks";
 import { selectFileCategory } from "../../redux/file/file.selectors";
+import type { FileRecordType } from "../../redux/file/file.types";
 import { modalOpen } from "../../redux/modal/modal.slice";
-import type { FileRecordType } from "../../types";
-import { category, categoryArrow } from "./category.utils";
 import { Arrow, Question } from "../../svg";
 import { Collapse, File, Tooltip, UploadButton } from "..";
+import { category, categoryArrow } from "./category.utils";
 import type { CategoryPropsType } from "./category.types";
 import "./category.css";
 

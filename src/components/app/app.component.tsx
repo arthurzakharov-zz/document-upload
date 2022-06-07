@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux } from "../../hooks";
 import { isLoadingOff, isLoadingOn } from "../../redux/ui/ui.slice";
 import { DocumentUpload, Footer, Header, Loading, Modal } from "..";
 import { mockHttp } from "../../mock";

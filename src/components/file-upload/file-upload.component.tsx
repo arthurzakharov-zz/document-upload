@@ -1,6 +1,6 @@
 import { useRef, ChangeEvent, useCallback, RefObject } from "react";
 import type { FileUploadErrorType, FileUploadPropsType, FileUploadListType } from "./file-upload.types";
-import type { FileResolutionType } from "../../types";
+import type { DocumentResolutionType } from "../../types";
 
 function FileUpload(props: FileUploadPropsType) {
   const { files, fileResolutions, maxFileSize, maxFileNumber, children, onChange } = props;
@@ -9,7 +9,7 @@ function FileUpload(props: FileUploadPropsType) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const getAccept = (fileResolutions: FileResolutionType[]): string => {
+  const getAccept = (fileResolutions: DocumentResolutionType[]): string => {
     const convertedTypes = fileResolutions.map((type) => ".".concat(type));
     return convertedTypes.join(", ");
   };

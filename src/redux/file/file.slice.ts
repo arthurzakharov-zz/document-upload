@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { FileAddToCategoryPayloadActionType, FileReducerType } from "./file.types";
-import { FileRecordType } from "../../types";
+import type { FileAddToCategoryPayloadActionType, FileReducerType, FileRecordType } from "./file.types";
 import categories from "../../config/categories";
 
 const fileGroupName = (name: string, fileGroup: FileRecordType[]): string => {

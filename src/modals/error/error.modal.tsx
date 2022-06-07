@@ -1,4 +1,4 @@
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux } from "../../hooks";
 import { modalClose } from "../../redux/modal/modal.slice";
 import { Error } from "../../svg";
 import { Button } from "../../components";

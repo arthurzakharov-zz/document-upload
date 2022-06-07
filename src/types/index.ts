@@ -1,8 +1,6 @@
-import type { FileUploadType } from "../components/file-upload/file-upload.types";
+export type DocumentResolutionType = "pdf" | "png" | "jpg" | "jpeg" | "heic" | "gif";
 
-export type FileResolutionType = "pdf" | "png" | "jpg" | "jpeg" | "heic" | "gif";
-
-export type CategoryNameType =
+export type DocumentLabelType =
   | "Personalausweis"
   | "Gläubigerunterlagen"
   | "Einkommensnachweis"
@@ -11,18 +9,13 @@ export type CategoryNameType =
   | "Sonstiges";
 
 export type DocumentCategoryType = {
-  label: CategoryNameType;
+  label: DocumentLabelType;
   tooltip?: string;
   uploadDescription: string;
   placeholder: string;
-  fileSizeLimitInMb: number;
-  fileFormats: FileResolutionType[];
+  sizeLimit: number;
+  resolution: DocumentResolutionType[];
   multiple: boolean;
-};
-
-export type FileRecordType = {
-  name: string;
-  files: Pick<FileUploadType, "dataURL">[];
 };
 
 export type DataSizeType = "B" | "kB" | "MB";

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
-import useReactRedux from "../../hooks/useReactRedux";
+import { useReactRedux, useLockedBody } from "../../hooks";
 import { modalClear, modalClose } from "../../redux/modal/modal.slice";
 import {
   selectModalIsOpen,
@@ -9,7 +9,6 @@ import {
   selectModalMainProps,
   selectModalSizeType,
 } from "../../redux/modal/modal.selectors";
-import useLockedBody from "../../hooks/useLockedBody";
 import { Close } from "../../svg";
 import "./modal.css";
 
