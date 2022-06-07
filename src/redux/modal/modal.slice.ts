@@ -1,9 +1,8 @@
 import { ElementType } from "react";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { ModalReducerType } from "./modal.types";
-import { ModalIdType } from "../../types";
 import { ErrorModal, GeneralInfoModal, ImpressumModal, LoadModal, PrivacyModal } from "../../modals";
-import { ModalOpenActionType } from "./modal.types";
+import { ModalOpenActionType, ModalIdType } from "./modal.types";
 
 const INITIAL_STATE: ModalReducerType = {
   isOpen: false,

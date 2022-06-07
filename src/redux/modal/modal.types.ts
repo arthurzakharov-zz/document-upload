@@ -1,5 +1,8 @@
 import { ElementType } from "react";
-import { ModalIdType, ModalSizeType } from "../../types";
+
+export type ModalIdType = "general_info" | "privacy" | "impressum" | "load" | "error";
+
+export type ModalSizeType = "xs" | "sm";
 
 export type ModalReducerType = {
   isOpen: boolean;

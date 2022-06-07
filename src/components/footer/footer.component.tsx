@@ -2,7 +2,7 @@ import { Fragment, useEffect, useState } from "react";
 import { modalOpen } from "../../redux/modal/modal.slice";
 import useReactRedux from "../../hooks/useReactRedux";
 import { companyName } from "./footer.utils";
-import type { ModalIdType } from "../../types";
+import type { ModalIdType } from "../../redux/modal/modal.types";
 import type { FooterLinkType } from "./footer.types";
 import "./footer.css";
 
@@ -14,9 +14,9 @@ function Footer() {
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
     setLinks([
-      { label: "Allgemeine Informationen", id: "general_info" },
-      { label: "Datenschutz", id: "privacy" },
-      { label: "Impressum", id: "impressum" },
+      { label: "Allgemeine Informationen", modalId: "general_info" },
+      { label: "Datenschutz", modalId: "privacy" },
+      { label: "Impressum", modalId: "impressum" },
     ]);
   }, []);
 
@@ -30,9 +30,9 @@ function Footer() {
       <span className="footer__company">{companyName("schuldenanalyse-kostenlos.de")}</span>
       <ul className="footer__list">
         {links.map((link: FooterLinkType, index: number) => (
-          <Fragment key={link.id}>
+          <Fragment key={link.modalId}>
             <li className="footer__item">
-              <button type="button" className="footer__button" onClick={() => linkClick(link.id)}>
+              <button type="button" className="footer__button" onClick={() => linkClick(link.modalId)}>
                 {link.label}
               </button>
             </li>
