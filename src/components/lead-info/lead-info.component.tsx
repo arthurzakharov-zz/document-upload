@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { useReactRedux } from "../../hooks";
 import "./lead-info.css";
+import { selectGeneralCaseReference } from "../../redux/general/general.selectors";
 
 function LeadInfo() {
-  const [number, setNumber] = useState<string>("");
   const [name, setName] = useState<string>("");
+
+  const { useSelector } = useReactRedux();
+
+  const caseReference = useSelector(selectGeneralCaseReference);
 
   useEffect(() => {
     // TODO: later will be replaced with some Redux or Context call
-    setNumber("SBE22.0121-24046542");
     setName("Luca Zamai");
   }, []);
 
@@ -17,7 +21,7 @@ function LeadInfo() {
       <div className="lead-info__content">
         <div data-testid="info-number" className="lead-info__label">
           <strong>Aktenzeichen: </strong>
-          {number}
+          {caseReference}
         </div>
         <div data-testid="info-name" className="lead-info__label">
           <strong>Name: </strong>

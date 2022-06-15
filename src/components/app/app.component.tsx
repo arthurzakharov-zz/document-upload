@@ -1,21 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useReactRedux } from "../../hooks";
-import { isLoadingOff, isLoadingOn } from "../../redux/ui/ui.slice";
+import { setCaseReferenceAndToken } from "../../redux/general/general.slice";
+import { modalOpen } from "../../redux/modal/modal.slice";
 import { DocumentUpload, Footer, Header, Loading, Modal } from "..";
-import { mockHttp } from "../../mock";
+import { getUrlParam } from "../../utils";
 import "./app.css";
 
 function App() {
+  const [caseReference] = useState<string>(getUrlParam("caseReference"));
+  const [token] = useState<string>(getUrlParam("token"));
+
   const { dispatch } = useReactRedux();
 
-  const loadInitData = async () => {
-    dispatch(isLoadingOn());
-    await mockHttp(true);
-    dispatch(isLoadingOff());
-  };
-
   useEffect(() => {
-    loadInitData();
+    if (caseReference && token) {
+      dispatch(setCaseReferenceAndToken({ caseReference, token }));
+    } else {
+      dispatch(modalOpen({ type: "error", size: "xs", withCloseButton: false }));
+    }
   }, []);
 
   return (

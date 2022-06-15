@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useReactRedux } from "../../hooks";
-import { selectUiIsLoading } from "../../redux/ui/ui.selectors";
+import { selectGeneralIsLoading } from "../../redux/general/general.selectors";
 import "./loading.css";
 
 function Loading() {
@@ -9,7 +9,7 @@ function Loading() {
 
   const { useSelector } = useReactRedux();
 
-  const isLoading = useSelector(selectUiIsLoading);
+  const isLoading = useSelector(selectGeneralIsLoading);
 
   return (
     <CSSTransition in={isLoading} timeout={{ enter: 600, exit: 1050 }} nodeRef={ref} classNames="loading" unmountOnExit>

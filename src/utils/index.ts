@@ -24,3 +24,9 @@ export const convertDataSize = (number: number, from: DataSizeType = "B", to: Da
     ? Math.round((number / 1024 ** Math.abs(diff)) * 100) / 100
     : Math.round(number * 1024 ** Math.abs(diff) * 100) / 100;
 };
+
+export const getUrlParam = (paramKey: string): string => {
+  const urlSearchParams = new URLSearchParams(document.location.search);
+  const paramKeyValues = urlSearchParams.getAll(paramKey);
+  return paramKeyValues[paramKeyValues.length - 1] || "";
+};

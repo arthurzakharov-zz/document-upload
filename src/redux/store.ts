@@ -2,14 +2,14 @@ import { configureStore, Middleware } from "@reduxjs/toolkit";
 import logger from "redux-logger";
 import fileSlice from "./file/file.slice";
 import modalSlice from "./modal/modal.slice";
-import uiSlice from "./ui/ui.slice";
+import generalSlice from "./general/general.slice";
 
 const MIDDLEWARES: Middleware[] = [];
 
 const REDUCERS = {
   file: fileSlice,
   modal: modalSlice,
-  ui: uiSlice,
+  general: generalSlice,
 };
 
 if (process.env.NODE_ENV === "development") {

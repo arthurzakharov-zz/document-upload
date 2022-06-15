@@ -45,6 +45,7 @@
     "no-restricted-exports": "off",
     "testing-library/no-node-access": "off",
     "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/require-default-props": "off",
     "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "off",
